@@ -1,0 +1,173 @@
+WEBVTT
+
+1
+00:00:00.770 --> 00:00:02.260
+Welcome to Math one oh two.
+
+2
+00:00:03.080 --> 00:00:06.520
+In Section five point one, we explore area between curves.
+
+3
+00:00:07.240 --> 00:00:10.440
+Let's see how a familiar rectangle gives us the whole idea.
+
+4
+00:00:10.910 --> 00:00:12.770
+Start with the area under one curve.
+
+5
+00:00:13.350 --> 00:00:16.950
+Each rectangle reaches up to the curve, and its width is delta x.
+
+6
+00:00:17.730 --> 00:00:19.910
+Height times width gives one small area.
+
+7
+00:00:20.530 --> 00:00:24.530
+Add more, thinner rectangles, and watch the edges fit the curve more closely.
+
+8
+00:00:25.043 --> 00:00:26.743
+Keep making the rectangles thinner.
+
+9
+00:00:27.303 --> 00:00:29.963
+In the limit, their sum becomes the exact area.
+
+10
+00:00:30.483 --> 00:00:35.983
+That's what the integral means here: we accumulate tiny areas, with every height read from the picture.
+
+11
+00:00:36.427 --> 00:00:37.927
+Now put a second curve underneath.
+
+12
+00:00:38.707 --> 00:00:43.427
+Our top curve is three minus x; the bottom curve is x squared minus nine.
+
+13
+00:00:44.027 --> 00:00:46.467
+We'll preview the interval from negative four to three.
+
+14
+00:00:47.027 --> 00:00:51.047
+Watch the vertical gap as the strip moves: its height changes with both curves.
+
+15
+00:00:51.643 --> 00:00:53.863
+The bottom curve dips below the x-axis.
+
+16
+00:00:54.543 --> 00:00:59.123
+So let's measure both pieces from one temporary line, y equals negative ten.
+
+17
+00:00:59.703 --> 00:01:01.643
+The blue measurement reaches the top curve.
+
+18
+00:01:02.303 --> 00:01:04.303
+The red measurement reaches the bottom curve.
+
+19
+00:01:04.803 --> 00:01:06.223
+Both begin at the same baseline.
+
+20
+00:01:06.927 --> 00:01:09.007
+Now watch the red piece slide out.
+
+21
+00:01:09.627 --> 00:01:11.467
+Partway first, then completely clear.
+
+22
+00:01:12.007 --> 00:01:14.427
+Its shape and size stay exactly the same.
+
+23
+00:01:15.027 --> 00:01:17.887
+What remains is the blue region between our two curves.
+
+24
+00:01:18.447 --> 00:01:20.787
+We've subtracted one planar area from another.
+
+25
+00:01:21.193 --> 00:01:22.653
+Look at one vertical gap.
+
+26
+00:01:23.213 --> 00:01:27.953
+From the baseline, the two heights are f of x plus ten, and g of x plus ten.
+
+27
+00:01:28.293 --> 00:01:29.133
+Subtract them.
+
+28
+00:01:29.633 --> 00:01:32.773
+The tens cancel, leaving f of x minus g of x.
+
+29
+00:01:33.373 --> 00:01:35.093
+There it is: top minus bottom.
+
+30
+00:01:35.660 --> 00:01:37.500
+Let that gap move across the region.
+
+31
+00:01:38.080 --> 00:01:41.520
+Each strip takes its height from the top curve minus the bottom curve.
+
+32
+00:01:42.120 --> 00:01:44.740
+Add the small areas, then use more, thinner strips.
+
+33
+00:01:45.360 --> 00:01:46.580
+The sum becomes an integral.
+
+34
+00:01:47.120 --> 00:01:50.160
+The geometry tells us exactly what belongs inside it.
+
+35
+00:01:50.443 --> 00:01:52.803
+Does crossing the x-axis change this idea?
+
+36
+00:01:53.383 --> 00:01:57.463
+Move both curves up together, then place them across the axis, then below it.
+
+37
+00:01:57.923 --> 00:01:59.623
+The vertical gap stays the same.
+
+38
+00:02:00.163 --> 00:02:05.263
+We split an integral when the active boundaries change, not simply because a curve crosses an axis.
+
+39
+00:02:05.760 --> 00:02:09.080
+Here is Example One: find the area between these two curves.
+
+40
+00:02:09.680 --> 00:02:12.660
+Identify the limits, the top curve, and the bottom curve.
+
+41
+00:02:12.660 --> 00:02:15.360
+Our rectangle gives the setup shown here.
+
+42
+00:02:15.760 --> 00:02:19.540
+In class, we'll justify the intersection bounds and carry out the calculation.
+
+43
+00:02:20.320 --> 00:02:21.620
+The picture has done its job.

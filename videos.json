@@ -1,0 +1,26 @@
+{
+  "5.1": {
+    "filename": "Section_5_1_Male_Narration_1080p60.mp4",
+    "sha256": "d7e44908289bce9aa3a8f79027a7703249a1a1e88994abe90cf81976c27d75b5",
+    "bytes": 11439469,
+    "duration": 142.03333333333333,
+    "url": "https://yd18425.github.io/Math102/5-1.html",
+    "title": "Area Between Curves"
+  },
+  "5.2": {
+    "filename": "Section_5_2_Male_Narration_1080p60.mp4",
+    "sha256": "fc07712a0342d08602dada7500b5f6d0c1f3111b418a19742d2eb6521033ef8f",
+    "bytes": 12779410,
+    "duration": 152.48333333333335,
+    "url": "https://yd18425.github.io/Math102/5-2.html",
+    "title": "Volumes by Disks and Washers"
+  },
+  "5.3": {
+    "filename": "Section_5_3_Male_Narration_1080p60.mp4",
+    "sha256": "28500f9d12564779f5d6c0facf69c657f788962e6b4388f84d90e50e9a35cd13",
+    "bytes": 14290421,
+    "duration": 155.76666666666665,
+    "url": "https://yd18425.github.io/Math102/5-3.html",
+    "title": "Volumes by Cylindrical Shells"
+  }
+}

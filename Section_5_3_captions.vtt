@@ -1,0 +1,217 @@
+WEBVTT
+
+1
+00:00:00.770 --> 00:00:02.260
+Welcome to Math one oh two.
+
+2
+00:00:03.100 --> 00:00:07.280
+In Section five point three, we explore volumes by cylindrical shells.
+
+3
+00:00:07.980 --> 00:00:11.400
+Let's see how changing the axis changes our best choice of slice.
+
+4
+00:00:12.060 --> 00:00:16.560
+Here's our region, under two x squared minus x cubed, from zero to two.
+
+5
+00:00:17.000 --> 00:00:19.520
+Rotate this vertical strip around the x-axis.
+
+6
+00:00:20.160 --> 00:00:21.120
+See the disk?
+
+7
+00:00:21.120 --> 00:00:23.140
+Its radius reaches straight up to the curve.
+
+8
+00:00:23.677 --> 00:00:25.337
+Now bring the region back flat.
+
+9
+00:00:25.997 --> 00:00:29.697
+Change only the axis: this time, rotate around the y-axis.
+
+10
+00:00:30.397 --> 00:00:32.857
+Same region, but look, a completely different solid.
+
+11
+00:00:33.360 --> 00:00:34.520
+Could we still use washers?
+
+12
+00:00:35.120 --> 00:00:35.180
+Yes.
+
+13
+00:00:35.860 --> 00:00:38.680
+Turn the strip sideways, perpendicular to the y-axis.
+
+14
+00:00:39.320 --> 00:00:40.560
+Rotate it, and a hole appears.
+
+15
+00:00:41.240 --> 00:00:45.600
+The left endpoint gives the inner radius; the right endpoint gives the outer radius.
+
+16
+00:00:46.110 --> 00:00:48.370
+But now both radii change with height.
+
+17
+00:00:48.910 --> 00:00:51.170
+We'd need two inverse branches of the cubic.
+
+18
+00:00:51.830 --> 00:00:55.710
+That's possible, but the geometry is asking us to try another direction.
+
+19
+00:00:56.293 --> 00:00:57.893
+Keep the strip vertical instead.
+
+20
+00:00:58.473 --> 00:01:00.033
+It's parallel to the y-axis.
+
+21
+00:01:00.673 --> 00:01:04.433
+As it turns, it wraps around the axis and becomes a cylindrical shell.
+
+22
+00:01:04.993 --> 00:01:07.493
+Watch the gap inside: this is a thin wall.
+
+23
+00:01:07.943 --> 00:01:09.243
+What dimensions do we need?
+
+24
+00:01:09.763 --> 00:01:12.063
+The radius is x, measured from the axis.
+
+25
+00:01:12.783 --> 00:01:16.823
+The height reaches up to the curve, so it's two x squared minus x cubed.
+
+26
+00:01:17.143 --> 00:01:18.483
+The thickness is delta x.
+
+27
+00:01:18.977 --> 00:01:19.837
+Let's open one up.
+
+28
+00:01:20.217 --> 00:01:22.657
+Make a vertical cut and unroll just the middle surface.
+
+29
+00:01:23.457 --> 00:01:24.037
+Now it's a rectangle!
+
+30
+00:01:24.037 --> 00:01:27.577
+Its width is the distance once around: two pi r.
+
+31
+00:01:27.577 --> 00:01:29.117
+Its height stays h.
+
+32
+00:01:29.437 --> 00:01:30.997
+Keep the radial thickness separate.
+
+33
+00:01:31.477 --> 00:01:37.397
+Circumference times height times thickness gives the volume of this constant-height shell, using its midpoint radius.
+
+34
+00:01:37.893 --> 00:01:39.713
+Now nest several shells together.
+
+35
+00:01:40.313 --> 00:01:41.773
+Each takes its height from the curve.
+
+36
+00:01:42.313 --> 00:01:43.693
+See the steps along the top?
+
+37
+00:01:44.173 --> 00:01:46.553
+Add more, thinner shells, and those steps shrink.
+
+38
+00:01:47.133 --> 00:01:49.613
+The collection follows the solid more and more closely.
+
+39
+00:01:50.210 --> 00:01:51.750
+Add all those small volumes.
+
+40
+00:01:52.410 --> 00:01:55.550
+As the thickness approaches zero, the sum becomes an integral.
+
+41
+00:01:56.470 --> 00:02:01.330
+Radius times height is our key: x times two x squared minus x cubed.
+
+42
+00:02:01.670 --> 00:02:03.230
+We'll leave the calculation for class.
+
+43
+00:02:03.843 --> 00:02:05.443
+Let's watch both choices at once.
+
+44
+00:02:06.143 --> 00:02:07.503
+On the left, the washer moves upward.
+
+45
+00:02:07.503 --> 00:02:12.323
+Its inner radius grows and its outer radius shrinks, because both edges must meet the curve.
+
+46
+00:02:12.963 --> 00:02:14.283
+On the right, the shell moves outward.
+
+47
+00:02:14.283 --> 00:02:17.563
+Its radius grows, while its height first rises, then falls.
+
+48
+00:02:18.443 --> 00:02:20.523
+Notice: each piece keeps following the same region.
+
+49
+00:02:21.163 --> 00:02:23.263
+Two valid methods, two directions of slicing.
+
+50
+00:02:23.923 --> 00:02:25.583
+Here, shells give us the simpler setup.
+
+51
+00:02:25.977 --> 00:02:27.637
+Now you're ready for Example One.
+
+52
+00:02:28.197 --> 00:02:31.937
+Identify the axis, choose the strip, then read its radius and height.
+
+53
+00:02:32.497 --> 00:02:33.337
+Our integral is ready.
+
+54
+00:02:33.937 --> 00:02:35.217
+That's our starting point for class.
