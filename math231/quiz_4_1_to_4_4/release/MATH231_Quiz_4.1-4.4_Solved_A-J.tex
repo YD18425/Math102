@@ -1,0 +1,799 @@
+\documentclass[14pt,a4paper]{extarticle}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{newtxtext,newtxmath}
+\usepackage[a4paper,top=10mm,bottom=15mm,left=13mm,right=13mm,footskip=9mm]{geometry}
+\usepackage{xcolor,graphicx,array,tabularx,booktabs,enumitem,fancyhdr}
+\usepackage[hidelinks]{hyperref}
+\graphicspath{{figures/branding/}}
+\definecolor{Brand}{RGB}{0,90,170}
+\definecolor{WorkBlue}{HTML}{174CA0}
+\definecolor{RuleGray}{HTML}{B9BEC5}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\abovedisplayskip}{4pt}\setlength{\belowdisplayskip}{4pt}
+\setlength{\abovedisplayshortskip}{2pt}\setlength{\belowdisplayshortskip}{2pt}
+\raggedbottom
+\emergencystretch=1.5em
+% ---- editable labels -------------------------------------------------------
+\newcommand{\QuizLabel}{Quiz}
+\newcommand{\TermLabel}{Fall 2026}
+\newcommand{\DateLine}{Date: \rule{32mm}{0.3pt}}
+% ----------------------------------------------------------------------------
+\newcommand{\CurVersion}{A}
+\newcommand{\CurPage}{1}
+\pagestyle{fancy}\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}\renewcommand{\footrulewidth}{0.3pt}
+\fancyfoot[L]{\fontsize{8}{9.5}\selectfont\begin{tabular}[b]{@{}l@{}}Dr. Yousef Dabboorasad\quad|\quad Math 231 -- \QuizLabel{} (Sections 4.1--4.4)\quad|\quad \textcolor{red!70!black}{INSTRUCTOR COPY -- SOLVED -- NOT FOR STUDENTS}\\ \textcolor{gray}{Based on Anton \& Rorres, \textit{Elementary Linear Algebra}, 12e}\end{tabular}}
+\fancyfoot[R]{\fontsize{8.5}{10}\selectfont Version \CurVersion\quad\CurPage/2}
+\newcommand{\Logo}[2]{\IfFileExists{figures/branding/#1}{\includegraphics[height=#2]{#1}}{}}
+\newcommand{\LogoW}[2]{\IfFileExists{figures/branding/#1}{\includegraphics[width=#2]{#1}}{}}
+\newcommand{\HeaderOne}[1]{%
+\renewcommand{\CurVersion}{#1}\renewcommand{\CurPage}{1}%
+\noindent\begin{minipage}[c]{34mm}\LogoW{math_department_logo.png}{33mm}\end{minipage}%
+\hfill\begin{minipage}[c]{\dimexpr\linewidth-56mm\relax}\centering
+{\fontsize{10.5}{12}\selectfont\bfseries Qatar University}\\[-1pt]
+{\fontsize{9.5}{11}\selectfont Department of Mathematics, Statistics and Physics}\\[2pt]
+{\fontsize{16}{18}\selectfont\bfseries Math 231 -- Linear Algebra\quad\textcolor{Brand}{\QuizLabel}}\\[2pt]
+{\fontsize{9}{10.5}\selectfont Sections 4.1--4.4 (Real Vector Spaces, Subspaces, Spanning Sets, Linear Independence)}\\[1pt]
+{\fontsize{10}{11.5}\selectfont \TermLabel\quad\textbullet\quad Total: 10 marks\quad\textbullet\quad \DateLine}
+\end{minipage}\hfill
+\begin{minipage}[c]{18mm}\raggedleft\Logo{qatar_university_logo.png}{14mm}\end{minipage}\par
+\vspace{1.5mm}\textcolor{Brand}{\rule{\linewidth}{0.8pt}}\par\vspace{1.5mm}
+{\fontsize{11}{13}\selectfont Name: \rule{58mm}{0.3pt}\quad ID: \rule{30mm}{0.3pt}\quad Section: \rule{16mm}{0.3pt}}\hfill
+{\fontsize{13}{15}\selectfont\bfseries\textcolor{Brand}{Version #1}}\par\vspace{1mm}
+{\fontsize{9}{10.5}\selectfont\color{black!70}Tick exactly one box for each True/False statement and exactly one option for each multiple-choice question; an item with more than one answer receives zero. Show all your work in Problem 3. Programmable calculators and mobile phones are not allowed.}\par\vspace{2mm}
+}
+\newcommand{\HeaderTwo}[1]{%
+\renewcommand{\CurVersion}{#1}\renewcommand{\CurPage}{2}%
+\noindent{\fontsize{10.5}{12}\selectfont\bfseries Math 231 -- Linear Algebra\quad\textcolor{Brand}{\QuizLabel}\quad Sections 4.1--4.4}\hfill
+{\fontsize{12}{14}\selectfont\bfseries\textcolor{Brand}{Version #1}}\quad{\fontsize{10}{11.5}\selectfont Page 2 of 2}\par
+\vspace{1mm}\textcolor{Brand}{\rule{\linewidth}{0.8pt}}\par\vspace{2.5mm}
+}
+\newcommand{\PTitle}[2]{{\bfseries #1}\hfill{\bfseries [#2]}\par}
+\newcommand{\PNote}[1]{{\fontsize{9.5}{11}\selectfont\color{black!70}#1}\par}
+\newcommand{\Opt}[2]{$#1$~#2}
+\newcommand{\Sol}[1]{{\fontsize{9.5}{11}\selectfont\color{WorkBlue}#1}\par}
+\newcommand{\Conclude}[1]{\par\vspace{1pt}\noindent\fcolorbox{WorkBlue}{blue!4}{\textbf{\textcolor{WorkBlue}{#1}}}\par\vspace{2pt}}
+\newcommand{\workline}{\noindent\textcolor{RuleGray}{\makebox[\linewidth]{\dotfill}}\par}
+
+\hypersetup{pdftitle={MATH 231 Quiz Sections 4.1-4.4 -- Instructor solved copy -- Versions A-J},pdfauthor={Dr. Yousef Dabboorasad},pdfsubject={MATH 231 Quiz; Sections 4.1--4.4; versions A--J}}
+\begin{document}
+\pdfbookmark[0]{Version A}{version-A}
+\HeaderOne{A}
+\begingroup\fontsize{11.5}{13.5}\selectfont
+\PTitle{Problem 1. True or False}{2 marks}
+\PNote{Each statement is worth 0.5 mark. Tick \textbf{True} if the statement is always true, otherwise tick \textbf{False}. No justification is needed.}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}>{\centering\arraybackslash}p{21mm}@{}}
+ & {\fontsize{9}{10}\selectfont True\hfill False}\\[0.5mm]
+\textbf{(a)}~In any vector space $V$, $0\mathbf{u}=\mathbf{0}$ for every vector $\mathbf{u}$ in $V$.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{True.} This is Theorem 4.1.1(a).} & $\blacksquare$\hfill$\square$\\[1.2mm]
+\textbf{(b)}~The set of all invertible $2\times 2$ matrices is a subspace of $M_{22}$.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{False.} The zero matrix is not invertible, so condition (a) of the Subspace Test fails (Example 4.2.4).} & $\square$\hfill$\blacksquare$\\[1.2mm]
+\textbf{(c)}~If $S=\{\mathbf{w}_1,\dots,\mathbf{w}_r\}$ is a set of vectors in a vector space $V$, then $\operatorname{span}(S)$ is a subspace of $V$.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{True.} Theorem 4.3.1.} & $\blacksquare$\hfill$\square$\\[1.2mm]
+\textbf{(d)}~If $\{\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3\}$ is linearly dependent, then $\mathbf{v}_3$ must be a linear combination of $\mathbf{v}_1$ and $\mathbf{v}_2$.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{False.} The Remark after Theorem 4.4.1 says \emph{at least one} vector is a linear combination of the others, not necessarily $\mathbf{v}_3$: for $\mathbf{v}_1=(1,0,0)$, $\mathbf{v}_2=(2,0,0)$, $\mathbf{v}_3=(0,1,0)$ the set is dependent but $\mathbf{v}_3\neq k_1\mathbf{v}_1+k_2\mathbf{v}_2$.} & $\square$\hfill$\blacksquare$
+\end{tabularx}\par
+\vspace{1.5mm}\textcolor{RuleGray}{\rule{\linewidth}{0.4pt}}\par\vspace{1mm}
+\PTitle{Problem 2. Multiple choice}{4 marks}
+\PNote{Each question is worth 1 mark. Tick exactly one option.}
+\vspace{0.8mm}
+\textbf{(a)}~Let $V=\mathbb{R}^2$ with the usual addition $(x_1,x_2)+(y_1,y_2)=(x_1+y_1,\;x_2+y_2)$ and the scalar multiplication $k(x_1,x_2)=(kx_1,\;0)$. With these operations $V$ is \emph{not} a vector space: exactly one of the following four axioms fails. Which one?\par\vspace{0.8mm}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}X@{}}
+$\square$ A.~Axiom 7: $k(\mathbf{u}+\mathbf{v})=k\mathbf{u}+k\mathbf{v}$ & $\blacksquare$ B.~Axiom 10: $1\mathbf{u}=\mathbf{u}$\\[0.8mm]
+$\square$ C.~Axiom 8: $(k+m)\mathbf{u}=k\mathbf{u}+m\mathbf{u}$ & $\square$ D.~Axiom 9: $k(m\mathbf{u})=(km)\mathbf{u}$
+\end{tabularx}\par
+\Sol{\textbf{Answer: B (Axiom 10).} Take $\mathbf{u}=(7,8)$: $1\mathbf{u}=(1\cdot7,\;0)=(7,0)\neq(7,8)=\mathbf{u}$, so Axiom 10 fails. The usual addition makes Axioms 7, 8, 9 hold: e.g. $(k+m)\mathbf{u}=((k+m)u_1,0)=(ku_1,0)+(mu_1,0)=k\mathbf{u}+m\mathbf{u}$.}
+\vspace{1.2mm}
+\textbf{(b)}~Which of the following subsets $W$ is a \textbf{subspace} of $V=\mathbb{R}^2$ (with the usual operations)?\par\vspace{0.8mm}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}X@{}}
+$\square$ A.~$W=\{(x,y) : x+y=1\}$ & $\square$ B.~$W=\{(x,y) : y=x^2\}$\\[0.8mm]
+$\blacksquare$ C.~$W=\{(x,y) : y=3x\}$ & $\square$ D.~$W=\{(x,y) : x\ge0,\ y\ge0\}$
+\end{tabularx}\par
+\Sol{\textbf{Answer: C.} A: $\mathbf{0}\notin W$. B: $(1,1)\in W$ but $2\cdot(1,1)\notin W$. C: subspace (passes the Subspace Test). D: $(5,7)\in W$ but $-1\cdot(5,7)\notin W$.}
+\vspace{1.2mm}
+\textbf{(c)}~Let $\mathbf{v}_1=(1,0,2)$ and $\mathbf{v}_2=(0,1,-1)$ in $\mathbb{R}^3$. Which of the following vectors belongs to $\operatorname{span}\{\mathbf{v}_1,\mathbf{v}_2\}$?\par\vspace{0.8mm}
+\begin{tabular*}{\linewidth}{@{}l@{\extracolsep{\fill}}lll@{}}
+$\square$ A.~$(3,1,7)$ & $\blacksquare$ B.~$(3,1,5)$ & $\square$ C.~$(1,1,2)$ & $\square$ D.~$(2,2,0)$\end{tabular*}\par
+\Sol{\textbf{Answer: B.} Match $k_1\mathbf{v}_1+k_2\mathbf{v}_2$ with each candidate (two components fix $k_1,k_2$; the third must agree). A: $k_1=3$, $k_2=1$ would force the third component to be $5\neq7$. \textbf{B}: $k_1=3$, $k_2=1$ give third component $=5$ \checkmark, so $(3,1,5)=3\mathbf{v}_1+\mathbf{v}_2$. C: $k_1=1$, $k_2=1$ would force the third component to be $1\neq2$. D: $k_1=2$, $k_2=2$ would force the third component to be $2\neq0$.}
+\vspace{1.2mm}
+\textbf{(d)}~Let $f_1=x$ and $f_2=e^{x}$ be functions in $C^{\infty}(-\infty,\infty)$. Compute the Wronskian $W(x)$ of $f_1,f_2$ and choose the correct statement.\par\vspace{0.8mm}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}X@{}}
+$\square$ A.~$W(x)=(x-1)e^{x}$; the set is linearly dependent because $W(1)=0$ & $\blacksquare$ B.~$W(x)=(x-1)e^{x}$; the set is linearly independent\\[0.8mm]
+$\square$ C.~$W(x)=(x+1)e^{x}$; the set is linearly independent & $\square$ D.~$W(x)=0$ for all $x$; the Wronskian test is inconclusive
+\end{tabularx}\par
+\Sol{\textbf{Answer: B.} $W(x)=\begin{vmatrix}x&e^{x}\\1&e^{x}\end{vmatrix}=xe^{x}-e^{x}=(x-1)e^{x}$. This is not identically zero (e.g. $W(0)=-1$), so by Fact 4.4.2 the set is linearly independent.}
+\endgroup
+\newpage
+
+\pdfbookmark[1]{Version A: Problem 3}{written-A}
+\HeaderTwo{A}
+\PTitle{Problem 3. Linear independence and span}{4 marks}
+\vspace{1.5mm}Let $S=\{\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3\}$ be the set of vectors in $\mathbb{R}^3$ given by\[\mathbf{v}_1=(1,2,-1),\qquad \mathbf{v}_2=(2,1,1),\qquad \mathbf{v}_3=(5,4,1),\]and let $\mathbf{u}=(1,1,3)$.
+\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=9mm,itemsep=1.5mm,topsep=2mm]
+\item \textbf{[2.5 marks]} Determine whether $S$ is linearly independent or linearly dependent. Show all your work.
+\item \textbf{[1.5 marks]} Determine whether $\mathbf{u}$ belongs to $\operatorname{span}(S)$, that is, whether $\mathbf{u}$ is a linear combination of $\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3$. If it is, write $\mathbf{u}$ as such a linear combination; if it is not, explain why.
+\end{enumerate}
+\vspace{1mm}{\fontsize{10.5}{12.5}\selectfont\color{WorkBlue}\setlength{\abovedisplayskip}{3pt}\setlength{\belowdisplayskip}{3pt}
+\textbf{Solution.}\par\vspace{1mm}
+\textbf{(a)} Set $k_1\mathbf{v}_1+k_2\mathbf{v}_2+k_3\mathbf{v}_3=\mathbf{0}$, i.e. $k_1(1,2,-1)+k_2(2,1,1)+k_3(5,4,1)=(0,0,0)$. Comparing components gives the homogeneous system and its augmented matrix:
+
+\[ \begin{cases}k_1+2k_2+5k_3=0\\ 2k_1+k_2+4k_3=0\\ -k_1+k_2+k_3=0\end{cases} \qquad \left[\begin{array}{ccc|c} 1 & 2 & 5 & 0 \\ 2 & 1 & 4 & 0 \\ -1 & 1 & 1 & 0 \end{array}\right] \xrightarrow[R_1+R_3 \to R_3]{-2R_1+R_2 \to R_2} \left[\begin{array}{ccc|c} 1 & 2 & 5 & 0 \\ 0 & -3 & -6 & 0 \\ 0 & 3 & 6 & 0 \end{array}\right] \xrightarrow{R_2+R_3 \to R_3} \left[\begin{array}{ccc|c} 1 & 2 & 5 & 0 \\ 0 & -3 & -6 & 0 \\ 0 & 0 & 0 & 0 \end{array}\right] \]
+
+The coefficient matrix has only two pivots: the third row is a zero row, so $k_3$ is a free variable and the homogeneous system has \textbf{nontrivial solutions}. For instance $k_3=1$ gives $k_2=-2$ and $k_1=-1$, so $-\mathbf{v}_1-2\mathbf{v}_2+\mathbf{v}_3=\mathbf{0}$, i.e. $\mathbf{v}_3=\mathbf{v}_1+2\mathbf{v}_2$.
+
+\Conclude{$S$ is \textbf{linearly dependent}.}
+
+\textbf{(b)} Set $k_1\mathbf{v}_1+k_2\mathbf{v}_2+k_3\mathbf{v}_3=\mathbf{u}$ with $\mathbf{u}=(1,1,3)$. The coefficient matrix is the same, so the same row operations apply to the new right-hand side:
+
+\[ \left[\begin{array}{ccc|c} 1 & 2 & 5 & 1 \\ 2 & 1 & 4 & 1 \\ -1 & 1 & 1 & 3 \end{array}\right] \xrightarrow[R_1+R_3 \to R_3]{-2R_1+R_2 \to R_2} \left[\begin{array}{ccc|c} 1 & 2 & 5 & 1 \\ 0 & -3 & -6 & -1 \\ 0 & 3 & 6 & 4 \end{array}\right] \xrightarrow{R_2+R_3 \to R_3} \left[\begin{array}{ccc|c} 1 & 2 & 5 & 1 \\ 0 & -3 & -6 & -1 \\ 0 & 0 & 0 & 3 \end{array}\right] \]
+
+The last row reads $0k_1+0k_2+0k_3=3$, i.e. $0=3$, which is impossible: the system is \textbf{inconsistent}. Hence $\mathbf{u}$ is not a linear combination of $\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3$.
+
+\Conclude{$\mathbf{u}\notin\operatorname{span}(S)$.}
+\par\vspace{1mm}{\fontsize{8.5}{10}\selectfont\color{black!60}Source: Example 4.4.1 (Linear Dependence in $\mathbb{R}^3$), line 13280; Example 4.2.10 (Vector IS a Linear Combination), line 11774; Example 4.2.11 (Vector Is NOT a Linear Combination), line 11843; Definition 4.4.1 (Linear Independence and Dependence), line 13236; Definition 4.3.1 (Span), line 12614 ($\mathtt{math231\_lecture\_notes\_v02\_2026\_fully\_solved.tex}$). New vectors/polynomials; method, structure and hypotheses unchanged.}
+}
+\newpage
+\pdfbookmark[0]{Version B}{version-B}
+\HeaderOne{B}
+\begingroup\fontsize{11.5}{13.5}\selectfont
+\PTitle{Problem 1. True or False}{2 marks}
+\PNote{Each statement is worth 0.5 mark. Tick \textbf{True} if the statement is always true, otherwise tick \textbf{False}. No justification is needed.}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}>{\centering\arraybackslash}p{21mm}@{}}
+ & {\fontsize{9}{10}\selectfont True\hfill False}\\[0.5mm]
+\textbf{(a)}~A set with two operations that satisfies nine of the ten vector space axioms is still a vector space.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{False.} All ten axioms must hold (Definition 4.1.1); if even one axiom fails the set is not a vector space (Examples 4.1.3 and 4.1.4 fail a single axiom).} & $\square$\hfill$\blacksquare$\\[1.2mm]
+\textbf{(b)}~If $A$ is an $m\times n$ matrix, then the solution set of the homogeneous system $A\mathbf{x}=\mathbf{0}$ is a subspace of $\mathbb{R}^n$.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{True.} Example 4.2.7: $A\mathbf{0}=\mathbf{0}$, $A(\mathbf{u}+\mathbf{v})=\mathbf{0}$ and $A(k\mathbf{u})=\mathbf{0}$.} & $\blacksquare$\hfill$\square$\\[1.2mm]
+\textbf{(c)}~$\operatorname{span}\{1,\,x,\,x^2\}=P_3$.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{False.} Every linear combination $k_1+k_2x+k_3x^2$ has no $x^3$ term, so $x^3\in P_3$ is not in the span; the span is $P_2$ (Remark 4.3.2).} & $\square$\hfill$\blacksquare$\\[1.2mm]
+\textbf{(d)}~Every set of four vectors in $\mathbb{R}^3$ is linearly dependent.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{True.} Fact 4.4.1(1) with $r=4>n=3$ (Example 4.4.3).} & $\blacksquare$\hfill$\square$
+\end{tabularx}\par
+\vspace{1.5mm}\textcolor{RuleGray}{\rule{\linewidth}{0.4pt}}\par\vspace{1mm}
+\PTitle{Problem 2. Multiple choice}{4 marks}
+\PNote{Each question is worth 1 mark. Tick exactly one option.}
+\vspace{0.8mm}
+\textbf{(a)}~Let $V=\mathbb{R}^2$ with the usual addition $(x_1,x_2)+(y_1,y_2)=(x_1+y_1,\;x_2+y_2)$ and the scalar multiplication $k(x_1,x_2)=(kx_1,\;x_2)$. With these operations $V$ is \emph{not} a vector space: exactly one of the following four axioms fails. Which one?\par\vspace{0.8mm}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}X@{}}
+$\square$ A.~Axiom 10: $1\mathbf{u}=\mathbf{u}$ & $\square$ B.~Axiom 7: $k(\mathbf{u}+\mathbf{v})=k\mathbf{u}+k\mathbf{v}$\\[0.8mm]
+$\blacksquare$ C.~Axiom 8: $(k+m)\mathbf{u}=k\mathbf{u}+m\mathbf{u}$ & $\square$ D.~Axiom 6: $k\mathbf{u}$ is in $V$ (closure under scalar multiplication)
+\end{tabularx}\par
+\Sol{\textbf{Answer: C (Axiom 8).} Take $\mathbf{u}=(2,5)$, $k=2$, $m=3$: $(k+m)\mathbf{u}=5(2,5)=(10,5)$ but $k\mathbf{u}+m\mathbf{u}=(4,5)+(6,5)=(10,10)$, so Axiom 8 fails. Axiom 10: $1\mathbf{u}=(u_1,u_2)=\mathbf{u}$ holds; Axiom 7: $k(\mathbf{u}+\mathbf{v})=(k(u_1+v_1),u_2+v_2)=k\mathbf{u}+k\mathbf{v}$ holds; Axiom 6 holds since $(ku_1,u_2)\in\mathbb{R}^2$.}
+\vspace{1.2mm}
+\textbf{(b)}~Which of the following subsets of $V=M_{22}$ (with the usual operations) is \textbf{not} a subspace of $V$?\par\vspace{0.8mm}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}X@{}}
+$\square$ A.~all symmetric matrices ($A^T=A$) & $\blacksquare$ B.~all invertible matrices\\[0.8mm]
+$\square$ C.~all matrices with $\operatorname{tr}(A)=0$ & $\square$ D.~all matrices $\begin{bmatrix}a&b\\ c&d\end{bmatrix}$ with $a=0$
+\end{tabularx}\par
+\Sol{\textbf{Answer: B.} A: subspace (passes the Subspace Test). B: $\mathbf{0}\notin W$. C: subspace (passes the Subspace Test). D: subspace (passes the Subspace Test).}
+\vspace{1.2mm}
+\textbf{(c)}~Let $p_1=1+x^{2}$ and $p_2=x$ in $P_2$. Which of the following polynomials belongs to $\operatorname{span}\{p_1,p_2\}$?\par\vspace{0.8mm}
+\begin{tabular*}{\linewidth}{@{}l@{\extracolsep{\fill}}lll@{}}
+$\square$ A.~$3+2x-3x^{2}$ & $\square$ B.~$2+3x+3x^{2}$ & $\blacksquare$ C.~$3+2x+3x^{2}$ & $\square$ D.~$3+3x+2x^{2}$\end{tabular*}\par
+\Sol{\textbf{Answer: C.} Match $k_1p_1+k_2p_2$ with each candidate (two coefficients fix $k_1,k_2$; the third must agree). A: $k_1=3$, $k_2=2$ would force the $x^{2}$ coefficient to be $3\neq-3$. B: $k_1=2$, $k_2=3$ would force the $x^{2}$ coefficient to be $2\neq3$. \textbf{C}: $k_1=3$, $k_2=2$ give $x^{2}$ coefficient $=3$ \checkmark, so $3+2x+3x^{2}=3p_1+2p_2$. D: $k_1=3$, $k_2=3$ would force the $x^{2}$ coefficient to be $3\neq2$.}
+\vspace{1.2mm}
+\textbf{(d)}~Let $f_1=e^{x}$ and $f_2=e^{2x}$ be functions in $C^{\infty}(-\infty,\infty)$. Compute the Wronskian $W(x)$ of $f_1,f_2$ and choose the correct statement.\par\vspace{0.8mm}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}X@{}}
+$\square$ A.~$W(x)=3e^{3x}$; the set is linearly independent & $\square$ B.~$W(x)=0$ for all $x$; the Wronskian test is inconclusive\\[0.8mm]
+$\square$ C.~$W(x)=e^{3x}$; the set is linearly dependent because $e^{2x}$ is a multiple of $e^{x}$ & $\blacksquare$ D.~$W(x)=e^{3x}$; the set is linearly independent
+\end{tabularx}\par
+\Sol{\textbf{Answer: D.} $W(x)=\begin{vmatrix}e^{x}&e^{2x}\\e^{x}&2e^{2x}\end{vmatrix}=2e^{3x}-e^{3x}=e^{3x}\neq0$ for every $x$, so the set is linearly independent (Fact 4.4.2; compare Example 4.4.5).}
+\endgroup
+\newpage
+
+\pdfbookmark[1]{Version B: Problem 3}{written-B}
+\HeaderTwo{B}
+\PTitle{Problem 3. Linear independence and span}{4 marks}
+\vspace{1.5mm}Let $S=\{p_1,p_2,p_3\}$ be the set of polynomials in $P_2$ given by\[p_1=1+x+x^{2},\qquad p_2=1-x+2x^{2},\qquad p_3=2+x-x^{2},\]and let $u=3-2x+2x^{2}$.
+\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=9mm,itemsep=1.5mm,topsep=2mm]
+\item \textbf{[2.5 marks]} Determine whether $S$ is linearly independent or linearly dependent. Show all your work.
+\item \textbf{[1.5 marks]} Determine whether $u$ belongs to $\operatorname{span}(S)$, that is, whether $u$ is a linear combination of $p_1,p_2,p_3$. If it is, write $u$ as such a linear combination; if it is not, explain why.
+\end{enumerate}
+\vspace{1mm}{\fontsize{10.5}{12.5}\selectfont\color{WorkBlue}\setlength{\abovedisplayskip}{3pt}\setlength{\belowdisplayskip}{3pt}
+\textbf{Solution.}\par\vspace{1mm}
+\textbf{(a)} Set $k_1p_1+k_2p_2+k_3p_3=0$, i.e. $k_1(1+x+x^{2})+k_2(1-x+2x^{2})+k_3(2+x-x^{2})=0+0x+0x^{2}$. Comparing coefficients of $1$, $x$ and $x^{2}$ gives the homogeneous system and its augmented matrix:
+
+\[ \begin{cases}k_1+k_2+2k_3=0\\ k_1-k_2+k_3=0\\ k_1+2k_2-k_3=0\end{cases} \qquad \left[\begin{array}{ccc|c} 1 & 1 & 2 & 0 \\ 1 & -1 & 1 & 0 \\ 1 & 2 & -1 & 0 \end{array}\right] \xrightarrow[-R_1+R_3 \to R_3]{-R_1+R_2 \to R_2} \left[\begin{array}{ccc|c} 1 & 1 & 2 & 0 \\ 0 & -2 & -1 & 0 \\ 0 & 1 & -3 & 0 \end{array}\right] \xrightarrow{R_2 \leftrightarrow R_3} \left[\begin{array}{ccc|c} 1 & 1 & 2 & 0 \\ 0 & 1 & -3 & 0 \\ 0 & -2 & -1 & 0 \end{array}\right] \]
+
+\[  \xrightarrow{2R_2+R_3 \to R_3} \left[\begin{array}{ccc|c} 1 & 1 & 2 & 0 \\ 0 & 1 & -3 & 0 \\ 0 & 0 & -7 & 0 \end{array}\right] \]
+
+There are three pivots and no free variables, so the homogeneous system has \textbf{only the trivial solution} $k_1=k_2=k_3=0$.
+
+\Conclude{$S$ is \textbf{linearly independent}.}
+
+\textbf{(b)} Set $k_1p_1+k_2p_2+k_3p_3=u$ with $u=3-2x+2x^{2}$. The coefficient matrix is the same, so the same row operations apply to the new right-hand side:
+
+\[ \left[\begin{array}{ccc|c} 1 & 1 & 2 & 3 \\ 1 & -1 & 1 & -2 \\ 1 & 2 & -1 & 2 \end{array}\right] \xrightarrow[-R_1+R_3 \to R_3]{-R_1+R_2 \to R_2} \left[\begin{array}{ccc|c} 1 & 1 & 2 & 3 \\ 0 & -2 & -1 & -5 \\ 0 & 1 & -3 & -1 \end{array}\right] \xrightarrow{R_2 \leftrightarrow R_3} \left[\begin{array}{ccc|c} 1 & 1 & 2 & 3 \\ 0 & 1 & -3 & -1 \\ 0 & -2 & -1 & -5 \end{array}\right] \]
+
+\[  \xrightarrow{2R_2+R_3 \to R_3} \left[\begin{array}{ccc|c} 1 & 1 & 2 & 3 \\ 0 & 1 & -3 & -1 \\ 0 & 0 & -7 & -7 \end{array}\right] \]
+
+Back-substitution: $-7k_3=-7\Rightarrow k_3=1$; $k_2-3k_3=-1\Rightarrow k_2=2$; $k_1+k_2+2k_3=3\Rightarrow k_1=-1$. Hence $u=-p_1+2p_2+p_3$.
+
+\Conclude{$u\in\operatorname{span}(S)$: \ $u=-p_1+2p_2+p_3$.}
+\par\vspace{1mm}{\fontsize{8.5}{10}\selectfont\color{black!60}Source: Example 4.4.2 (Linear Independence in $P_3$), line 13357; Example 4.2.10 (Vector IS a Linear Combination), line 11774; Example 4.2.11 (Vector Is NOT a Linear Combination), line 11843; Definition 4.4.1 (Linear Independence and Dependence), line 13236; Definition 4.3.1 (Span), line 12614 ($\mathtt{math231\_lecture\_notes\_v02\_2026\_fully\_solved.tex}$). New vectors/polynomials; method, structure and hypotheses unchanged.}
+}
+\newpage
+\pdfbookmark[0]{Version C}{version-C}
+\HeaderOne{C}
+\begingroup\fontsize{11.5}{13.5}\selectfont
+\PTitle{Problem 1. True or False}{2 marks}
+\PNote{Each statement is worth 0.5 mark. Tick \textbf{True} if the statement is always true, otherwise tick \textbf{False}. No justification is needed.}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}>{\centering\arraybackslash}p{21mm}@{}}
+ & {\fontsize{9}{10}\selectfont True\hfill False}\\[0.5mm]
+\textbf{(a)}~If $\mathbf{u}$ is a vector in a vector space and $k$ is a scalar with $k\mathbf{u}=\mathbf{0}$, then $k=0$ or $\mathbf{u}=\mathbf{0}$.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{True.} This is Theorem 4.1.1(d).} & $\blacksquare$\hfill$\square$\\[1.2mm]
+\textbf{(b)}~If $W_1$ and $W_2$ are subspaces of a vector space $V$, then $W_1\cup W_2$ is always a subspace of $V$.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{False.} Remark 4.2.2 / Example 4.2.9: the union of the $x$-axis and the $y$-axis is not closed under addition, $(0,7)+(2,0)=(2,7)$.} & $\square$\hfill$\blacksquare$\\[1.2mm]
+\textbf{(c)}~The vectors $(1,0,0)$ and $(0,1,0)$ span $\mathbb{R}^3$.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{False.} $k_1(1,0,0)+k_2(0,1,0)=(k_1,k_2,0)$ always has third component $0$, so e.g. $(0,0,1)$ is not a linear combination (Definition 4.3.1).} & $\square$\hfill$\blacksquare$\\[1.2mm]
+\textbf{(d)}~A set with exactly two vectors is linearly independent if and only if neither vector is a scalar multiple of the other.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{True.} Theorem 4.4.1(c).} & $\blacksquare$\hfill$\square$
+\end{tabularx}\par
+\vspace{1.5mm}\textcolor{RuleGray}{\rule{\linewidth}{0.4pt}}\par\vspace{1mm}
+\PTitle{Problem 2. Multiple choice}{4 marks}
+\PNote{Each question is worth 1 mark. Tick exactly one option.}
+\vspace{0.8mm}
+\textbf{(a)}~Let $V=\mathbb{R}^2$ with the usual addition $(x_1,x_2)+(y_1,y_2)=(x_1+y_1,\;x_2+y_2)$ and the scalar multiplication $k(x_1,x_2)=(k^2x_1,\;k^2x_2)$. With these operations $V$ is \emph{not} a vector space: exactly one of the following four axioms fails. Which one?\par\vspace{0.8mm}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}X@{}}
+$\blacksquare$ A.~Axiom 8: $(k+m)\mathbf{u}=k\mathbf{u}+m\mathbf{u}$ & $\square$ B.~Axiom 9: $k(m\mathbf{u})=(km)\mathbf{u}$\\[0.8mm]
+$\square$ C.~Axiom 10: $1\mathbf{u}=\mathbf{u}$ & $\square$ D.~Axiom 7: $k(\mathbf{u}+\mathbf{v})=k\mathbf{u}+k\mathbf{v}$
+\end{tabularx}\par
+\Sol{\textbf{Answer: A (Axiom 8).} Take $\mathbf{u}=(1,1)$, $k=m=1$: $(k+m)\mathbf{u}=2(1,1)=(4,4)$ but $k\mathbf{u}+m\mathbf{u}=(1,1)+(1,1)=(2,2)$, so Axiom 8 fails. Axiom 9: $k(m\mathbf{u})=k^2m^2\mathbf{u}=(km)^2\mathbf{u}=(km)\mathbf{u}$ holds; Axiom 10: $1^2\mathbf{u}=\mathbf{u}$ holds; Axiom 7: $k^2(\mathbf{u}+\mathbf{v})=k^2\mathbf{u}+k^2\mathbf{v}$ holds.}
+\vspace{1.2mm}
+\textbf{(b)}~Which of the following subsets $W$ is a \textbf{subspace} of $V=P_2$ (with the usual operations)?\par\vspace{0.8mm}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}X@{}}
+$\square$ A.~$W=\{p\in P_2 : \deg(p)=2\}$ & $\square$ B.~$W=\{a+bx+cx^2 : a,b,c \text{ are integers}\}$\\[0.8mm]
+$\square$ C.~$W=\{p\in P_2 : p(0)=1\}$ & $\blacksquare$ D.~$W=\{a+bx+cx^2 : a+b+c=0\}$
+\end{tabularx}\par
+\Sol{\textbf{Answer: D.} A: $\mathbf{0}\notin W$. B: $1+x+x^{2}\in W$ but $\tfrac{1}{2}\cdot1+x+x^{2}\notin W$. C: $\mathbf{0}\notin W$. D: subspace (passes the Subspace Test).}
+\vspace{1.2mm}
+\textbf{(c)}~Let $\mathbf{v}_1=(1,0,-1)$ and $\mathbf{v}_2=(0,1,3)$ in $\mathbb{R}^3$. Which of the following vectors belongs to $\operatorname{span}\{\mathbf{v}_1,\mathbf{v}_2\}$?\par\vspace{0.8mm}
+\begin{tabular*}{\linewidth}{@{}l@{\extracolsep{\fill}}lll@{}}
+$\blacksquare$ A.~$(2,1,1)$ & $\square$ B.~$(2,1,5)$ & $\square$ C.~$(1,2,-5)$ & $\square$ D.~$(2,1,-1)$\end{tabular*}\par
+\Sol{\textbf{Answer: A.} Match $k_1\mathbf{v}_1+k_2\mathbf{v}_2$ with each candidate (two components fix $k_1,k_2$; the third must agree). \textbf{A}: $k_1=2$, $k_2=1$ give third component $=1$ \checkmark, so $(2,1,1)=2\mathbf{v}_1+\mathbf{v}_2$. B: $k_1=2$, $k_2=1$ would force the third component to be $1\neq5$. C: $k_1=1$, $k_2=2$ would force the third component to be $5\neq-5$. D: $k_1=2$, $k_2=1$ would force the third component to be $1\neq-1$.}
+\vspace{1.2mm}
+\textbf{(d)}~Let $f_1=1$ and $f_2=e^{-x}$ be functions in $C^{\infty}(-\infty,\infty)$. Compute the Wronskian $W(x)$ of $f_1,f_2$ and choose the correct statement.\par\vspace{0.8mm}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}X@{}}
+$\blacksquare$ A.~$W(x)=-e^{-x}$; the set is linearly independent & $\square$ B.~$W(x)=e^{-x}$; the set is linearly independent\\[0.8mm]
+$\square$ C.~$W(x)=-e^{-x}$; the set is linearly dependent because $W(x)<0$ & $\square$ D.~$W(x)=0$ for all $x$; the Wronskian test is inconclusive
+\end{tabularx}\par
+\Sol{\textbf{Answer: A.} $W(x)=\begin{vmatrix}1&e^{-x}\\0&-e^{-x}\end{vmatrix}=-e^{-x}\neq0$ for every $x$, hence linearly independent (Fact 4.4.2).}
+\endgroup
+\newpage
+
+\pdfbookmark[1]{Version C: Problem 3}{written-C}
+\HeaderTwo{C}
+\PTitle{Problem 3. Linear independence and span}{4 marks}
+\vspace{1.5mm}Let $S=\{\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3\}$ be the set of vectors in $\mathbb{R}^3$ given by\[\mathbf{v}_1=(1,1,2),\qquad \mathbf{v}_2=(1,0,1),\qquad \mathbf{v}_3=(2,1,1),\]and let $\mathbf{u}=(3,3,4)$.
+\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=9mm,itemsep=1.5mm,topsep=2mm]
+\item \textbf{[2.5 marks]} Determine whether $S$ is linearly independent or linearly dependent. Show all your work.
+\item \textbf{[1.5 marks]} Determine whether $\mathbf{u}$ belongs to $\operatorname{span}(S)$, that is, whether $\mathbf{u}$ is a linear combination of $\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3$. If it is, write $\mathbf{u}$ as such a linear combination; if it is not, explain why.
+\end{enumerate}
+\vspace{1mm}{\fontsize{10.5}{12.5}\selectfont\color{WorkBlue}\setlength{\abovedisplayskip}{3pt}\setlength{\belowdisplayskip}{3pt}
+\textbf{Solution.}\par\vspace{1mm}
+\textbf{(a)} Set $k_1\mathbf{v}_1+k_2\mathbf{v}_2+k_3\mathbf{v}_3=\mathbf{0}$, i.e. $k_1(1,1,2)+k_2(1,0,1)+k_3(2,1,1)=(0,0,0)$. Comparing components gives the homogeneous system and its augmented matrix:
+
+\[ \begin{cases}k_1+k_2+2k_3=0\\ k_1+k_3=0\\ 2k_1+k_2+k_3=0\end{cases} \qquad \left[\begin{array}{ccc|c} 1 & 1 & 2 & 0 \\ 1 & 0 & 1 & 0 \\ 2 & 1 & 1 & 0 \end{array}\right] \xrightarrow[-2R_1+R_3 \to R_3]{-R_1+R_2 \to R_2} \left[\begin{array}{ccc|c} 1 & 1 & 2 & 0 \\ 0 & -1 & -1 & 0 \\ 0 & -1 & -3 & 0 \end{array}\right] \xrightarrow{-R_2+R_3 \to R_3} \left[\begin{array}{ccc|c} 1 & 1 & 2 & 0 \\ 0 & -1 & -1 & 0 \\ 0 & 0 & -2 & 0 \end{array}\right] \]
+
+There are three pivots and no free variables, so the homogeneous system has \textbf{only the trivial solution} $k_1=k_2=k_3=0$.
+
+\Conclude{$S$ is \textbf{linearly independent}.}
+
+\textbf{(b)} Set $k_1\mathbf{v}_1+k_2\mathbf{v}_2+k_3\mathbf{v}_3=\mathbf{u}$ with $\mathbf{u}=(3,3,4)$. The coefficient matrix is the same, so the same row operations apply to the new right-hand side:
+
+\[ \left[\begin{array}{ccc|c} 1 & 1 & 2 & 3 \\ 1 & 0 & 1 & 3 \\ 2 & 1 & 1 & 4 \end{array}\right] \xrightarrow[-2R_1+R_3 \to R_3]{-R_1+R_2 \to R_2} \left[\begin{array}{ccc|c} 1 & 1 & 2 & 3 \\ 0 & -1 & -1 & 0 \\ 0 & -1 & -3 & -2 \end{array}\right] \xrightarrow{-R_2+R_3 \to R_3} \left[\begin{array}{ccc|c} 1 & 1 & 2 & 3 \\ 0 & -1 & -1 & 0 \\ 0 & 0 & -2 & -2 \end{array}\right] \]
+
+Back-substitution: $-2k_3=-2\Rightarrow k_3=1$; $-k_2-k_3=0\Rightarrow k_2=-1$; $k_1+k_2+2k_3=3\Rightarrow k_1=2$. Hence $\mathbf{u}=2\mathbf{v}_1-\mathbf{v}_2+\mathbf{v}_3$.
+
+\Conclude{$\mathbf{u}\in\operatorname{span}(S)$: \ $\mathbf{u}=2\mathbf{v}_1-\mathbf{v}_2+\mathbf{v}_3$.}
+\par\vspace{1mm}{\fontsize{8.5}{10}\selectfont\color{black!60}Source: Example 4.4.1 (Linear Dependence in $\mathbb{R}^3$), line 13280; Example 4.2.10 (Vector IS a Linear Combination), line 11774; Example 4.2.11 (Vector Is NOT a Linear Combination), line 11843; Definition 4.4.1 (Linear Independence and Dependence), line 13236; Definition 4.3.1 (Span), line 12614 ($\mathtt{math231\_lecture\_notes\_v02\_2026\_fully\_solved.tex}$). New vectors/polynomials; method, structure and hypotheses unchanged.}
+}
+\newpage
+\pdfbookmark[0]{Version D}{version-D}
+\HeaderOne{D}
+\begingroup\fontsize{11.5}{13.5}\selectfont
+\PTitle{Problem 1. True or False}{2 marks}
+\PNote{Each statement is worth 0.5 mark. Tick \textbf{True} if the statement is always true, otherwise tick \textbf{False}. No justification is needed.}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}>{\centering\arraybackslash}p{21mm}@{}}
+ & {\fontsize{9}{10}\selectfont True\hfill False}\\[0.5mm]
+\textbf{(a)}~In a vector space, if $k\mathbf{u}=\mathbf{0}$ for a scalar $k$ and a vector $\mathbf{u}$, then both $k=0$ and $\mathbf{u}=\mathbf{0}$.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{False.} Theorem 4.1.1(d) gives $k=0$ \emph{or} $\mathbf{u}=\mathbf{0}$, not both: e.g. $0\mathbf{u}=\mathbf{0}$ for $\mathbf{u}=(1,1)\neq\mathbf{0}$.} & $\square$\hfill$\blacksquare$\\[1.2mm]
+\textbf{(b)}~If $W_1$ and $W_2$ are subspaces of a vector space $V$, then $W_1\cap W_2$ is a subspace of $V$.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{True.} Theorem 4.2.2 (intersection of subspaces).} & $\blacksquare$\hfill$\square$\\[1.2mm]
+\textbf{(c)}~Every vector in a set $S$ belongs to $\operatorname{span}(S)$.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{True.} Remark 4.3.1(1): $\mathbf{w}_i=0\mathbf{w}_1+\cdots+1\mathbf{w}_i+\cdots+0\mathbf{w}_r$.} & $\blacksquare$\hfill$\square$\\[1.2mm]
+\textbf{(d)}~The functions $e^{x}$ and $6e^{x}$ form a linearly independent set in $C(-\infty,\infty)$.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{False.} $6e^x$ is a scalar multiple of $e^x$, so the set is linearly dependent (Example 4.4.7, Theorem 4.4.1(c)).} & $\square$\hfill$\blacksquare$
+\end{tabularx}\par
+\vspace{1.5mm}\textcolor{RuleGray}{\rule{\linewidth}{0.4pt}}\par\vspace{1mm}
+\PTitle{Problem 2. Multiple choice}{4 marks}
+\PNote{Each question is worth 1 mark. Tick exactly one option.}
+\vspace{0.8mm}
+\textbf{(a)}~Let $V=\mathbb{R}^2$ with the usual addition $(x_1,x_2)+(y_1,y_2)=(x_1+y_1,\;x_2+y_2)$ and the scalar multiplication $k(x_1,x_2)=(0,\;kx_2)$. With these operations $V$ is \emph{not} a vector space: exactly one of the following four axioms fails. Which one?\par\vspace{0.8mm}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}X@{}}
+$\square$ A.~Axiom 6: $k\mathbf{u}$ is in $V$ (closure under scalar multiplication) & $\square$ B.~Axiom 4: there is a zero vector $\mathbf{0}$ with $\mathbf{0}+\mathbf{u}=\mathbf{u}$\\[0.8mm]
+$\square$ C.~Axiom 7: $k(\mathbf{u}+\mathbf{v})=k\mathbf{u}+k\mathbf{v}$ & $\blacksquare$ D.~Axiom 10: $1\mathbf{u}=\mathbf{u}$
+\end{tabularx}\par
+\Sol{\textbf{Answer: D (Axiom 10).} Take $\mathbf{u}=(3,4)$: $1\mathbf{u}=(0,4)\neq(3,4)=\mathbf{u}$, so Axiom 10 fails. Axiom 6 holds since $(0,ku_2)\in\mathbb{R}^2$; Axiom 4 holds with $\mathbf{0}=(0,0)$ (usual addition); Axiom 7: $k(\mathbf{u}+\mathbf{v})=(0,k(u_2+v_2))=(0,ku_2)+(0,kv_2)$ holds.}
+\vspace{1.2mm}
+\textbf{(b)}~Which of the following subsets of $V=\mathbb{R}^3$ (with the usual operations) is \textbf{not} a subspace of $V$?\par\vspace{0.8mm}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}X@{}}
+$\blacksquare$ A.~$W=\{(x,y,z) : x+y+z=1\}$ & $\square$ B.~$W=\{(x,y,z) : x+y+z=0\}$\\[0.8mm]
+$\square$ C.~$W=\{(x,y,z) : x=y=z\}$ & $\square$ D.~$W=\{(x,y,z) : x=2y \text{ and } z=0\}$
+\end{tabularx}\par
+\Sol{\textbf{Answer: A.} A: $\mathbf{0}\notin W$. B: subspace (passes the Subspace Test). C: subspace (passes the Subspace Test). D: subspace (passes the Subspace Test).}
+\vspace{1.2mm}
+\textbf{(c)}~Let $p_1=1+x$ and $p_2=x^{2}$ in $P_2$. Which of the following polynomials belongs to $\operatorname{span}\{p_1,p_2\}$?\par\vspace{0.8mm}
+\begin{tabular*}{\linewidth}{@{}l@{\extracolsep{\fill}}lll@{}}
+$\square$ A.~$2-2x-x^{2}$ & $\square$ B.~$2+x-x^{2}$ & $\square$ C.~$1+2x+2x^{2}$ & $\blacksquare$ D.~$2+2x-x^{2}$\end{tabular*}\par
+\Sol{\textbf{Answer: D.} Match $k_1p_1+k_2p_2$ with each candidate (two coefficients fix $k_1,k_2$; the third must agree). A: $k_1=2$, $k_2=-1$ would force the $x$ coefficient to be $2\neq-2$. B: $k_1=2$, $k_2=-1$ would force the $x$ coefficient to be $2\neq1$. C: $k_1=1$, $k_2=2$ would force the $x$ coefficient to be $1\neq2$. \textbf{D}: $k_1=2$, $k_2=-1$ give $x$ coefficient $=2$ \checkmark, so $2+2x-x^{2}=2p_1-p_2$.}
+\vspace{1.2mm}
+\textbf{(d)}~Let $f_1=x$ and $f_2=x^{2}$ be functions in $C^{\infty}(-\infty,\infty)$. Compute the Wronskian $W(x)$ of $f_1,f_2$ and choose the correct statement.\par\vspace{0.8mm}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}X@{}}
+$\square$ A.~$W(x)=x^{2}$; the set is linearly dependent because $W(0)=0$ & $\square$ B.~$W(x)=x^{2}$; the Wronskian test is inconclusive because $W(0)=0$\\[0.8mm]
+$\blacksquare$ C.~$W(x)=x^{2}$; the set is linearly independent & $\square$ D.~$W(x)=3x^{2}$; the set is linearly independent
+\end{tabularx}\par
+\Sol{\textbf{Answer: C.} $W(x)=\begin{vmatrix}x&x^{2}\\1&2x\end{vmatrix}=2x^{2}-x^{2}=x^{2}$. Since $W(1)=1\neq0$, $W$ is not identically zero and the set is linearly independent (Fact 4.4.2).}
+\endgroup
+\newpage
+
+\pdfbookmark[1]{Version D: Problem 3}{written-D}
+\HeaderTwo{D}
+\PTitle{Problem 3. Linear independence and span}{4 marks}
+\vspace{1.5mm}Let $S=\{p_1,p_2,p_3\}$ be the set of polynomials in $P_2$ given by\[p_1=1+x,\qquad p_2=1-x+x^{2},\qquad p_3=1+3x-x^{2},\]and let $u=1+2x+x^{2}$.
+\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=9mm,itemsep=1.5mm,topsep=2mm]
+\item \textbf{[2.5 marks]} Determine whether $S$ is linearly independent or linearly dependent. Show all your work.
+\item \textbf{[1.5 marks]} Determine whether $u$ belongs to $\operatorname{span}(S)$, that is, whether $u$ is a linear combination of $p_1,p_2,p_3$. If it is, write $u$ as such a linear combination; if it is not, explain why.
+\end{enumerate}
+\vspace{1mm}{\fontsize{10.5}{12.5}\selectfont\color{WorkBlue}\setlength{\abovedisplayskip}{3pt}\setlength{\belowdisplayskip}{3pt}
+\textbf{Solution.}\par\vspace{1mm}
+\textbf{(a)} Set $k_1p_1+k_2p_2+k_3p_3=0$, i.e. $k_1(1+x)+k_2(1-x+x^{2})+k_3(1+3x-x^{2})=0+0x+0x^{2}$. Comparing coefficients of $1$, $x$ and $x^{2}$ gives the homogeneous system and its augmented matrix:
+
+\[ \begin{cases}k_1+k_2+k_3=0\\ k_1-k_2+3k_3=0\\ k_2-k_3=0\end{cases} \qquad \left[\begin{array}{ccc|c} 1 & 1 & 1 & 0 \\ 1 & -1 & 3 & 0 \\ 0 & 1 & -1 & 0 \end{array}\right] \xrightarrow{-R_1+R_2 \to R_2} \left[\begin{array}{ccc|c} 1 & 1 & 1 & 0 \\ 0 & -2 & 2 & 0 \\ 0 & 1 & -1 & 0 \end{array}\right] \xrightarrow{R_2 \leftrightarrow R_3} \left[\begin{array}{ccc|c} 1 & 1 & 1 & 0 \\ 0 & 1 & -1 & 0 \\ 0 & -2 & 2 & 0 \end{array}\right] \]
+
+\[  \xrightarrow{2R_2+R_3 \to R_3} \left[\begin{array}{ccc|c} 1 & 1 & 1 & 0 \\ 0 & 1 & -1 & 0 \\ 0 & 0 & 0 & 0 \end{array}\right] \]
+
+The coefficient matrix has only two pivots: the third row is a zero row, so $k_3$ is a free variable and the homogeneous system has \textbf{nontrivial solutions}. For instance $k_3=1$ gives $k_2=1$ and $k_1=-2$, so $-2p_1+p_2+p_3=0$, i.e. $p_3=2p_1-p_2$.
+
+\Conclude{$S$ is \textbf{linearly dependent}.}
+
+\textbf{(b)} Set $k_1p_1+k_2p_2+k_3p_3=u$ with $u=1+2x+x^{2}$. The coefficient matrix is the same, so the same row operations apply to the new right-hand side:
+
+\[ \left[\begin{array}{ccc|c} 1 & 1 & 1 & 1 \\ 1 & -1 & 3 & 2 \\ 0 & 1 & -1 & 1 \end{array}\right] \xrightarrow{-R_1+R_2 \to R_2} \left[\begin{array}{ccc|c} 1 & 1 & 1 & 1 \\ 0 & -2 & 2 & 1 \\ 0 & 1 & -1 & 1 \end{array}\right] \xrightarrow{R_2 \leftrightarrow R_3} \left[\begin{array}{ccc|c} 1 & 1 & 1 & 1 \\ 0 & 1 & -1 & 1 \\ 0 & -2 & 2 & 1 \end{array}\right] \]
+
+\[  \xrightarrow{2R_2+R_3 \to R_3} \left[\begin{array}{ccc|c} 1 & 1 & 1 & 1 \\ 0 & 1 & -1 & 1 \\ 0 & 0 & 0 & 3 \end{array}\right] \]
+
+The last row reads $0k_1+0k_2+0k_3=3$, i.e. $0=3$, which is impossible: the system is \textbf{inconsistent}. Hence $u$ is not a linear combination of $p_1,p_2,p_3$.
+
+\Conclude{$u\notin\operatorname{span}(S)$.}
+\par\vspace{1mm}{\fontsize{8.5}{10}\selectfont\color{black!60}Source: Example 4.4.2 (Linear Independence in $P_3$), line 13357; Example 4.2.10 (Vector IS a Linear Combination), line 11774; Example 4.2.11 (Vector Is NOT a Linear Combination), line 11843; Definition 4.4.1 (Linear Independence and Dependence), line 13236; Definition 4.3.1 (Span), line 12614 ($\mathtt{math231\_lecture\_notes\_v02\_2026\_fully\_solved.tex}$). New vectors/polynomials; method, structure and hypotheses unchanged.}
+}
+\newpage
+\pdfbookmark[0]{Version E}{version-E}
+\HeaderOne{E}
+\begingroup\fontsize{11.5}{13.5}\selectfont
+\PTitle{Problem 1. True or False}{2 marks}
+\PNote{Each statement is worth 0.5 mark. Tick \textbf{True} if the statement is always true, otherwise tick \textbf{False}. No justification is needed.}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}>{\centering\arraybackslash}p{21mm}@{}}
+ & {\fontsize{9}{10}\selectfont True\hfill False}\\[0.5mm]
+\textbf{(a)}~The set $F(-\infty,\infty)$ of all real-valued functions defined on $(-\infty,\infty)$, with pointwise addition and scalar multiplication, is a vector space.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{True.} Example 4.1.2 verifies all ten axioms for $F(-\infty,\infty)$.} & $\blacksquare$\hfill$\square$\\[1.2mm]
+\textbf{(b)}~The set of all $n\times n$ matrices $A$ with $\operatorname{tr}(A)=0$ is a subspace of $M_{nn}$.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{True.} $\operatorname{tr}(O)=0$, $\operatorname{tr}(A+B)=\operatorname{tr}A+\operatorname{tr}B$, $\operatorname{tr}(kA)=k\operatorname{tr}A$ (Extra Problems 4.2.6).} & $\blacksquare$\hfill$\square$\\[1.2mm]
+\textbf{(c)}~If $\operatorname{span}(S)=\mathbb{R}^3$, then $S$ must contain exactly three vectors.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{False.} Extra Problems 4.3.2: the four vectors $(1,-1,0),(1,2,1),(1,0,1),(3,3,-1)$ span $\mathbb{R}^3$.} & $\square$\hfill$\blacksquare$\\[1.2mm]
+\textbf{(d)}~If the Wronskian $W(x)$ of two functions satisfies $W(0)=0$, then the Wronskian test is inconclusive.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{False.} Only $W(x)\equiv0$ (zero for \emph{every} $x$) makes the test inconclusive; e.g. $W(x)=x^2$ has $W(0)=0$ but $W(1)=1\neq0$, so the functions are linearly independent (Remark, item 2).} & $\square$\hfill$\blacksquare$
+\end{tabularx}\par
+\vspace{1.5mm}\textcolor{RuleGray}{\rule{\linewidth}{0.4pt}}\par\vspace{1mm}
+\PTitle{Problem 2. Multiple choice}{4 marks}
+\PNote{Each question is worth 1 mark. Tick exactly one option.}
+\vspace{0.8mm}
+\textbf{(a)}~Let $V=\mathbb{R}^3$ with the usual addition $(x_1,x_2,x_3)+(y_1,y_2,y_3)=(x_1+y_1,\;x_2+y_2,\;x_3+y_3)$ and the scalar multiplication $k(x_1,x_2,x_3)=(kx_1,\;x_2,\;x_3)$. With these operations $V$ is \emph{not} a vector space: exactly one of the following four axioms fails. Which one?\par\vspace{0.8mm}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}X@{}}
+$\square$ A.~Axiom 9: $k(m\mathbf{u})=(km)\mathbf{u}$ & $\blacksquare$ B.~Axiom 8: $(k+m)\mathbf{u}=k\mathbf{u}+m\mathbf{u}$\\[0.8mm]
+$\square$ C.~Axiom 10: $1\mathbf{u}=\mathbf{u}$ & $\square$ D.~Axiom 2: $\mathbf{u}+\mathbf{v}=\mathbf{v}+\mathbf{u}$
+\end{tabularx}\par
+\Sol{\textbf{Answer: B (Axiom 8).} Take $\mathbf{u}=(1,1,1)$, $k=m=1$: $(k+m)\mathbf{u}=2\mathbf{u}=(2,1,1)$ but $k\mathbf{u}+m\mathbf{u}=(1,1,1)+(1,1,1)=(2,2,2)$, so Axiom 8 fails. Axiom 9: $k(m\mathbf{u})=(kmu_1,u_2,u_3)=(km)\mathbf{u}$ holds; Axiom 10: $1\mathbf{u}=\mathbf{u}$ holds; Axiom 2 holds for the usual addition.}
+\vspace{1.2mm}
+\textbf{(b)}~Which of the following subsets $W$ is a \textbf{subspace} of $V=F(-\infty,\infty)$ (with the usual operations)?\par\vspace{0.8mm}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}X@{}}
+$\square$ A.~$W=\{f : f(0)=1\}$ & $\square$ B.~$W=\{f : f(x)\ge0 \text{ for all } x\}$\\[0.8mm]
+$\blacksquare$ C.~$W=C(-\infty,\infty)$, all continuous functions & $\square$ D.~$W=\{f : f(1)=2\}$
+\end{tabularx}\par
+\Sol{\textbf{Answer: C.} A: $\mathbf{0}\notin W$. B: $f=1\in W$ but $(-1)f\notin W$. C: subspace (passes the Subspace Test). D: $\mathbf{0}\notin W$.}
+\vspace{1.2mm}
+\textbf{(c)}~Let $\mathbf{v}_1=(1,1,0)$ and $\mathbf{v}_2=(0,1,1)$ in $\mathbb{R}^3$. Which of the following vectors belongs to $\operatorname{span}\{\mathbf{v}_1,\mathbf{v}_2\}$?\par\vspace{0.8mm}
+\begin{tabular*}{\linewidth}{@{}l@{\extracolsep{\fill}}lll@{}}
+$\square$ A.~$(2,3,5)$ & $\blacksquare$ B.~$(2,5,3)$ & $\square$ C.~$(2,5,4)$ & $\square$ D.~$(1,1,1)$\end{tabular*}\par
+\Sol{\textbf{Answer: B.} Match $k_1\mathbf{v}_1+k_2\mathbf{v}_2$ with each candidate (two components fix $k_1,k_2$; the third must agree). A: $k_1=2$, $k_2=1$ would force the third component to be $1\neq5$. \textbf{B}: $k_1=2$, $k_2=3$ give third component $=3$ \checkmark, so $(2,5,3)=2\mathbf{v}_1+3\mathbf{v}_2$. C: $k_1=2$, $k_2=3$ would force the third component to be $3\neq4$. D: $k_1=1$, $k_2=0$ would force the third component to be $0\neq1$.}
+\vspace{1.2mm}
+\textbf{(d)}~Let $f_1=e^{x}$ and $f_2=xe^{x}$ be functions in $C^{\infty}(-\infty,\infty)$. Compute the Wronskian $W(x)$ of $f_1,f_2$ and choose the correct statement.\par\vspace{0.8mm}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}X@{}}
+$\blacksquare$ A.~$W(x)=e^{2x}$; the set is linearly independent & $\square$ B.~$W(x)=xe^{2x}$; the set is linearly independent\\[0.8mm]
+$\square$ C.~$W(x)=xe^{2x}$; the set is linearly dependent because $W(0)=0$ & $\square$ D.~$W(x)=e^{2x}$; the set is linearly dependent because $xe^{x}$ is a multiple of $e^{x}$
+\end{tabularx}\par
+\Sol{\textbf{Answer: A.} $(xe^{x})'=e^{x}+xe^{x}$, so $W(x)=\begin{vmatrix}e^{x}&xe^{x}\\e^{x}&e^{x}+xe^{x}\end{vmatrix}=e^{2x}+xe^{2x}-xe^{2x}=e^{2x}\neq0$; linearly independent by Fact 4.4.2.}
+\endgroup
+\newpage
+
+\pdfbookmark[1]{Version E: Problem 3}{written-E}
+\HeaderTwo{E}
+\PTitle{Problem 3. Linear independence and span}{4 marks}
+\vspace{1.5mm}Let $S=\{\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3\}$ be the set of vectors in $\mathbb{R}^3$ given by\[\mathbf{v}_1=(1,-1,2),\qquad \mathbf{v}_2=(1,1,0),\qquad \mathbf{v}_3=(1,-3,4),\]and let $\mathbf{u}=(1,2,1)$.
+\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=9mm,itemsep=1.5mm,topsep=2mm]
+\item \textbf{[2.5 marks]} Determine whether $S$ is linearly independent or linearly dependent. Show all your work.
+\item \textbf{[1.5 marks]} Determine whether $\mathbf{u}$ belongs to $\operatorname{span}(S)$, that is, whether $\mathbf{u}$ is a linear combination of $\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3$. If it is, write $\mathbf{u}$ as such a linear combination; if it is not, explain why.
+\end{enumerate}
+\vspace{1mm}{\fontsize{10.5}{12.5}\selectfont\color{WorkBlue}\setlength{\abovedisplayskip}{3pt}\setlength{\belowdisplayskip}{3pt}
+\textbf{Solution.}\par\vspace{1mm}
+\textbf{(a)} Set $k_1\mathbf{v}_1+k_2\mathbf{v}_2+k_3\mathbf{v}_3=\mathbf{0}$, i.e. $k_1(1,-1,2)+k_2(1,1,0)+k_3(1,-3,4)=(0,0,0)$. Comparing components gives the homogeneous system and its augmented matrix:
+
+\[ \begin{cases}k_1+k_2+k_3=0\\ -k_1+k_2-3k_3=0\\ 2k_1+4k_3=0\end{cases} \qquad \left[\begin{array}{ccc|c} 1 & 1 & 1 & 0 \\ -1 & 1 & -3 & 0 \\ 2 & 0 & 4 & 0 \end{array}\right] \xrightarrow[-2R_1+R_3 \to R_3]{R_1+R_2 \to R_2} \left[\begin{array}{ccc|c} 1 & 1 & 1 & 0 \\ 0 & 2 & -2 & 0 \\ 0 & -2 & 2 & 0 \end{array}\right] \xrightarrow{R_2+R_3 \to R_3} \left[\begin{array}{ccc|c} 1 & 1 & 1 & 0 \\ 0 & 2 & -2 & 0 \\ 0 & 0 & 0 & 0 \end{array}\right] \]
+
+The coefficient matrix has only two pivots: the third row is a zero row, so $k_3$ is a free variable and the homogeneous system has \textbf{nontrivial solutions}. For instance $k_3=1$ gives $k_2=1$ and $k_1=-2$, so $-2\mathbf{v}_1+\mathbf{v}_2+\mathbf{v}_3=\mathbf{0}$, i.e. $\mathbf{v}_3=2\mathbf{v}_1-\mathbf{v}_2$.
+
+\Conclude{$S$ is \textbf{linearly dependent}.}
+
+\textbf{(b)} Set $k_1\mathbf{v}_1+k_2\mathbf{v}_2+k_3\mathbf{v}_3=\mathbf{u}$ with $\mathbf{u}=(1,2,1)$. The coefficient matrix is the same, so the same row operations apply to the new right-hand side:
+
+\[ \left[\begin{array}{ccc|c} 1 & 1 & 1 & 1 \\ -1 & 1 & -3 & 2 \\ 2 & 0 & 4 & 1 \end{array}\right] \xrightarrow[-2R_1+R_3 \to R_3]{R_1+R_2 \to R_2} \left[\begin{array}{ccc|c} 1 & 1 & 1 & 1 \\ 0 & 2 & -2 & 3 \\ 0 & -2 & 2 & -1 \end{array}\right] \xrightarrow{R_2+R_3 \to R_3} \left[\begin{array}{ccc|c} 1 & 1 & 1 & 1 \\ 0 & 2 & -2 & 3 \\ 0 & 0 & 0 & 2 \end{array}\right] \]
+
+The last row reads $0k_1+0k_2+0k_3=2$, i.e. $0=2$, which is impossible: the system is \textbf{inconsistent}. Hence $\mathbf{u}$ is not a linear combination of $\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3$.
+
+\Conclude{$\mathbf{u}\notin\operatorname{span}(S)$.}
+\par\vspace{1mm}{\fontsize{8.5}{10}\selectfont\color{black!60}Source: Example 4.4.1 (Linear Dependence in $\mathbb{R}^3$), line 13280; Example 4.2.10 (Vector IS a Linear Combination), line 11774; Example 4.2.11 (Vector Is NOT a Linear Combination), line 11843; Definition 4.4.1 (Linear Independence and Dependence), line 13236; Definition 4.3.1 (Span), line 12614 ($\mathtt{math231\_lecture\_notes\_v02\_2026\_fully\_solved.tex}$). New vectors/polynomials; method, structure and hypotheses unchanged.}
+}
+\newpage
+\pdfbookmark[0]{Version F}{version-F}
+\HeaderOne{F}
+\begingroup\fontsize{11.5}{13.5}\selectfont
+\PTitle{Problem 1. True or False}{2 marks}
+\PNote{Each statement is worth 0.5 mark. Tick \textbf{True} if the statement is always true, otherwise tick \textbf{False}. No justification is needed.}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}>{\centering\arraybackslash}p{21mm}@{}}
+ & {\fontsize{9}{10}\selectfont True\hfill False}\\[0.5mm]
+\textbf{(a)}~To show that a set with two operations is a vector space, it is enough to verify Axiom 1 (closure under addition) and Axiom 6 (closure under scalar multiplication).\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{False.} Closure is only Step 3 of the procedure; Step 4 requires Axioms 2, 3, 4, 5, 7, 8, 9, 10 as well. Example 4.1.3 is closed under both operations yet fails Axiom 10.} & $\square$\hfill$\blacksquare$\\[1.2mm]
+\textbf{(b)}~The first quadrant $W=\{(x,y)\in\mathbb{R}^2 : x\ge 0,\ y\ge 0\}$ is a subspace of $\mathbb{R}^2$.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{False.} Not closed under scalar multiplication: $(-1)(5,7)=(-5,-7)\notin W$ (Example 4.2.2).} & $\square$\hfill$\blacksquare$\\[1.2mm]
+\textbf{(c)}~$\operatorname{span}\{1,\,x,\,x^2\}=P_2$.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{True.} Remark 4.3.2(2): every $a+bx+cx^2$ is a linear combination of $1,x,x^2$.} & $\blacksquare$\hfill$\square$\\[1.2mm]
+\textbf{(d)}~If the Wronskian of $f_1,\dots,f_n$ is not identically zero on $(-\infty,\infty)$, then the functions are linearly independent.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{True.} Fact 4.4.2 (Wronskian test).} & $\blacksquare$\hfill$\square$
+\end{tabularx}\par
+\vspace{1.5mm}\textcolor{RuleGray}{\rule{\linewidth}{0.4pt}}\par\vspace{1mm}
+\PTitle{Problem 2. Multiple choice}{4 marks}
+\PNote{Each question is worth 1 mark. Tick exactly one option.}
+\vspace{0.8mm}
+\textbf{(a)}~Let $V=\mathbb{R}^3$ with the usual addition $(x_1,x_2,x_3)+(y_1,y_2,y_3)=(x_1+y_1,\;x_2+y_2,\;x_3+y_3)$ and the scalar multiplication $k(x_1,x_2,x_3)=(kx_1,\;kx_2,\;0)$. With these operations $V$ is \emph{not} a vector space: exactly one of the following four axioms fails. Which one?\par\vspace{0.8mm}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}X@{}}
+$\square$ A.~Axiom 1: $\mathbf{u}+\mathbf{v}$ is in $V$ (closure under addition) & $\square$ B.~Axiom 8: $(k+m)\mathbf{u}=k\mathbf{u}+m\mathbf{u}$\\[0.8mm]
+$\square$ C.~Axiom 9: $k(m\mathbf{u})=(km)\mathbf{u}$ & $\blacksquare$ D.~Axiom 10: $1\mathbf{u}=\mathbf{u}$
+\end{tabularx}\par
+\Sol{\textbf{Answer: D (Axiom 10).} Take $\mathbf{u}=(1,2,3)$: $1\mathbf{u}=(1,2,0)\neq\mathbf{u}$, so Axiom 10 fails. Axiom 1 holds (usual addition); Axiom 8: $(k+m)\mathbf{u}=((k+m)u_1,(k+m)u_2,0)=k\mathbf{u}+m\mathbf{u}$ holds; Axiom 9: $k(m\mathbf{u})=(kmu_1,kmu_2,0)=(km)\mathbf{u}$ holds.}
+\vspace{1.2mm}
+\textbf{(b)}~Which of the following subsets $W$ is a \textbf{subspace} of $V=M_{22}$ (with the usual operations)?\par\vspace{0.8mm}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}X@{}}
+$\square$ A.~all matrices with $\det(A)=0$ & $\blacksquare$ B.~all matrices with $\operatorname{tr}(A)=0$\\[0.8mm]
+$\square$ C.~all matrices of the form $\begin{bmatrix}1&a\\ b&c\end{bmatrix}$ & $\square$ D.~all matrices whose four entries are all $\ge0$
+\end{tabularx}\par
+\Sol{\textbf{Answer: B.} A: $\begin{bmatrix}1&2\\1&2\end{bmatrix},\,\begin{bmatrix}3&-1\\6&-2\end{bmatrix}\in W$ but their sum $\notin W$. B: subspace (passes the Subspace Test). C: $\mathbf{0}\notin W$. D: $\begin{bmatrix}1&0\\0&1\end{bmatrix}\in W$ but $-1\cdot\begin{bmatrix}1&0\\0&1\end{bmatrix}\notin W$.}
+\vspace{1.2mm}
+\textbf{(c)}~Let $p_1=1-x$ and $p_2=1+x^{2}$ in $P_2$. Which of the following polynomials belongs to $\operatorname{span}\{p_1,p_2\}$?\par\vspace{0.8mm}
+\begin{tabular*}{\linewidth}{@{}l@{\extracolsep{\fill}}lll@{}}
+$\square$ A.~$1+2x-3x^{2}$ & $\square$ B.~$3+2x+x^{2}$ & $\blacksquare$ C.~$1+2x+3x^{2}$ & $\square$ D.~$1-2x+3x^{2}$\end{tabular*}\par
+\Sol{\textbf{Answer: C.} Match $k_1p_1+k_2p_2$ with each candidate (two coefficients fix $k_1,k_2$; the third must agree). A: $k_1=-2$, $k_2=3$ would force the $x^{2}$ coefficient to be $3\neq-3$. B: $k_1=-2$, $k_2=5$ would force the $x^{2}$ coefficient to be $5\neq1$. \textbf{C}: $k_1=-2$, $k_2=3$ give $x^{2}$ coefficient $=3$ \checkmark, so $1+2x+3x^{2}=-2p_1+3p_2$. D: $k_1=2$, $k_2=-1$ would force the $x^{2}$ coefficient to be $-1\neq3$.}
+\vspace{1.2mm}
+\textbf{(d)}~Let $f_1=1$ and $f_2=x^{2}$ be functions in $C^{\infty}(-\infty,\infty)$. Compute the Wronskian $W(x)$ of $f_1,f_2$ and choose the correct statement.\par\vspace{0.8mm}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}X@{}}
+$\square$ A.~$W(x)=2x$; the set is linearly dependent because $W(0)=0$ & $\square$ B.~$W(x)=-2x$; the set is linearly independent\\[0.8mm]
+$\square$ C.~$W(x)=2x$; the Wronskian test is inconclusive because $W(0)=0$ & $\blacksquare$ D.~$W(x)=2x$; the set is linearly independent
+\end{tabularx}\par
+\Sol{\textbf{Answer: D.} $W(x)=\begin{vmatrix}1&x^{2}\\0&2x\end{vmatrix}=2x$. $W(1)=2\neq0$, so $W\not\equiv0$ and the set is linearly independent (Fact 4.4.2).}
+\endgroup
+\newpage
+
+\pdfbookmark[1]{Version F: Problem 3}{written-F}
+\HeaderTwo{F}
+\PTitle{Problem 3. Linear independence and span}{4 marks}
+\vspace{1.5mm}Let $S=\{p_1,p_2,p_3\}$ be the set of polynomials in $P_2$ given by\[p_1=1+x^{2},\qquad p_2=x+x^{2},\qquad p_3=1-x+x^{2},\]and let $u=-1+4x+x^{2}$.
+\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=9mm,itemsep=1.5mm,topsep=2mm]
+\item \textbf{[2.5 marks]} Determine whether $S$ is linearly independent or linearly dependent. Show all your work.
+\item \textbf{[1.5 marks]} Determine whether $u$ belongs to $\operatorname{span}(S)$, that is, whether $u$ is a linear combination of $p_1,p_2,p_3$. If it is, write $u$ as such a linear combination; if it is not, explain why.
+\end{enumerate}
+\vspace{1mm}{\fontsize{10.5}{12.5}\selectfont\color{WorkBlue}\setlength{\abovedisplayskip}{3pt}\setlength{\belowdisplayskip}{3pt}
+\textbf{Solution.}\par\vspace{1mm}
+\textbf{(a)} Set $k_1p_1+k_2p_2+k_3p_3=0$, i.e. $k_1(1+x^{2})+k_2(x+x^{2})+k_3(1-x+x^{2})=0+0x+0x^{2}$. Comparing coefficients of $1$, $x$ and $x^{2}$ gives the homogeneous system and its augmented matrix:
+
+\[ \begin{cases}k_1+k_3=0\\ k_2-k_3=0\\ k_1+k_2+k_3=0\end{cases} \qquad \left[\begin{array}{ccc|c} 1 & 0 & 1 & 0 \\ 0 & 1 & -1 & 0 \\ 1 & 1 & 1 & 0 \end{array}\right] \xrightarrow{-R_1+R_3 \to R_3} \left[\begin{array}{ccc|c} 1 & 0 & 1 & 0 \\ 0 & 1 & -1 & 0 \\ 0 & 1 & 0 & 0 \end{array}\right] \xrightarrow{-R_2+R_3 \to R_3} \left[\begin{array}{ccc|c} 1 & 0 & 1 & 0 \\ 0 & 1 & -1 & 0 \\ 0 & 0 & 1 & 0 \end{array}\right] \]
+
+There are three pivots and no free variables, so the homogeneous system has \textbf{only the trivial solution} $k_1=k_2=k_3=0$.
+
+\Conclude{$S$ is \textbf{linearly independent}.}
+
+\textbf{(b)} Set $k_1p_1+k_2p_2+k_3p_3=u$ with $u=-1+4x+x^{2}$. The coefficient matrix is the same, so the same row operations apply to the new right-hand side:
+
+\[ \left[\begin{array}{ccc|c} 1 & 0 & 1 & -1 \\ 0 & 1 & -1 & 4 \\ 1 & 1 & 1 & 1 \end{array}\right] \xrightarrow{-R_1+R_3 \to R_3} \left[\begin{array}{ccc|c} 1 & 0 & 1 & -1 \\ 0 & 1 & -1 & 4 \\ 0 & 1 & 0 & 2 \end{array}\right] \xrightarrow{-R_2+R_3 \to R_3} \left[\begin{array}{ccc|c} 1 & 0 & 1 & -1 \\ 0 & 1 & -1 & 4 \\ 0 & 0 & 1 & -2 \end{array}\right] \]
+
+Back-substitution: $k_3=-2\Rightarrow k_3=-2$; $k_2-k_3=4\Rightarrow k_2=2$; $k_1+k_3=-1\Rightarrow k_1=1$. Hence $u=p_1+2p_2-2p_3$.
+
+\Conclude{$u\in\operatorname{span}(S)$: \ $u=p_1+2p_2-2p_3$.}
+\par\vspace{1mm}{\fontsize{8.5}{10}\selectfont\color{black!60}Source: Example 4.4.2 (Linear Independence in $P_3$), line 13357; Example 4.2.10 (Vector IS a Linear Combination), line 11774; Example 4.2.11 (Vector Is NOT a Linear Combination), line 11843; Definition 4.4.1 (Linear Independence and Dependence), line 13236; Definition 4.3.1 (Span), line 12614 ($\mathtt{math231\_lecture\_notes\_v02\_2026\_fully\_solved.tex}$). New vectors/polynomials; method, structure and hypotheses unchanged.}
+}
+\newpage
+\pdfbookmark[0]{Version G}{version-G}
+\HeaderOne{G}
+\begingroup\fontsize{11.5}{13.5}\selectfont
+\PTitle{Problem 1. True or False}{2 marks}
+\PNote{Each statement is worth 0.5 mark. Tick \textbf{True} if the statement is always true, otherwise tick \textbf{False}. No justification is needed.}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}>{\centering\arraybackslash}p{21mm}@{}}
+ & {\fontsize{9}{10}\selectfont True\hfill False}\\[0.5mm]
+\textbf{(a)}~In a vector space $V$, $(-1)\mathbf{u}=-\mathbf{u}$ for every vector $\mathbf{u}$ in $V$.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{True.} This is Theorem 4.1.1(c).} & $\blacksquare$\hfill$\square$\\[1.2mm]
+\textbf{(b)}~The set $W=\{a+bx+cx^2 : a,\,b,\,c \text{ are integers}\}$ is a subspace of $P_2$.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{False.} Not closed under scalar multiplication: $\tfrac12(1+x+x^2)\notin W$ (Extra Problems 4.2.4).} & $\square$\hfill$\blacksquare$\\[1.2mm]
+\textbf{(c)}~The zero vector belongs to $\operatorname{span}(S)$ for every nonempty set $S$ of vectors in $V$.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{True.} $\mathbf{0}=0\mathbf{w}_1+\cdots+0\mathbf{w}_r$; also $\operatorname{span}(S)$ is a subspace (Theorem 4.3.1).} & $\blacksquare$\hfill$\square$\\[1.2mm]
+\textbf{(d)}~If the Wronskian of $f_1,\dots,f_n$ is identically zero on $(-\infty,\infty)$, then the functions are linearly dependent.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{False.} When $W(x)\equiv0$ the Wronskian test is inconclusive (Remark after Fact 4.4.2, item 5).} & $\square$\hfill$\blacksquare$
+\end{tabularx}\par
+\vspace{1.5mm}\textcolor{RuleGray}{\rule{\linewidth}{0.4pt}}\par\vspace{1mm}
+\PTitle{Problem 2. Multiple choice}{4 marks}
+\PNote{Each question is worth 1 mark. Tick exactly one option.}
+\vspace{0.8mm}
+\textbf{(a)}~Let $V=\mathbb{R}^2$ with the usual addition $(x_1,x_2)+(y_1,y_2)=(x_1+y_1,\;x_2+y_2)$ and the scalar multiplication $k(x_1,x_2)=(kx_1,\;k^2x_2)$. With these operations $V$ is \emph{not} a vector space: exactly one of the following four axioms fails. Which one?\par\vspace{0.8mm}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}X@{}}
+$\square$ A.~Axiom 10: $1\mathbf{u}=\mathbf{u}$ & $\square$ B.~Axiom 9: $k(m\mathbf{u})=(km)\mathbf{u}$\\[0.8mm]
+$\blacksquare$ C.~Axiom 8: $(k+m)\mathbf{u}=k\mathbf{u}+m\mathbf{u}$ & $\square$ D.~Axiom 7: $k(\mathbf{u}+\mathbf{v})=k\mathbf{u}+k\mathbf{v}$
+\end{tabularx}\par
+\Sol{\textbf{Answer: C (Axiom 8).} Take $\mathbf{u}=(1,1)$, $k=m=1$: $(k+m)\mathbf{u}=2(1,1)=(2,4)$ but $k\mathbf{u}+m\mathbf{u}=(1,1)+(1,1)=(2,2)$, so Axiom 8 fails. Axiom 10: $1\mathbf{u}=(u_1,u_2)$ holds; Axiom 9: $k(m\mathbf{u})=(kmu_1,k^2m^2u_2)=(km)\mathbf{u}$ holds; Axiom 7: $k(\mathbf{u}+\mathbf{v})=(k(u_1+v_1),k^2(u_2+v_2))=k\mathbf{u}+k\mathbf{v}$ holds.}
+\vspace{1.2mm}
+\textbf{(b)}~Which of the following subsets of $V=\mathbb{R}^2$ (with the usual operations) is \textbf{not} a subspace of $V$?\par\vspace{0.8mm}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}X@{}}
+$\square$ A.~$W=\{(x,y) : x=0\}$ (the $y$-axis) & $\square$ B.~$W=\{(x,y) : 2x-5y=0\}$\\[0.8mm]
+$\square$ C.~$W=\{(0,0)\}$ & $\blacksquare$ D.~$W=\{(x,y) : xy\ge0\}$
+\end{tabularx}\par
+\Sol{\textbf{Answer: D.} A: subspace (passes the Subspace Test). B: subspace (passes the Subspace Test). C: subspace (passes the Subspace Test). D: $(1,0),\,(0,-1)\in W$ but their sum $\notin W$.}
+\vspace{1.2mm}
+\textbf{(c)}~Let $\mathbf{v}_1=(1,0,0)$ and $\mathbf{v}_2=(0,1,2)$ in $\mathbb{R}^3$. Which of the following vectors belongs to $\operatorname{span}\{\mathbf{v}_1,\mathbf{v}_2\}$?\par\vspace{0.8mm}
+\begin{tabular*}{\linewidth}{@{}l@{\extracolsep{\fill}}lll@{}}
+$\square$ A.~$(4,2,1)$ & $\square$ B.~$(1,2,3)$ & $\square$ C.~$(0,1,3)$ & $\blacksquare$ D.~$(4,1,2)$\end{tabular*}\par
+\Sol{\textbf{Answer: D.} Match $k_1\mathbf{v}_1+k_2\mathbf{v}_2$ with each candidate (two components fix $k_1,k_2$; the third must agree). A: $k_1=4$, $k_2=2$ would force the third component to be $4\neq1$. B: $k_1=1$, $k_2=2$ would force the third component to be $4\neq3$. C: $k_1=0$, $k_2=1$ would force the third component to be $2\neq3$. \textbf{D}: $k_1=4$, $k_2=1$ give third component $=2$ \checkmark, so $(4,1,2)=4\mathbf{v}_1+\mathbf{v}_2$.}
+\vspace{1.2mm}
+\textbf{(d)}~Let $f_1=e^{2x}$ and $f_2=e^{3x}$ be functions in $C^{\infty}(-\infty,\infty)$. Compute the Wronskian $W(x)$ of $f_1,f_2$ and choose the correct statement.\par\vspace{0.8mm}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}X@{}}
+$\square$ A.~$W(x)=5e^{5x}$; the set is linearly independent & $\blacksquare$ B.~$W(x)=e^{5x}$; the set is linearly independent\\[0.8mm]
+$\square$ C.~$W(x)=e^{5x}$; the set is linearly dependent because $e^{3x}=e^{x}\cdot e^{2x}$ & $\square$ D.~$W(x)=e^{6x}$; the set is linearly independent
+\end{tabularx}\par
+\Sol{\textbf{Answer: B.} $W(x)=\begin{vmatrix}e^{2x}&e^{3x}\\2e^{2x}&3e^{3x}\end{vmatrix}=3e^{5x}-2e^{5x}=e^{5x}\neq0$; linearly independent (Fact 4.4.2).}
+\endgroup
+\newpage
+
+\pdfbookmark[1]{Version G: Problem 3}{written-G}
+\HeaderTwo{G}
+\PTitle{Problem 3. Linear independence and span}{4 marks}
+\vspace{1.5mm}Let $S=\{\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3\}$ be the set of vectors in $\mathbb{R}^3$ given by\[\mathbf{v}_1=(1,2,1),\qquad \mathbf{v}_2=(2,1,-1),\qquad \mathbf{v}_3=(1,1,2),\]and let $\mathbf{u}=(4,3,-3)$.
+\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=9mm,itemsep=1.5mm,topsep=2mm]
+\item \textbf{[2.5 marks]} Determine whether $S$ is linearly independent or linearly dependent. Show all your work.
+\item \textbf{[1.5 marks]} Determine whether $\mathbf{u}$ belongs to $\operatorname{span}(S)$, that is, whether $\mathbf{u}$ is a linear combination of $\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3$. If it is, write $\mathbf{u}$ as such a linear combination; if it is not, explain why.
+\end{enumerate}
+\vspace{1mm}{\fontsize{10.5}{12.5}\selectfont\color{WorkBlue}\setlength{\abovedisplayskip}{3pt}\setlength{\belowdisplayskip}{3pt}
+\textbf{Solution.}\par\vspace{1mm}
+\textbf{(a)} Set $k_1\mathbf{v}_1+k_2\mathbf{v}_2+k_3\mathbf{v}_3=\mathbf{0}$, i.e. $k_1(1,2,1)+k_2(2,1,-1)+k_3(1,1,2)=(0,0,0)$. Comparing components gives the homogeneous system and its augmented matrix:
+
+\[ \begin{cases}k_1+2k_2+k_3=0\\ 2k_1+k_2+k_3=0\\ k_1-k_2+2k_3=0\end{cases} \qquad \left[\begin{array}{ccc|c} 1 & 2 & 1 & 0 \\ 2 & 1 & 1 & 0 \\ 1 & -1 & 2 & 0 \end{array}\right] \xrightarrow[-R_1+R_3 \to R_3]{-2R_1+R_2 \to R_2} \left[\begin{array}{ccc|c} 1 & 2 & 1 & 0 \\ 0 & -3 & -1 & 0 \\ 0 & -3 & 1 & 0 \end{array}\right] \xrightarrow{-R_2+R_3 \to R_3} \left[\begin{array}{ccc|c} 1 & 2 & 1 & 0 \\ 0 & -3 & -1 & 0 \\ 0 & 0 & 2 & 0 \end{array}\right] \]
+
+There are three pivots and no free variables, so the homogeneous system has \textbf{only the trivial solution} $k_1=k_2=k_3=0$.
+
+\Conclude{$S$ is \textbf{linearly independent}.}
+
+\textbf{(b)} Set $k_1\mathbf{v}_1+k_2\mathbf{v}_2+k_3\mathbf{v}_3=\mathbf{u}$ with $\mathbf{u}=(4,3,-3)$. The coefficient matrix is the same, so the same row operations apply to the new right-hand side:
+
+\[ \left[\begin{array}{ccc|c} 1 & 2 & 1 & 4 \\ 2 & 1 & 1 & 3 \\ 1 & -1 & 2 & -3 \end{array}\right] \xrightarrow[-R_1+R_3 \to R_3]{-2R_1+R_2 \to R_2} \left[\begin{array}{ccc|c} 1 & 2 & 1 & 4 \\ 0 & -3 & -1 & -5 \\ 0 & -3 & 1 & -7 \end{array}\right] \xrightarrow{-R_2+R_3 \to R_3} \left[\begin{array}{ccc|c} 1 & 2 & 1 & 4 \\ 0 & -3 & -1 & -5 \\ 0 & 0 & 2 & -2 \end{array}\right] \]
+
+Back-substitution: $2k_3=-2\Rightarrow k_3=-1$; $-3k_2-k_3=-5\Rightarrow k_2=2$; $k_1+2k_2+k_3=4\Rightarrow k_1=1$. Hence $\mathbf{u}=\mathbf{v}_1+2\mathbf{v}_2-\mathbf{v}_3$.
+
+\Conclude{$\mathbf{u}\in\operatorname{span}(S)$: \ $\mathbf{u}=\mathbf{v}_1+2\mathbf{v}_2-\mathbf{v}_3$.}
+\par\vspace{1mm}{\fontsize{8.5}{10}\selectfont\color{black!60}Source: Example 4.4.1 (Linear Dependence in $\mathbb{R}^3$), line 13280; Example 4.2.10 (Vector IS a Linear Combination), line 11774; Example 4.2.11 (Vector Is NOT a Linear Combination), line 11843; Definition 4.4.1 (Linear Independence and Dependence), line 13236; Definition 4.3.1 (Span), line 12614 ($\mathtt{math231\_lecture\_notes\_v02\_2026\_fully\_solved.tex}$). New vectors/polynomials; method, structure and hypotheses unchanged.}
+}
+\newpage
+\pdfbookmark[0]{Version H}{version-H}
+\HeaderOne{H}
+\begingroup\fontsize{11.5}{13.5}\selectfont
+\PTitle{Problem 1. True or False}{2 marks}
+\PNote{Each statement is worth 0.5 mark. Tick \textbf{True} if the statement is always true, otherwise tick \textbf{False}. No justification is needed.}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}>{\centering\arraybackslash}p{21mm}@{}}
+ & {\fontsize{9}{10}\selectfont True\hfill False}\\[0.5mm]
+\textbf{(a)}~If $\mathbf{u}$ is a vector in a vector space and $k$ is a scalar with $k\mathbf{u}=\mathbf{0}$, then necessarily $k=0$.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{False.} Theorem 4.1.1(d) says $k=0$ \emph{or} $\mathbf{u}=\mathbf{0}$. Counterexample: $k=5$ and $\mathbf{u}=\mathbf{0}$ give $5\mathbf{0}=\mathbf{0}$ with $k\neq0$ (Theorem 4.1.1(b)).} & $\square$\hfill$\blacksquare$\\[1.2mm]
+\textbf{(b)}~The set $W=\{a+bx+cx^2 : a+b+c=0\}$ is a subspace of $P_2$.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{True.} The zero polynomial has $0+0+0=0$; the condition is preserved under sums and scalar multiples (Extra Problems 4.2.2).} & $\blacksquare$\hfill$\square$\\[1.2mm]
+\textbf{(c)}~The set $S=\{(1,-1,0),\,(1,2,1),\,(1,0,1),\,(3,3,-1)\}$ cannot span $\mathbb{R}^3$ because it contains more than three vectors.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{False.} Extra Problems 4.3.2 row reduces to three pivots: the system is consistent for every $(a,b,c)$, so $\operatorname{span}(S)=\mathbb{R}^3$.} & $\square$\hfill$\blacksquare$\\[1.2mm]
+\textbf{(d)}~Every set of five matrices in $M_{22}$ is linearly dependent.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{True.} Fact 4.4.1(3) with $r=5>2\cdot2=4$.} & $\blacksquare$\hfill$\square$
+\end{tabularx}\par
+\vspace{1.5mm}\textcolor{RuleGray}{\rule{\linewidth}{0.4pt}}\par\vspace{1mm}
+\PTitle{Problem 2. Multiple choice}{4 marks}
+\PNote{Each question is worth 1 mark. Tick exactly one option.}
+\vspace{0.8mm}
+\textbf{(a)}~Let $V=\mathbb{R}^3$ with the usual addition $(x_1,x_2,x_3)+(y_1,y_2,y_3)=(x_1+y_1,\;x_2+y_2,\;x_3+y_3)$ and the scalar multiplication $k(x_1,x_2,x_3)=(0,\;kx_2,\;kx_3)$. With these operations $V$ is \emph{not} a vector space: exactly one of the following four axioms fails. Which one?\par\vspace{0.8mm}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}X@{}}
+$\blacksquare$ A.~Axiom 10: $1\mathbf{u}=\mathbf{u}$ & $\square$ B.~Axiom 8: $(k+m)\mathbf{u}=k\mathbf{u}+m\mathbf{u}$\\[0.8mm]
+$\square$ C.~Axiom 4: there is a zero vector $\mathbf{0}$ with $\mathbf{0}+\mathbf{u}=\mathbf{u}$ & $\square$ D.~Axiom 1: $\mathbf{u}+\mathbf{v}$ is in $V$ (closure under addition)
+\end{tabularx}\par
+\Sol{\textbf{Answer: A (Axiom 10).} Take $\mathbf{u}=(5,1,2)$: $1\mathbf{u}=(0,1,2)\neq\mathbf{u}$, so Axiom 10 fails. Axiom 8: $(k+m)\mathbf{u}=(0,(k+m)u_2,(k+m)u_3)=k\mathbf{u}+m\mathbf{u}$ holds; Axioms 4 and 1 hold for the usual addition.}
+\vspace{1.2mm}
+\textbf{(b)}~Which of the following subsets of $V=F(-\infty,\infty)$ (with the usual operations) is \textbf{not} a subspace of $V$?\par\vspace{0.8mm}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}X@{}}
+$\blacksquare$ A.~$W=\{f : f(0)=1\}$ & $\square$ B.~$W=\{f : f(0)=0\}$\\[0.8mm]
+$\square$ C.~$W=C^1(-\infty,\infty)$, all continuously differentiable functions & $\square$ D.~$W=P_2$, all polynomials of degree at most 2
+\end{tabularx}\par
+\Sol{\textbf{Answer: A.} A: $\mathbf{0}\notin W$. B: subspace (passes the Subspace Test). C: subspace (passes the Subspace Test). D: subspace (passes the Subspace Test).}
+\vspace{1.2mm}
+\textbf{(c)}~Let $p_1=x+x^{2}$ and $p_2=1$ in $P_2$. Which of the following polynomials belongs to $\operatorname{span}\{p_1,p_2\}$?\par\vspace{0.8mm}
+\begin{tabular*}{\linewidth}{@{}l@{\extracolsep{\fill}}lll@{}}
+$\blacksquare$ A.~$5+2x+2x^{2}$ & $\square$ B.~$5+2x+5x^{2}$ & $\square$ C.~$2+5x+2x^{2}$ & $\square$ D.~$5+2x-2x^{2}$\end{tabular*}\par
+\Sol{\textbf{Answer: A.} Match $k_1p_1+k_2p_2$ with each candidate (two coefficients fix $k_1,k_2$; the third must agree). \textbf{A}: $k_1=2$, $k_2=5$ give $x^{2}$ coefficient $=2$ \checkmark, so $5+2x+2x^{2}=2p_1+5p_2$. B: $k_1=2$, $k_2=5$ would force the $x^{2}$ coefficient to be $2\neq5$. C: $k_1=5$, $k_2=2$ would force the $x^{2}$ coefficient to be $5\neq2$. D: $k_1=2$, $k_2=5$ would force the $x^{2}$ coefficient to be $2\neq-2$.}
+\vspace{1.2mm}
+\textbf{(d)}~Let $f_1=x$ and $f_2=1+x$ be functions in $C^{\infty}(-\infty,\infty)$. Compute the Wronskian $W(x)$ of $f_1,f_2$ and choose the correct statement.\par\vspace{0.8mm}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}X@{}}
+$\square$ A.~$W(x)=1$; the set is linearly independent & $\square$ B.~$W(x)=-1$; the set is linearly dependent because $W(x)$ is negative\\[0.8mm]
+$\blacksquare$ C.~$W(x)=-1$; the set is linearly independent & $\square$ D.~$W(x)=0$ for all $x$; the Wronskian test is inconclusive
+\end{tabularx}\par
+\Sol{\textbf{Answer: C.} $W(x)=\begin{vmatrix}x&1+x\\1&1\end{vmatrix}=x-(1+x)=-1\neq0$ for every $x$, so the set is linearly independent (Fact 4.4.2).}
+\endgroup
+\newpage
+
+\pdfbookmark[1]{Version H: Problem 3}{written-H}
+\HeaderTwo{H}
+\PTitle{Problem 3. Linear independence and span}{4 marks}
+\vspace{1.5mm}Let $S=\{p_1,p_2,p_3\}$ be the set of polynomials in $P_2$ given by\[p_1=2+x-x^{2},\qquad p_2=1+x+x^{2},\qquad p_3=4+3x+x^{2},\]and let $u=1+2x+x^{2}$.
+\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=9mm,itemsep=1.5mm,topsep=2mm]
+\item \textbf{[2.5 marks]} Determine whether $S$ is linearly independent or linearly dependent. Show all your work.
+\item \textbf{[1.5 marks]} Determine whether $u$ belongs to $\operatorname{span}(S)$, that is, whether $u$ is a linear combination of $p_1,p_2,p_3$. If it is, write $u$ as such a linear combination; if it is not, explain why.
+\end{enumerate}
+\vspace{1mm}{\fontsize{10.5}{12.5}\selectfont\color{WorkBlue}\setlength{\abovedisplayskip}{3pt}\setlength{\belowdisplayskip}{3pt}
+\textbf{Solution.}\par\vspace{1mm}
+\textbf{(a)} Set $k_1p_1+k_2p_2+k_3p_3=0$, i.e. $k_1(2+x-x^{2})+k_2(1+x+x^{2})+k_3(4+3x+x^{2})=0+0x+0x^{2}$. Comparing coefficients of $1$, $x$ and $x^{2}$ gives the homogeneous system and its augmented matrix:
+
+\[ \begin{cases}2k_1+k_2+4k_3=0\\ k_1+k_2+3k_3=0\\ -k_1+k_2+k_3=0\end{cases} \qquad \left[\begin{array}{ccc|c} 2 & 1 & 4 & 0 \\ 1 & 1 & 3 & 0 \\ -1 & 1 & 1 & 0 \end{array}\right] \xrightarrow{R_1 \leftrightarrow R_2} \left[\begin{array}{ccc|c} 1 & 1 & 3 & 0 \\ 2 & 1 & 4 & 0 \\ -1 & 1 & 1 & 0 \end{array}\right] \xrightarrow[R_1+R_3 \to R_3]{-2R_1+R_2 \to R_2} \left[\begin{array}{ccc|c} 1 & 1 & 3 & 0 \\ 0 & -1 & -2 & 0 \\ 0 & 2 & 4 & 0 \end{array}\right] \]
+
+\[  \xrightarrow{2R_2+R_3 \to R_3} \left[\begin{array}{ccc|c} 1 & 1 & 3 & 0 \\ 0 & -1 & -2 & 0 \\ 0 & 0 & 0 & 0 \end{array}\right] \]
+
+The coefficient matrix has only two pivots: the third row is a zero row, so $k_3$ is a free variable and the homogeneous system has \textbf{nontrivial solutions}. For instance $k_3=1$ gives $k_2=-2$ and $k_1=-1$, so $-p_1-2p_2+p_3=0$, i.e. $p_3=p_1+2p_2$.
+
+\Conclude{$S$ is \textbf{linearly dependent}.}
+
+\textbf{(b)} Set $k_1p_1+k_2p_2+k_3p_3=u$ with $u=1+2x+x^{2}$. The coefficient matrix is the same, so the same row operations apply to the new right-hand side:
+
+\[ \left[\begin{array}{ccc|c} 2 & 1 & 4 & 1 \\ 1 & 1 & 3 & 2 \\ -1 & 1 & 1 & 1 \end{array}\right] \xrightarrow{R_1 \leftrightarrow R_2} \left[\begin{array}{ccc|c} 1 & 1 & 3 & 2 \\ 2 & 1 & 4 & 1 \\ -1 & 1 & 1 & 1 \end{array}\right] \xrightarrow[R_1+R_3 \to R_3]{-2R_1+R_2 \to R_2} \left[\begin{array}{ccc|c} 1 & 1 & 3 & 2 \\ 0 & -1 & -2 & -3 \\ 0 & 2 & 4 & 3 \end{array}\right] \]
+
+\[  \xrightarrow{2R_2+R_3 \to R_3} \left[\begin{array}{ccc|c} 1 & 1 & 3 & 2 \\ 0 & -1 & -2 & -3 \\ 0 & 0 & 0 & -3 \end{array}\right] \]
+
+The last row reads $0k_1+0k_2+0k_3=-3$, i.e. $0=-3$, which is impossible: the system is \textbf{inconsistent}. Hence $u$ is not a linear combination of $p_1,p_2,p_3$.
+
+\Conclude{$u\notin\operatorname{span}(S)$.}
+\par\vspace{1mm}{\fontsize{8.5}{10}\selectfont\color{black!60}Source: Example 4.4.2 (Linear Independence in $P_3$), line 13357; Example 4.2.10 (Vector IS a Linear Combination), line 11774; Example 4.2.11 (Vector Is NOT a Linear Combination), line 11843; Definition 4.4.1 (Linear Independence and Dependence), line 13236; Definition 4.3.1 (Span), line 12614 ($\mathtt{math231\_lecture\_notes\_v02\_2026\_fully\_solved.tex}$). New vectors/polynomials; method, structure and hypotheses unchanged.}
+}
+\newpage
+\pdfbookmark[0]{Version I}{version-I}
+\HeaderOne{I}
+\begingroup\fontsize{11.5}{13.5}\selectfont
+\PTitle{Problem 1. True or False}{2 marks}
+\PNote{Each statement is worth 0.5 mark. Tick \textbf{True} if the statement is always true, otherwise tick \textbf{False}. No justification is needed.}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}>{\centering\arraybackslash}p{21mm}@{}}
+ & {\fontsize{9}{10}\selectfont True\hfill False}\\[0.5mm]
+\textbf{(a)}~In a vector space $V$, the equation $k\mathbf{0}=\mathbf{0}$ holds only when the scalar $k$ equals $0$.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{False.} Theorem 4.1.1(b): $k\mathbf{0}=\mathbf{0}$ for \emph{every} scalar $k$.} & $\square$\hfill$\blacksquare$\\[1.2mm]
+\textbf{(b)}~The set $C(-\infty,\infty)$ of all continuous functions on $(-\infty,\infty)$ is a subspace of $F(-\infty,\infty)$.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{True.} The zero function is continuous, and sums and scalar multiples of continuous functions are continuous (Extra Problems 4.2.1).} & $\blacksquare$\hfill$\square$\\[1.2mm]
+\textbf{(c)}~If $\mathbf{u}\in\operatorname{span}\{\mathbf{v}_1,\mathbf{v}_2\}$, then $\mathbf{u}=k_1\mathbf{v}_1+k_2\mathbf{v}_2$ for some scalars $k_1,k_2$.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{True.} Definition 4.3.1: the span is the set of all linear combinations.} & $\blacksquare$\hfill$\square$\\[1.2mm]
+\textbf{(d)}~Every set of two nonzero vectors in $\mathbb{R}^3$ is linearly independent.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{False.} Theorem 4.4.1(c): $(1,0,0)$ and $(2,0,0)$ are nonzero but one is a scalar multiple of the other, so the set is linearly dependent.} & $\square$\hfill$\blacksquare$
+\end{tabularx}\par
+\vspace{1.5mm}\textcolor{RuleGray}{\rule{\linewidth}{0.4pt}}\par\vspace{1mm}
+\PTitle{Problem 2. Multiple choice}{4 marks}
+\PNote{Each question is worth 1 mark. Tick exactly one option.}
+\vspace{0.8mm}
+\textbf{(a)}~Let $V=\mathbb{R}^2$ with the usual addition $(x_1,x_2)+(y_1,y_2)=(x_1+y_1,\;x_2+y_2)$ and the scalar multiplication $k(x_1,x_2)=(x_1,\;kx_2)$. With these operations $V$ is \emph{not} a vector space: exactly one of the following four axioms fails. Which one?\par\vspace{0.8mm}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}X@{}}
+$\square$ A.~Axiom 7: $k(\mathbf{u}+\mathbf{v})=k\mathbf{u}+k\mathbf{v}$ & $\square$ B.~Axiom 9: $k(m\mathbf{u})=(km)\mathbf{u}$\\[0.8mm]
+$\blacksquare$ C.~Axiom 8: $(k+m)\mathbf{u}=k\mathbf{u}+m\mathbf{u}$ & $\square$ D.~Axiom 10: $1\mathbf{u}=\mathbf{u}$
+\end{tabularx}\par
+\Sol{\textbf{Answer: C (Axiom 8).} Take $\mathbf{u}=(5,2)$, $k=2$, $m=3$: $(k+m)\mathbf{u}=5(5,2)=(5,10)$ but $k\mathbf{u}+m\mathbf{u}=(5,4)+(5,6)=(10,10)$, so Axiom 8 fails. Axiom 7: $k(\mathbf{u}+\mathbf{v})=(u_1+v_1,k(u_2+v_2))=k\mathbf{u}+k\mathbf{v}$ holds; Axiom 9: $k(m\mathbf{u})=(u_1,kmu_2)=(km)\mathbf{u}$ holds; Axiom 10: $1\mathbf{u}=\mathbf{u}$ holds.}
+\vspace{1.2mm}
+\textbf{(b)}~Which of the following subsets $W$ is a \textbf{subspace} of $V=\mathbb{R}^3$ (with the usual operations)?\par\vspace{0.8mm}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}X@{}}
+$\square$ A.~$W=\{(x,y,z) : x\ge0\}$ & $\square$ B.~$W=\{(x,y,z) : x^2+y^2+z^2\le1\}$\\[0.8mm]
+$\square$ C.~$W=\{(x,y,z) : xyz=0\}$ & $\blacksquare$ D.~$W=\{(x,y,z) : z=x-2y\}$
+\end{tabularx}\par
+\Sol{\textbf{Answer: D.} A: $(1,0,0)\in W$ but $-1\cdot(1,0,0)\notin W$. B: $(1,0,0)\in W$ but $2\cdot(1,0,0)\notin W$. C: $(1,1,0),\,(0,0,1)\in W$ but their sum $\notin W$. D: subspace (passes the Subspace Test).}
+\vspace{1.2mm}
+\textbf{(c)}~Let $\mathbf{v}_1=(1,0,1)$ and $\mathbf{v}_2=(0,1,1)$ in $\mathbb{R}^3$. Which of the following vectors belongs to $\operatorname{span}\{\mathbf{v}_1,\mathbf{v}_2\}$?\par\vspace{0.8mm}
+\begin{tabular*}{\linewidth}{@{}l@{\extracolsep{\fill}}lll@{}}
+$\square$ A.~$(3,-1,4)$ & $\square$ B.~$(3,1,2)$ & $\blacksquare$ C.~$(3,-1,2)$ & $\square$ D.~$(1,1,1)$\end{tabular*}\par
+\Sol{\textbf{Answer: C.} Match $k_1\mathbf{v}_1+k_2\mathbf{v}_2$ with each candidate (two components fix $k_1,k_2$; the third must agree). A: $k_1=3$, $k_2=-1$ would force the third component to be $2\neq4$. B: $k_1=3$, $k_2=1$ would force the third component to be $4\neq2$. \textbf{C}: $k_1=3$, $k_2=-1$ give third component $=2$ \checkmark, so $(3,-1,2)=3\mathbf{v}_1-\mathbf{v}_2$. D: $k_1=1$, $k_2=1$ would force the third component to be $2\neq1$.}
+\vspace{1.2mm}
+\textbf{(d)}~Let $f_1=x^{2}$ and $f_2=x^{3}$ be functions in $C^{\infty}(-\infty,\infty)$. Compute the Wronskian $W(x)$ of $f_1,f_2$ and choose the correct statement.\par\vspace{0.8mm}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}X@{}}
+$\square$ A.~$W(x)=x^{4}$; the set is linearly dependent because $W(0)=0$ & $\blacksquare$ B.~$W(x)=x^{4}$; the set is linearly independent\\[0.8mm]
+$\square$ C.~$W(x)=5x^{4}$; the set is linearly independent & $\square$ D.~$W(x)=0$ for all $x$; the Wronskian test is inconclusive
+\end{tabularx}\par
+\Sol{\textbf{Answer: B.} $W(x)=\begin{vmatrix}x^{2}&x^{3}\\2x&3x^{2}\end{vmatrix}=3x^{4}-2x^{4}=x^{4}$. $W(1)=1\neq0$, so $W\not\equiv0$ and the set is linearly independent (Fact 4.4.2).}
+\endgroup
+\newpage
+
+\pdfbookmark[1]{Version I: Problem 3}{written-I}
+\HeaderTwo{I}
+\PTitle{Problem 3. Linear independence and span}{4 marks}
+\vspace{1.5mm}Let $S=\{\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3\}$ be the set of vectors in $\mathbb{R}^3$ given by\[\mathbf{v}_1=(1,-2,1),\qquad \mathbf{v}_2=(3,1,2),\qquad \mathbf{v}_3=(5,-3,4),\]and let $\mathbf{u}=(2,1,3)$.
+\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=9mm,itemsep=1.5mm,topsep=2mm]
+\item \textbf{[2.5 marks]} Determine whether $S$ is linearly independent or linearly dependent. Show all your work.
+\item \textbf{[1.5 marks]} Determine whether $\mathbf{u}$ belongs to $\operatorname{span}(S)$, that is, whether $\mathbf{u}$ is a linear combination of $\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3$. If it is, write $\mathbf{u}$ as such a linear combination; if it is not, explain why.
+\end{enumerate}
+\vspace{1mm}{\fontsize{10.5}{12.5}\selectfont\color{WorkBlue}\setlength{\abovedisplayskip}{3pt}\setlength{\belowdisplayskip}{3pt}
+\textbf{Solution.}\par\vspace{1mm}
+\textbf{(a)} Set $k_1\mathbf{v}_1+k_2\mathbf{v}_2+k_3\mathbf{v}_3=\mathbf{0}$, i.e. $k_1(1,-2,1)+k_2(3,1,2)+k_3(5,-3,4)=(0,0,0)$. Comparing components gives the homogeneous system and its augmented matrix:
+
+\[ \begin{cases}k_1+3k_2+5k_3=0\\ -2k_1+k_2-3k_3=0\\ k_1+2k_2+4k_3=0\end{cases} \qquad \left[\begin{array}{ccc|c} 1 & 3 & 5 & 0 \\ -2 & 1 & -3 & 0 \\ 1 & 2 & 4 & 0 \end{array}\right] \xrightarrow[-R_1+R_3 \to R_3]{2R_1+R_2 \to R_2} \left[\begin{array}{ccc|c} 1 & 3 & 5 & 0 \\ 0 & 7 & 7 & 0 \\ 0 & -1 & -1 & 0 \end{array}\right] \xrightarrow{R_2 \leftrightarrow R_3} \left[\begin{array}{ccc|c} 1 & 3 & 5 & 0 \\ 0 & -1 & -1 & 0 \\ 0 & 7 & 7 & 0 \end{array}\right] \]
+
+\[  \xrightarrow{7R_2+R_3 \to R_3} \left[\begin{array}{ccc|c} 1 & 3 & 5 & 0 \\ 0 & -1 & -1 & 0 \\ 0 & 0 & 0 & 0 \end{array}\right] \]
+
+The coefficient matrix has only two pivots: the third row is a zero row, so $k_3$ is a free variable and the homogeneous system has \textbf{nontrivial solutions}. For instance $k_3=1$ gives $k_2=-1$ and $k_1=-2$, so $-2\mathbf{v}_1-\mathbf{v}_2+\mathbf{v}_3=\mathbf{0}$, i.e. $\mathbf{v}_3=2\mathbf{v}_1+\mathbf{v}_2$.
+
+\Conclude{$S$ is \textbf{linearly dependent}.}
+
+\textbf{(b)} Set $k_1\mathbf{v}_1+k_2\mathbf{v}_2+k_3\mathbf{v}_3=\mathbf{u}$ with $\mathbf{u}=(2,1,3)$. The coefficient matrix is the same, so the same row operations apply to the new right-hand side:
+
+\[ \left[\begin{array}{ccc|c} 1 & 3 & 5 & 2 \\ -2 & 1 & -3 & 1 \\ 1 & 2 & 4 & 3 \end{array}\right] \xrightarrow[-R_1+R_3 \to R_3]{2R_1+R_2 \to R_2} \left[\begin{array}{ccc|c} 1 & 3 & 5 & 2 \\ 0 & 7 & 7 & 5 \\ 0 & -1 & -1 & 1 \end{array}\right] \xrightarrow{R_2 \leftrightarrow R_3} \left[\begin{array}{ccc|c} 1 & 3 & 5 & 2 \\ 0 & -1 & -1 & 1 \\ 0 & 7 & 7 & 5 \end{array}\right] \]
+
+\[  \xrightarrow{7R_2+R_3 \to R_3} \left[\begin{array}{ccc|c} 1 & 3 & 5 & 2 \\ 0 & -1 & -1 & 1 \\ 0 & 0 & 0 & 12 \end{array}\right] \]
+
+The last row reads $0k_1+0k_2+0k_3=12$, i.e. $0=12$, which is impossible: the system is \textbf{inconsistent}. Hence $\mathbf{u}$ is not a linear combination of $\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3$.
+
+\Conclude{$\mathbf{u}\notin\operatorname{span}(S)$.}
+\par\vspace{1mm}{\fontsize{8.5}{10}\selectfont\color{black!60}Source: Example 4.4.1 (Linear Dependence in $\mathbb{R}^3$), line 13280; Example 4.2.10 (Vector IS a Linear Combination), line 11774; Example 4.2.11 (Vector Is NOT a Linear Combination), line 11843; Definition 4.4.1 (Linear Independence and Dependence), line 13236; Definition 4.3.1 (Span), line 12614 ($\mathtt{math231\_lecture\_notes\_v02\_2026\_fully\_solved.tex}$). New vectors/polynomials; method, structure and hypotheses unchanged.}
+}
+\newpage
+\pdfbookmark[0]{Version J}{version-J}
+\HeaderOne{J}
+\begingroup\fontsize{11.5}{13.5}\selectfont
+\PTitle{Problem 1. True or False}{2 marks}
+\PNote{Each statement is worth 0.5 mark. Tick \textbf{True} if the statement is always true, otherwise tick \textbf{False}. No justification is needed.}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}>{\centering\arraybackslash}p{21mm}@{}}
+ & {\fontsize{9}{10}\selectfont True\hfill False}\\[0.5mm]
+\textbf{(a)}~In a real vector space, the scalars may be any real numbers, including irrational numbers such as $\sqrt{2}$.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{True.} Scalars are real numbers (Definition 4.1.1); the notes use $k=\sqrt2$ in Extra Problems 4.2.9(c).} & $\blacksquare$\hfill$\square$\\[1.2mm]
+\textbf{(b)}~If $A$ is an $m\times n$ matrix and $\mathbf{b}\neq\mathbf{0}$, then the solution set of $A\mathbf{x}=\mathbf{b}$ is a subspace of $\mathbb{R}^n$.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{False.} $A\mathbf{0}=\mathbf{0}\neq\mathbf{b}$, so the zero vector is not a solution; condition (a) fails (Example 4.2.8).} & $\square$\hfill$\blacksquare$\\[1.2mm]
+\textbf{(c)}~The polynomial $x^2$ belongs to $\operatorname{span}\{1+x^2,\;x\}$.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{False.} $k_1(1+x^2)+k_2x=k_1+k_2x+k_1x^2$; matching $x^2$ requires $k_1=0$ (constant term) and $k_1=1$ ($x^2$ term), impossible.} & $\square$\hfill$\blacksquare$\\[1.2mm]
+\textbf{(d)}~A set consisting of a single nonzero vector is linearly independent.\newline{\fontsize{9.5}{11}\selectfont\color{WorkBlue}\textbf{True.} Theorem 4.4.1(b).} & $\blacksquare$\hfill$\square$
+\end{tabularx}\par
+\vspace{1.5mm}\textcolor{RuleGray}{\rule{\linewidth}{0.4pt}}\par\vspace{1mm}
+\PTitle{Problem 2. Multiple choice}{4 marks}
+\PNote{Each question is worth 1 mark. Tick exactly one option.}
+\vspace{0.8mm}
+\textbf{(a)}~Let $V=\mathbb{R}^3$ with the usual addition $(x_1,x_2,x_3)+(y_1,y_2,y_3)=(x_1+y_1,\;x_2+y_2,\;x_3+y_3)$ and the scalar multiplication $k(x_1,x_2,x_3)=(x_1,\;x_2,\;kx_3)$. With these operations $V$ is \emph{not} a vector space: exactly one of the following four axioms fails. Which one?\par\vspace{0.8mm}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}X@{}}
+$\square$ A.~Axiom 6: $k\mathbf{u}$ is in $V$ (closure under scalar multiplication) & $\blacksquare$ B.~Axiom 8: $(k+m)\mathbf{u}=k\mathbf{u}+m\mathbf{u}$\\[0.8mm]
+$\square$ C.~Axiom 10: $1\mathbf{u}=\mathbf{u}$ & $\square$ D.~Axiom 9: $k(m\mathbf{u})=(km)\mathbf{u}$
+\end{tabularx}\par
+\Sol{\textbf{Answer: B (Axiom 8).} Take $\mathbf{u}=(1,1,1)$, $k=m=1$: $(k+m)\mathbf{u}=2\mathbf{u}=(1,1,2)$ but $k\mathbf{u}+m\mathbf{u}=(1,1,1)+(1,1,1)=(2,2,2)$, so Axiom 8 fails. Axiom 6 holds since $(u_1,u_2,ku_3)\in\mathbb{R}^3$; Axiom 10: $1\mathbf{u}=\mathbf{u}$ holds; Axiom 9: $k(m\mathbf{u})=(u_1,u_2,kmu_3)=(km)\mathbf{u}$ holds.}
+\vspace{1.2mm}
+\textbf{(b)}~Which of the following subsets of $V=P_2$ (with the usual operations) is \textbf{not} a subspace of $V$?\par\vspace{0.8mm}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}X@{}}
+$\square$ A.~$W=\{p\in P_2 : p(0)=0\}$ & $\blacksquare$ B.~$W=\{a+bx+cx^2 : a+b+c=2\}$\\[0.8mm]
+$\square$ C.~$W=\{a+bx+cx^2 : a=2c\}$ & $\square$ D.~$W=\{p\in P_2 : p(1)=0\}$
+\end{tabularx}\par
+\Sol{\textbf{Answer: B.} A: subspace (passes the Subspace Test). B: $\mathbf{0}\notin W$. C: subspace (passes the Subspace Test). D: subspace (passes the Subspace Test).}
+\vspace{1.2mm}
+\textbf{(c)}~Let $p_1=1+2x$ and $p_2=x^{2}$ in $P_2$. Which of the following polynomials belongs to $\operatorname{span}\{p_1,p_2\}$?\par\vspace{0.8mm}
+\begin{tabular*}{\linewidth}{@{}l@{\extracolsep{\fill}}lll@{}}
+$\square$ A.~$2+2x-x^{2}$ & $\blacksquare$ B.~$2+4x-x^{2}$ & $\square$ C.~$4+2x-x^{2}$ & $\square$ D.~$1+4x-x^{2}$\end{tabular*}\par
+\Sol{\textbf{Answer: B.} Match $k_1p_1+k_2p_2$ with each candidate (two coefficients fix $k_1,k_2$; the third must agree). A: $k_1=2$, $k_2=-1$ would force the $x$ coefficient to be $4\neq2$. \textbf{B}: $k_1=2$, $k_2=-1$ give $x$ coefficient $=4$ \checkmark, so $2+4x-x^{2}=2p_1-p_2$. C: $k_1=4$, $k_2=-1$ would force the $x$ coefficient to be $8\neq2$. D: $k_1=1$, $k_2=-1$ would force the $x$ coefficient to be $2\neq4$.}
+\vspace{1.2mm}
+\textbf{(d)}~Let $f_1=e^{-x}$ and $f_2=e^{x}$ be functions in $C^{\infty}(-\infty,\infty)$. Compute the Wronskian $W(x)$ of $f_1,f_2$ and choose the correct statement.\par\vspace{0.8mm}
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}X@{}}
+$\blacksquare$ A.~$W(x)=2$; the set is linearly independent & $\square$ B.~$W(x)=0$ for all $x$; the Wronskian test is inconclusive\\[0.8mm]
+$\square$ C.~$W(x)=-2$; the set is linearly independent & $\square$ D.~$W(x)=2$; the set is linearly dependent because $W(x)$ is constant
+\end{tabularx}\par
+\Sol{\textbf{Answer: A.} $W(x)=\begin{vmatrix}e^{-x}&e^{x}\\-e^{-x}&e^{x}\end{vmatrix}=e^{-x}e^{x}-e^{x}(-e^{-x})=1+1=2\neq0$, so the set is linearly independent (Fact 4.4.2).}
+\endgroup
+\newpage
+
+\pdfbookmark[1]{Version J: Problem 3}{written-J}
+\HeaderTwo{J}
+\PTitle{Problem 3. Linear independence and span}{4 marks}
+\vspace{1.5mm}Let $S=\{p_1,p_2,p_3\}$ be the set of polynomials in $P_2$ given by\[p_1=1+2x,\qquad p_2=x-x^{2},\qquad p_3=1+x^{2},\]and let $u=1-x+x^{2}$.
+\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=9mm,itemsep=1.5mm,topsep=2mm]
+\item \textbf{[2.5 marks]} Determine whether $S$ is linearly independent or linearly dependent. Show all your work.
+\item \textbf{[1.5 marks]} Determine whether $u$ belongs to $\operatorname{span}(S)$, that is, whether $u$ is a linear combination of $p_1,p_2,p_3$. If it is, write $u$ as such a linear combination; if it is not, explain why.
+\end{enumerate}
+\vspace{1mm}{\fontsize{10.5}{12.5}\selectfont\color{WorkBlue}\setlength{\abovedisplayskip}{3pt}\setlength{\belowdisplayskip}{3pt}
+\textbf{Solution.}\par\vspace{1mm}
+\textbf{(a)} Set $k_1p_1+k_2p_2+k_3p_3=0$, i.e. $k_1(1+2x)+k_2(x-x^{2})+k_3(1+x^{2})=0+0x+0x^{2}$. Comparing coefficients of $1$, $x$ and $x^{2}$ gives the homogeneous system and its augmented matrix:
+
+\[ \begin{cases}k_1+k_3=0\\ 2k_1+k_2=0\\ -k_2+k_3=0\end{cases} \qquad \left[\begin{array}{ccc|c} 1 & 0 & 1 & 0 \\ 2 & 1 & 0 & 0 \\ 0 & -1 & 1 & 0 \end{array}\right] \xrightarrow{-2R_1+R_2 \to R_2} \left[\begin{array}{ccc|c} 1 & 0 & 1 & 0 \\ 0 & 1 & -2 & 0 \\ 0 & -1 & 1 & 0 \end{array}\right] \xrightarrow{R_2+R_3 \to R_3} \left[\begin{array}{ccc|c} 1 & 0 & 1 & 0 \\ 0 & 1 & -2 & 0 \\ 0 & 0 & -1 & 0 \end{array}\right] \]
+
+There are three pivots and no free variables, so the homogeneous system has \textbf{only the trivial solution} $k_1=k_2=k_3=0$.
+
+\Conclude{$S$ is \textbf{linearly independent}.}
+
+\textbf{(b)} Set $k_1p_1+k_2p_2+k_3p_3=u$ with $u=1-x+x^{2}$. The coefficient matrix is the same, so the same row operations apply to the new right-hand side:
+
+\[ \left[\begin{array}{ccc|c} 1 & 0 & 1 & 1 \\ 2 & 1 & 0 & -1 \\ 0 & -1 & 1 & 1 \end{array}\right] \xrightarrow{-2R_1+R_2 \to R_2} \left[\begin{array}{ccc|c} 1 & 0 & 1 & 1 \\ 0 & 1 & -2 & -3 \\ 0 & -1 & 1 & 1 \end{array}\right] \xrightarrow{R_2+R_3 \to R_3} \left[\begin{array}{ccc|c} 1 & 0 & 1 & 1 \\ 0 & 1 & -2 & -3 \\ 0 & 0 & -1 & -2 \end{array}\right] \]
+
+Back-substitution: $-k_3=-2\Rightarrow k_3=2$; $k_2-2k_3=-3\Rightarrow k_2=1$; $k_1+k_3=1\Rightarrow k_1=-1$. Hence $u=-p_1+p_2+2p_3$.
+
+\Conclude{$u\in\operatorname{span}(S)$: \ $u=-p_1+p_2+2p_3$.}
+\par\vspace{1mm}{\fontsize{8.5}{10}\selectfont\color{black!60}Source: Example 4.4.2 (Linear Independence in $P_3$), line 13357; Example 4.2.10 (Vector IS a Linear Combination), line 11774; Example 4.2.11 (Vector Is NOT a Linear Combination), line 11843; Definition 4.4.1 (Linear Independence and Dependence), line 13236; Definition 4.3.1 (Span), line 12614 ($\mathtt{math231\_lecture\_notes\_v02\_2026\_fully\_solved.tex}$). New vectors/polynomials; method, structure and hypotheses unchanged.}
+}
+
+\end{document}

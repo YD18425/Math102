@@ -1,0 +1,88 @@
+{
+ "page_structure": {
+  "Student": {
+   "pages": 20,
+   "all_a4": true,
+   "issues": []
+  },
+  "Solved": {
+   "pages": 20,
+   "all_a4": true,
+   "issues": []
+  },
+  "Rubric": {
+   "pages": 32,
+   "all_a4": true,
+   "version_sections_found": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J"
+   ]
+  }
+ },
+ "parity": {
+  "fragments_checked": 270,
+  "missing": [],
+  "fragment_order_identical": true
+ },
+ "leak_scan": {
+  "terms_scanned": [
+   "blacksquare",
+   "Answer:",
+   "Solution",
+   "Rubric",
+   "Source:",
+   "INSTRUCTOR",
+   "free variable",
+   "Back-substitution",
+   "inconsistent",
+   "trivial solution",
+   "nontrivial",
+   "Fact 4.4.2",
+   "Theorem 4.1.1",
+   "Example 4.",
+   "Extra Problems",
+   "passes the Subspace Test",
+   "sign error",
+   "True.",
+   "False.",
+   "Key:",
+   "key"
+  ],
+  "hits": {},
+  "pdf_has_annotations": false,
+  "pdf_hidden_text_check": "text extracted from each page compared with visible rendering; no white/hidden text constructs used in the TeX source"
+ },
+ "metadata": {
+  "Student": {
+   "format": "PDF 1.5",
+   "title": "MATH 231 Quiz Sections 4.1-4.4 – Student paper – Versions A-J",
+   "author": "Dr. Yousef Dabboorasad",
+   "subject": "MATH 231 Quiz; Sections 4.1–4.4; versions A–J",
+   "keywords": "",
+   "creator": "LaTeX with hyperref",
+   "producer": "pdfTeX-1.40.25",
+   "creationDate": "D:20261104165315Z",
+   "modDate": "D:20261104165315Z",
+   "trapped": "",
+   "encryption": null
+  }
+ },
+ "problems": [],
+ "sha256": {
+  "MATH231_Quiz_4.1-4.4_Student_A-J.pdf": "ac572ce13c6508402aaff69c1ff45618c09508f0f4263601802f6824a615542c",
+  "MATH231_Quiz_4.1-4.4_Solved_A-J.pdf": "621395b068c0f91f4391f72e744662f26850f4c0144f5301556dd6b1936b4b14",
+  "MATH231_Quiz_4.1-4.4_Rubric_A-J.pdf": "02ea217db328f9e6c29abfb41dd2c72447af9edd60aee81fe6fdb37c51ee3fed",
+  "MATH231_Quiz_4.1-4.4_Student_A-J.tex": "c0adec60cf40052ff1741c8792d4fc119e937166e0ddd8023553c6522c30751e",
+  "MATH231_Quiz_4.1-4.4_Solved_A-J.tex": "d41746557d35762f8991c59b7dde942f07156be6ec159ada6cd6460a91bdd531",
+  "MATH231_Quiz_4.1-4.4_Rubric_A-J.tex": "0cf92da320b4e99272c4e0a53609f230b941f3be379a18b2bec59ad0bd5a551a"
+ },
+ "status": "PASS"
+}

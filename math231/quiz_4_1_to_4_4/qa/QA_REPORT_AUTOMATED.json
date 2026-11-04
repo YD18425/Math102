@@ -1,0 +1,165 @@
+{
+  "status": "AUTOMATED_CHECKS_PASSED_HUMAN_REVIEW_PENDING",
+  "tool": "compile_check.py",
+  "source_hashes": {
+    "MATH231_Quiz_4.1-4.4_Student_A-J.tex": "c0adec60cf40052ff1741c8792d4fc119e937166e0ddd8023553c6522c30751e",
+    "MATH231_Quiz_4.1-4.4_Solved_A-J.tex": "d41746557d35762f8991c59b7dde942f07156be6ec159ada6cd6460a91bdd531",
+    "MATH231_Quiz_4.1-4.4_Rubric_A-J.tex": "0cf92da320b4e99272c4e0a53609f230b941f3be379a18b2bec59ad0bd5a551a"
+  },
+  "files": {
+    "student": {
+      "file": "MATH231_Quiz_4.1-4.4_Student_A-J.pdf",
+      "pages": 20,
+      "expected_pages": 20,
+      "sha256": "ac572ce13c6508402aaff69c1ff45618c09508f0f4263601802f6824a615542c",
+      "size_bytes": 1056533,
+      "a4_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "version_label_mismatches": [],
+      "human_visual_review_required": true,
+      "all_a4": true,
+      "page_count_pass": true,
+      "version_labels_pass": true,
+      "compilation_log_paths": [
+        "build/MATH231_Quiz_4.1-4.4_Student_A-J_pass1.log",
+        "build/MATH231_Quiz_4.1-4.4_Student_A-J_pass2.log"
+      ],
+      "contact_sheets": [
+        "build/contact_sheets/MATH231_Quiz_4.1-4.4_Student_A-J_contact_01.png",
+        "build/contact_sheets/MATH231_Quiz_4.1-4.4_Student_A-J_contact_02.png",
+        "build/contact_sheets/MATH231_Quiz_4.1-4.4_Student_A-J_contact_03.png",
+        "build/contact_sheets/MATH231_Quiz_4.1-4.4_Student_A-J_contact_04.png"
+      ]
+    },
+    "solved": {
+      "file": "MATH231_Quiz_4.1-4.4_Solved_A-J.pdf",
+      "pages": 20,
+      "expected_pages": 20,
+      "sha256": "621395b068c0f91f4391f72e744662f26850f4c0144f5301556dd6b1936b4b14",
+      "size_bytes": 1123269,
+      "a4_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "version_label_mismatches": [],
+      "human_visual_review_required": true,
+      "all_a4": true,
+      "page_count_pass": true,
+      "version_labels_pass": true,
+      "compilation_log_paths": [
+        "build/MATH231_Quiz_4.1-4.4_Solved_A-J_pass1.log",
+        "build/MATH231_Quiz_4.1-4.4_Solved_A-J_pass2.log"
+      ],
+      "contact_sheets": [
+        "build/contact_sheets/MATH231_Quiz_4.1-4.4_Solved_A-J_contact_01.png",
+        "build/contact_sheets/MATH231_Quiz_4.1-4.4_Solved_A-J_contact_02.png",
+        "build/contact_sheets/MATH231_Quiz_4.1-4.4_Solved_A-J_contact_03.png",
+        "build/contact_sheets/MATH231_Quiz_4.1-4.4_Solved_A-J_contact_04.png"
+      ]
+    },
+    "rubric": {
+      "file": "MATH231_Quiz_4.1-4.4_Rubric_A-J.pdf",
+      "pages": 32,
+      "expected_pages": null,
+      "sha256": "02ea217db328f9e6c29abfb41dd2c72447af9edd60aee81fe6fdb37c51ee3fed",
+      "size_bytes": 321112,
+      "a4_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32
+      ],
+      "version_label_mismatches": [],
+      "human_visual_review_required": true,
+      "all_a4": true,
+      "page_count_pass": true,
+      "version_labels_pass": true,
+      "compilation_log_paths": [
+        "build/MATH231_Quiz_4.1-4.4_Rubric_A-J_pass1.log",
+        "build/MATH231_Quiz_4.1-4.4_Rubric_A-J_pass2.log"
+      ],
+      "contact_sheets": [
+        "build/contact_sheets/MATH231_Quiz_4.1-4.4_Rubric_A-J_contact_01.png",
+        "build/contact_sheets/MATH231_Quiz_4.1-4.4_Rubric_A-J_contact_02.png",
+        "build/contact_sheets/MATH231_Quiz_4.1-4.4_Rubric_A-J_contact_03.png",
+        "build/contact_sheets/MATH231_Quiz_4.1-4.4_Rubric_A-J_contact_04.png",
+        "build/contact_sheets/MATH231_Quiz_4.1-4.4_Rubric_A-J_contact_05.png",
+        "build/contact_sheets/MATH231_Quiz_4.1-4.4_Rubric_A-J_contact_06.png"
+      ]
+    }
+  },
+  "notes": [
+    "Automated PDF review is NOT a substitute for a human examination of every page.",
+    "Page-size/page-count checks do not prove student/solved text parity, source fidelity or mathematical correctness.",
+    "Absence of answer leakage requires a separate manual scan."
+  ],
+  "visual_review_completed": false,
+  "math_independently_verified": false,
+  "student_answers_separately_checked": false
+}
