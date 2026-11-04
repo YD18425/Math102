@@ -2,17 +2,17 @@
   "status": "AUTOMATED_CHECKS_PASSED_HUMAN_REVIEW_PENDING",
   "tool": "compile_check.py",
   "source_hashes": {
-    "MATH231_Quiz_4.1-4.4_Student_A-J.tex": "c0adec60cf40052ff1741c8792d4fc119e937166e0ddd8023553c6522c30751e",
-    "MATH231_Quiz_4.1-4.4_Solved_A-J.tex": "d41746557d35762f8991c59b7dde942f07156be6ec159ada6cd6460a91bdd531",
-    "MATH231_Quiz_4.1-4.4_Rubric_A-J.tex": "0cf92da320b4e99272c4e0a53609f230b941f3be379a18b2bec59ad0bd5a551a"
+    "MATH231_Quiz3_4.1-4.4_Student_A-J.tex": "9642a724c5a5cb326954a02081476b5d4cff490be9d7d8a87f76d27f93d1320e",
+    "MATH231_Quiz3_4.1-4.4_Solved_A-J.tex": "9ec4c3b426eddd46c83d6f4388c750edb9f2c56750e588d35c0000dda008e147",
+    "MATH231_Quiz3_4.1-4.4_Rubric_A-J.tex": "56274d961d0a880ecdadec3fea6bac5869333aae8a892524433a7259ab722d32"
   },
   "files": {
     "student": {
-      "file": "MATH231_Quiz_4.1-4.4_Student_A-J.pdf",
+      "file": "MATH231_Quiz3_4.1-4.4_Student_A-J.pdf",
       "pages": 20,
       "expected_pages": 20,
-      "sha256": "ac572ce13c6508402aaff69c1ff45618c09508f0f4263601802f6824a615542c",
-      "size_bytes": 1056533,
+      "sha256": "cc463fd54a1f494f32bb3d801b7a004d3c5896062fab96f2746ef9a40c8c99ff",
+      "size_bytes": 1057370,
       "a4_pages": [
         1,
         2,
@@ -41,22 +41,22 @@
       "page_count_pass": true,
       "version_labels_pass": true,
       "compilation_log_paths": [
-        "build/MATH231_Quiz_4.1-4.4_Student_A-J_pass1.log",
-        "build/MATH231_Quiz_4.1-4.4_Student_A-J_pass2.log"
+        "build/MATH231_Quiz3_4.1-4.4_Student_A-J_pass1.log",
+        "build/MATH231_Quiz3_4.1-4.4_Student_A-J_pass2.log"
       ],
       "contact_sheets": [
-        "build/contact_sheets/MATH231_Quiz_4.1-4.4_Student_A-J_contact_01.png",
-        "build/contact_sheets/MATH231_Quiz_4.1-4.4_Student_A-J_contact_02.png",
-        "build/contact_sheets/MATH231_Quiz_4.1-4.4_Student_A-J_contact_03.png",
-        "build/contact_sheets/MATH231_Quiz_4.1-4.4_Student_A-J_contact_04.png"
+        "build/contact_sheets/MATH231_Quiz3_4.1-4.4_Student_A-J_contact_01.png",
+        "build/contact_sheets/MATH231_Quiz3_4.1-4.4_Student_A-J_contact_02.png",
+        "build/contact_sheets/MATH231_Quiz3_4.1-4.4_Student_A-J_contact_03.png",
+        "build/contact_sheets/MATH231_Quiz3_4.1-4.4_Student_A-J_contact_04.png"
       ]
     },
     "solved": {
-      "file": "MATH231_Quiz_4.1-4.4_Solved_A-J.pdf",
+      "file": "MATH231_Quiz3_4.1-4.4_Solved_A-J.pdf",
       "pages": 20,
       "expected_pages": 20,
-      "sha256": "621395b068c0f91f4391f72e744662f26850f4c0144f5301556dd6b1936b4b14",
-      "size_bytes": 1123269,
+      "sha256": "2547209b7cc87f8a6933a639cb360d5431695f29088133aee6e26e82c99ea6e9",
+      "size_bytes": 1123976,
       "a4_pages": [
         1,
         2,
@@ -85,22 +85,22 @@
       "page_count_pass": true,
       "version_labels_pass": true,
       "compilation_log_paths": [
-        "build/MATH231_Quiz_4.1-4.4_Solved_A-J_pass1.log",
-        "build/MATH231_Quiz_4.1-4.4_Solved_A-J_pass2.log"
+        "build/MATH231_Quiz3_4.1-4.4_Solved_A-J_pass1.log",
+        "build/MATH231_Quiz3_4.1-4.4_Solved_A-J_pass2.log"
       ],
       "contact_sheets": [
-        "build/contact_sheets/MATH231_Quiz_4.1-4.4_Solved_A-J_contact_01.png",
-        "build/contact_sheets/MATH231_Quiz_4.1-4.4_Solved_A-J_contact_02.png",
-        "build/contact_sheets/MATH231_Quiz_4.1-4.4_Solved_A-J_contact_03.png",
-        "build/contact_sheets/MATH231_Quiz_4.1-4.4_Solved_A-J_contact_04.png"
+        "build/contact_sheets/MATH231_Quiz3_4.1-4.4_Solved_A-J_contact_01.png",
+        "build/contact_sheets/MATH231_Quiz3_4.1-4.4_Solved_A-J_contact_02.png",
+        "build/contact_sheets/MATH231_Quiz3_4.1-4.4_Solved_A-J_contact_03.png",
+        "build/contact_sheets/MATH231_Quiz3_4.1-4.4_Solved_A-J_contact_04.png"
       ]
     },
     "rubric": {
-      "file": "MATH231_Quiz_4.1-4.4_Rubric_A-J.pdf",
+      "file": "MATH231_Quiz3_4.1-4.4_Rubric_A-J.pdf",
       "pages": 32,
       "expected_pages": null,
-      "sha256": "02ea217db328f9e6c29abfb41dd2c72447af9edd60aee81fe6fdb37c51ee3fed",
-      "size_bytes": 321112,
+      "sha256": "700f7cbc901eb9b2f1491880182a63d8300202b5aee0f03cc49b9c9ac9e75ac6",
+      "size_bytes": 321770,
       "a4_pages": [
         1,
         2,
@@ -141,16 +141,16 @@
       "page_count_pass": true,
       "version_labels_pass": true,
       "compilation_log_paths": [
-        "build/MATH231_Quiz_4.1-4.4_Rubric_A-J_pass1.log",
-        "build/MATH231_Quiz_4.1-4.4_Rubric_A-J_pass2.log"
+        "build/MATH231_Quiz3_4.1-4.4_Rubric_A-J_pass1.log",
+        "build/MATH231_Quiz3_4.1-4.4_Rubric_A-J_pass2.log"
       ],
       "contact_sheets": [
-        "build/contact_sheets/MATH231_Quiz_4.1-4.4_Rubric_A-J_contact_01.png",
-        "build/contact_sheets/MATH231_Quiz_4.1-4.4_Rubric_A-J_contact_02.png",
-        "build/contact_sheets/MATH231_Quiz_4.1-4.4_Rubric_A-J_contact_03.png",
-        "build/contact_sheets/MATH231_Quiz_4.1-4.4_Rubric_A-J_contact_04.png",
-        "build/contact_sheets/MATH231_Quiz_4.1-4.4_Rubric_A-J_contact_05.png",
-        "build/contact_sheets/MATH231_Quiz_4.1-4.4_Rubric_A-J_contact_06.png"
+        "build/contact_sheets/MATH231_Quiz3_4.1-4.4_Rubric_A-J_contact_01.png",
+        "build/contact_sheets/MATH231_Quiz3_4.1-4.4_Rubric_A-J_contact_02.png",
+        "build/contact_sheets/MATH231_Quiz3_4.1-4.4_Rubric_A-J_contact_03.png",
+        "build/contact_sheets/MATH231_Quiz3_4.1-4.4_Rubric_A-J_contact_04.png",
+        "build/contact_sheets/MATH231_Quiz3_4.1-4.4_Rubric_A-J_contact_05.png",
+        "build/contact_sheets/MATH231_Quiz3_4.1-4.4_Rubric_A-J_contact_06.png"
       ]
     }
   },

@@ -15,7 +15,7 @@ import rowred
 OUT = sys.argv[1] if len(sys.argv) > 1 else "release"
 os.makedirs(OUT, exist_ok=True)
 S = Q.SPEC
-BASENAME = "MATH231_Quiz_4.1-4.4"
+BASENAME = "MATH231_Quiz3_4.1-4.4"
 LETTERS = "ABCD"
 
 def mk(x):
@@ -278,13 +278,13 @@ def written_stem(v):
                  r"\[\mathbf{v}_1=%s,\qquad \mathbf{v}_2=%s,\qquad \mathbf{v}_3=%s,\]"
                  r"and let $\mathbf{u}=%s$." % (vec_tex(vs[0]), vec_tex(vs[1]), vec_tex(vs[2]), vec_tex(u)))
         parts = (r"Determine whether $S$ is linearly independent or linearly dependent. Show all your work.",
-                 r"Determine whether $\mathbf{u}$ belongs to $\operatorname{span}(S)$, that is, whether $\mathbf{u}$ is a linear combination of $\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3$. If it is, write $\mathbf{u}$ as such a linear combination; if it is not, explain why.")
+                 r"Determine whether $\mathbf{u}$ belongs to $\operatorname{span}(S)$, that is, whether $\mathbf{u}$ is a linear combination of $\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3$. If it is, write $\mathbf{u}$ as such a linear combination; if it is not, explain why. (You may reuse the row operations from part (a).)")
     else:
         intro = (r"Let $S=\{p_1,p_2,p_3\}$ be the set of polynomials in $P_2$ given by"
                  r"\[p_1=%s,\qquad p_2=%s,\qquad p_3=%s,\]"
                  r"and let $u=%s$." % (poly_tex(vs[0]), poly_tex(vs[1]), poly_tex(vs[2]), poly_tex(u)))
         parts = (r"Determine whether $S$ is linearly independent or linearly dependent. Show all your work.",
-                 r"Determine whether $u$ belongs to $\operatorname{span}(S)$, that is, whether $u$ is a linear combination of $p_1,p_2,p_3$. If it is, write $u$ as such a linear combination; if it is not, explain why.")
+                 r"Determine whether $u$ belongs to $\operatorname{span}(S)$, that is, whether $u$ is a linear combination of $p_1,p_2,p_3$. If it is, write $u$ as such a linear combination; if it is not, explain why. (You may reuse the row operations from part (a).)")
     return intro, parts
 
 # ------------------------------------------------------------------ TeX building blocks
@@ -309,7 +309,8 @@ PREAMBLE_QUIZ = r"""\documentclass[14pt,a4paper]{extarticle}
 %% ---- editable labels -------------------------------------------------------
 \newcommand{\QuizLabel}{%(quiz)s}
 \newcommand{\TermLabel}{%(term)s}
-\newcommand{\DateLine}{Date: \rule{32mm}{0.3pt}}
+\newcommand{\DateLabel}{%(date)s}
+\newcommand{\TimeLabel}{%(time)s}
 %% ----------------------------------------------------------------------------
 \newcommand{\CurVersion}{A}
 \newcommand{\CurPage}{1}
@@ -327,7 +328,7 @@ PREAMBLE_QUIZ = r"""\documentclass[14pt,a4paper]{extarticle}
 {\fontsize{9.5}{11}\selectfont %(department)s}\\[2pt]
 {\fontsize{16}{18}\selectfont\bfseries Math 231 -- Linear Algebra\quad\textcolor{Brand}{\QuizLabel}}\\[2pt]
 {\fontsize{9}{10.5}\selectfont %(scope_long)s}\\[1pt]
-{\fontsize{10}{11.5}\selectfont \TermLabel\quad\textbullet\quad Total: %(total)s marks\quad\textbullet\quad \DateLine}
+{\fontsize{10}{11.5}\selectfont \TermLabel\quad\textbullet\quad \DateLabel\quad\textbullet\quad Time: \TimeLabel\quad\textbullet\quad Total: %(total)s marks}
 \end{minipage}\hfill
 \begin{minipage}[c]{18mm}\raggedleft\Logo{qatar_university_logo.png}{14mm}\end{minipage}\par
 \vspace{1.5mm}\textcolor{Brand}{\rule{\linewidth}{0.8pt}}\par\vspace{1.5mm}
@@ -357,7 +358,8 @@ def preamble(mode):
     instr_tag = "" if mode == "student" else r"\quad|\quad \textcolor{red!70!black}{INSTRUCTOR COPY -- SOLVED -- NOT FOR STUDENTS}"
     return PREAMBLE_QUIZ % dict(quiz=S["quiz_label"], term=S["term"], instructor=S["instructor"], scope=S["scope"],
                                 textbook=S["textbook"], university=S["university"], department=S["department"],
-                                scope_long=S["scope_long"], total=S["total"], instructions=INSTRUCTIONS, instr_tag=instr_tag)
+                                scope_long=S["scope_long"], total=S["total"], instructions=INSTRUCTIONS, instr_tag=instr_tag,
+                                date=S["date"], time=S["time_limit"])
 
 def short_until(text, marker):
     """Sentences of `text` up to and including the first sentence that contains `marker`."""
@@ -510,7 +512,7 @@ def rubric_document():
     doc = [PREAMBLE_RUBRIC % dict(quiz=S["quiz_label"], scope=S["scope"], instructor=S["instructor"]), r"\begin{document}"]
     doc.append(r"{\LARGE\bfseries\textcolor{Brand}{Math 231 -- Linear Algebra: %s, %s}}\par" % (S["quiz_label"], S["scope"]))
     doc.append(r"{\large Detailed marking rubric and answer keys, versions A--J}\par\vspace{2mm}")
-    doc.append(r"\textbf{Course:} %s, %s, %s. \quad \textbf{Instructor:} %s. \quad \textbf{Term:} %s.\par" % (S["course"], S["university"], S["department"], S["instructor"], S["term"]))
+    doc.append(r"\textbf{Course:} %s, %s, %s. \quad \textbf{Instructor:} %s. \quad \textbf{Term:} %s. \quad \textbf{Date:} %s. \quad \textbf{Time allowed:} %s.\par" % (S["course"], S["university"], S["department"], S["instructor"], S["term"], S["date"], S["time_limit"]))
     doc.append(r"\textbf{Scope:} %s. \quad \textbf{Maximum marks:} %s per version. \quad \textbf{Authorized source:} the Math 231 Overleaf project notes, file %s, lines 10672--13885 (Chapter 4, Sections 4.1--4.4), and the Chapter 4 Beamer deck.\par" % (S["scope_long"], S["total"], r"\url{" + Q.NOTES + "}"))
     doc.append(r"\section*{1. Structure and marking conventions}")
     doc.append(r"""\begin{itemize}[leftmargin=5mm,itemsep=1pt]

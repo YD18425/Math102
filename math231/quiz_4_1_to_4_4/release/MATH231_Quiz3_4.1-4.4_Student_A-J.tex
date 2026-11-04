@@ -17,9 +17,10 @@
 \raggedbottom
 \emergencystretch=1.5em
 % ---- editable labels -------------------------------------------------------
-\newcommand{\QuizLabel}{Quiz}
+\newcommand{\QuizLabel}{Quiz 3}
 \newcommand{\TermLabel}{Fall 2026}
-\newcommand{\DateLine}{Date: \rule{32mm}{0.3pt}}
+\newcommand{\DateLabel}{Thursday, 5 November 2026}
+\newcommand{\TimeLabel}{20 minutes}
 % ----------------------------------------------------------------------------
 \newcommand{\CurVersion}{A}
 \newcommand{\CurPage}{1}
@@ -37,7 +38,7 @@
 {\fontsize{9.5}{11}\selectfont Department of Mathematics, Statistics and Physics}\\[2pt]
 {\fontsize{16}{18}\selectfont\bfseries Math 231 -- Linear Algebra\quad\textcolor{Brand}{\QuizLabel}}\\[2pt]
 {\fontsize{9}{10.5}\selectfont Sections 4.1--4.4 (Real Vector Spaces, Subspaces, Spanning Sets, Linear Independence)}\\[1pt]
-{\fontsize{10}{11.5}\selectfont \TermLabel\quad\textbullet\quad Total: 10 marks\quad\textbullet\quad \DateLine}
+{\fontsize{10}{11.5}\selectfont \TermLabel\quad\textbullet\quad \DateLabel\quad\textbullet\quad Time: \TimeLabel\quad\textbullet\quad Total: 10 marks}
 \end{minipage}\hfill
 \begin{minipage}[c]{18mm}\raggedleft\Logo{qatar_university_logo.png}{14mm}\end{minipage}\par
 \vspace{1.5mm}\textcolor{Brand}{\rule{\linewidth}{0.8pt}}\par\vspace{1.5mm}
@@ -58,7 +59,7 @@
 \newcommand{\Conclude}[1]{\par\vspace{1pt}\noindent\fcolorbox{WorkBlue}{blue!4}{\textbf{\textcolor{WorkBlue}{#1}}}\par\vspace{2pt}}
 \newcommand{\workline}{\noindent\textcolor{RuleGray}{\makebox[\linewidth]{\dotfill}}\par}
 
-\hypersetup{pdftitle={MATH 231 Quiz Sections 4.1-4.4 -- Student paper -- Versions A-J},pdfauthor={Dr. Yousef Dabboorasad},pdfsubject={MATH 231 Quiz; Sections 4.1--4.4; versions A--J}}
+\hypersetup{pdftitle={MATH 231 Quiz 3 Sections 4.1-4.4 -- Student paper -- Versions A-J},pdfauthor={Dr. Yousef Dabboorasad},pdfsubject={MATH 231 Quiz 3; Sections 4.1--4.4; versions A--J}}
 \begin{document}
 \pdfbookmark[0]{Version A}{version-A}
 \HeaderOne{A}
@@ -104,7 +105,7 @@ $\square$ C.~$W(x)=(x+1)e^{x}$; the set is linearly independent & $\square$ D.~$
 \vspace{1.5mm}Let $S=\{\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3\}$ be the set of vectors in $\mathbb{R}^3$ given by\[\mathbf{v}_1=(1,2,-1),\qquad \mathbf{v}_2=(2,1,1),\qquad \mathbf{v}_3=(5,4,1),\]and let $\mathbf{u}=(1,1,3)$.
 \begin{enumerate}[label=\textbf{(\alph*)},leftmargin=9mm,itemsep=1.5mm,topsep=2mm]
 \item \textbf{[2.5 marks]} Determine whether $S$ is linearly independent or linearly dependent. Show all your work.
-\item \textbf{[1.5 marks]} Determine whether $\mathbf{u}$ belongs to $\operatorname{span}(S)$, that is, whether $\mathbf{u}$ is a linear combination of $\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3$. If it is, write $\mathbf{u}$ as such a linear combination; if it is not, explain why.
+\item \textbf{[1.5 marks]} Determine whether $\mathbf{u}$ belongs to $\operatorname{span}(S)$, that is, whether $\mathbf{u}$ is a linear combination of $\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3$. If it is, write $\mathbf{u}$ as such a linear combination; if it is not, explain why. (You may reuse the row operations from part (a).)
 \end{enumerate}
 \vspace{2mm}\textbf{Working:}\par\vspace{5.5mm}
 \workline\vspace{6.6mm}
@@ -164,7 +165,7 @@ $\square$ C.~$W(x)=e^{3x}$; the set is linearly dependent because $e^{2x}$ is a 
 \vspace{1.5mm}Let $S=\{p_1,p_2,p_3\}$ be the set of polynomials in $P_2$ given by\[p_1=1+x+x^{2},\qquad p_2=1-x+2x^{2},\qquad p_3=2+x-x^{2},\]and let $u=3-2x+2x^{2}$.
 \begin{enumerate}[label=\textbf{(\alph*)},leftmargin=9mm,itemsep=1.5mm,topsep=2mm]
 \item \textbf{[2.5 marks]} Determine whether $S$ is linearly independent or linearly dependent. Show all your work.
-\item \textbf{[1.5 marks]} Determine whether $u$ belongs to $\operatorname{span}(S)$, that is, whether $u$ is a linear combination of $p_1,p_2,p_3$. If it is, write $u$ as such a linear combination; if it is not, explain why.
+\item \textbf{[1.5 marks]} Determine whether $u$ belongs to $\operatorname{span}(S)$, that is, whether $u$ is a linear combination of $p_1,p_2,p_3$. If it is, write $u$ as such a linear combination; if it is not, explain why. (You may reuse the row operations from part (a).)
 \end{enumerate}
 \vspace{2mm}\textbf{Working:}\par\vspace{5.5mm}
 \workline\vspace{6.6mm}
@@ -224,7 +225,7 @@ $\square$ C.~$W(x)=-e^{-x}$; the set is linearly dependent because $W(x)<0$ & $\
 \vspace{1.5mm}Let $S=\{\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3\}$ be the set of vectors in $\mathbb{R}^3$ given by\[\mathbf{v}_1=(1,1,2),\qquad \mathbf{v}_2=(1,0,1),\qquad \mathbf{v}_3=(2,1,1),\]and let $\mathbf{u}=(3,3,4)$.
 \begin{enumerate}[label=\textbf{(\alph*)},leftmargin=9mm,itemsep=1.5mm,topsep=2mm]
 \item \textbf{[2.5 marks]} Determine whether $S$ is linearly independent or linearly dependent. Show all your work.
-\item \textbf{[1.5 marks]} Determine whether $\mathbf{u}$ belongs to $\operatorname{span}(S)$, that is, whether $\mathbf{u}$ is a linear combination of $\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3$. If it is, write $\mathbf{u}$ as such a linear combination; if it is not, explain why.
+\item \textbf{[1.5 marks]} Determine whether $\mathbf{u}$ belongs to $\operatorname{span}(S)$, that is, whether $\mathbf{u}$ is a linear combination of $\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3$. If it is, write $\mathbf{u}$ as such a linear combination; if it is not, explain why. (You may reuse the row operations from part (a).)
 \end{enumerate}
 \vspace{2mm}\textbf{Working:}\par\vspace{5.5mm}
 \workline\vspace{6.6mm}
@@ -284,7 +285,7 @@ $\square$ C.~$W(x)=x^{2}$; the set is linearly independent & $\square$ D.~$W(x)=
 \vspace{1.5mm}Let $S=\{p_1,p_2,p_3\}$ be the set of polynomials in $P_2$ given by\[p_1=1+x,\qquad p_2=1-x+x^{2},\qquad p_3=1+3x-x^{2},\]and let $u=1+2x+x^{2}$.
 \begin{enumerate}[label=\textbf{(\alph*)},leftmargin=9mm,itemsep=1.5mm,topsep=2mm]
 \item \textbf{[2.5 marks]} Determine whether $S$ is linearly independent or linearly dependent. Show all your work.
-\item \textbf{[1.5 marks]} Determine whether $u$ belongs to $\operatorname{span}(S)$, that is, whether $u$ is a linear combination of $p_1,p_2,p_3$. If it is, write $u$ as such a linear combination; if it is not, explain why.
+\item \textbf{[1.5 marks]} Determine whether $u$ belongs to $\operatorname{span}(S)$, that is, whether $u$ is a linear combination of $p_1,p_2,p_3$. If it is, write $u$ as such a linear combination; if it is not, explain why. (You may reuse the row operations from part (a).)
 \end{enumerate}
 \vspace{2mm}\textbf{Working:}\par\vspace{5.5mm}
 \workline\vspace{6.6mm}
@@ -344,7 +345,7 @@ $\square$ C.~$W(x)=xe^{2x}$; the set is linearly dependent because $W(0)=0$ & $\
 \vspace{1.5mm}Let $S=\{\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3\}$ be the set of vectors in $\mathbb{R}^3$ given by\[\mathbf{v}_1=(1,-1,2),\qquad \mathbf{v}_2=(1,1,0),\qquad \mathbf{v}_3=(1,-3,4),\]and let $\mathbf{u}=(1,2,1)$.
 \begin{enumerate}[label=\textbf{(\alph*)},leftmargin=9mm,itemsep=1.5mm,topsep=2mm]
 \item \textbf{[2.5 marks]} Determine whether $S$ is linearly independent or linearly dependent. Show all your work.
-\item \textbf{[1.5 marks]} Determine whether $\mathbf{u}$ belongs to $\operatorname{span}(S)$, that is, whether $\mathbf{u}$ is a linear combination of $\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3$. If it is, write $\mathbf{u}$ as such a linear combination; if it is not, explain why.
+\item \textbf{[1.5 marks]} Determine whether $\mathbf{u}$ belongs to $\operatorname{span}(S)$, that is, whether $\mathbf{u}$ is a linear combination of $\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3$. If it is, write $\mathbf{u}$ as such a linear combination; if it is not, explain why. (You may reuse the row operations from part (a).)
 \end{enumerate}
 \vspace{2mm}\textbf{Working:}\par\vspace{5.5mm}
 \workline\vspace{6.6mm}
@@ -404,7 +405,7 @@ $\square$ C.~$W(x)=2x$; the Wronskian test is inconclusive because $W(0)=0$ & $\
 \vspace{1.5mm}Let $S=\{p_1,p_2,p_3\}$ be the set of polynomials in $P_2$ given by\[p_1=1+x^{2},\qquad p_2=x+x^{2},\qquad p_3=1-x+x^{2},\]and let $u=-1+4x+x^{2}$.
 \begin{enumerate}[label=\textbf{(\alph*)},leftmargin=9mm,itemsep=1.5mm,topsep=2mm]
 \item \textbf{[2.5 marks]} Determine whether $S$ is linearly independent or linearly dependent. Show all your work.
-\item \textbf{[1.5 marks]} Determine whether $u$ belongs to $\operatorname{span}(S)$, that is, whether $u$ is a linear combination of $p_1,p_2,p_3$. If it is, write $u$ as such a linear combination; if it is not, explain why.
+\item \textbf{[1.5 marks]} Determine whether $u$ belongs to $\operatorname{span}(S)$, that is, whether $u$ is a linear combination of $p_1,p_2,p_3$. If it is, write $u$ as such a linear combination; if it is not, explain why. (You may reuse the row operations from part (a).)
 \end{enumerate}
 \vspace{2mm}\textbf{Working:}\par\vspace{5.5mm}
 \workline\vspace{6.6mm}
@@ -464,7 +465,7 @@ $\square$ C.~$W(x)=e^{5x}$; the set is linearly dependent because $e^{3x}=e^{x}\
 \vspace{1.5mm}Let $S=\{\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3\}$ be the set of vectors in $\mathbb{R}^3$ given by\[\mathbf{v}_1=(1,2,1),\qquad \mathbf{v}_2=(2,1,-1),\qquad \mathbf{v}_3=(1,1,2),\]and let $\mathbf{u}=(4,3,-3)$.
 \begin{enumerate}[label=\textbf{(\alph*)},leftmargin=9mm,itemsep=1.5mm,topsep=2mm]
 \item \textbf{[2.5 marks]} Determine whether $S$ is linearly independent or linearly dependent. Show all your work.
-\item \textbf{[1.5 marks]} Determine whether $\mathbf{u}$ belongs to $\operatorname{span}(S)$, that is, whether $\mathbf{u}$ is a linear combination of $\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3$. If it is, write $\mathbf{u}$ as such a linear combination; if it is not, explain why.
+\item \textbf{[1.5 marks]} Determine whether $\mathbf{u}$ belongs to $\operatorname{span}(S)$, that is, whether $\mathbf{u}$ is a linear combination of $\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3$. If it is, write $\mathbf{u}$ as such a linear combination; if it is not, explain why. (You may reuse the row operations from part (a).)
 \end{enumerate}
 \vspace{2mm}\textbf{Working:}\par\vspace{5.5mm}
 \workline\vspace{6.6mm}
@@ -524,7 +525,7 @@ $\square$ C.~$W(x)=-1$; the set is linearly independent & $\square$ D.~$W(x)=0$ 
 \vspace{1.5mm}Let $S=\{p_1,p_2,p_3\}$ be the set of polynomials in $P_2$ given by\[p_1=2+x-x^{2},\qquad p_2=1+x+x^{2},\qquad p_3=4+3x+x^{2},\]and let $u=1+2x+x^{2}$.
 \begin{enumerate}[label=\textbf{(\alph*)},leftmargin=9mm,itemsep=1.5mm,topsep=2mm]
 \item \textbf{[2.5 marks]} Determine whether $S$ is linearly independent or linearly dependent. Show all your work.
-\item \textbf{[1.5 marks]} Determine whether $u$ belongs to $\operatorname{span}(S)$, that is, whether $u$ is a linear combination of $p_1,p_2,p_3$. If it is, write $u$ as such a linear combination; if it is not, explain why.
+\item \textbf{[1.5 marks]} Determine whether $u$ belongs to $\operatorname{span}(S)$, that is, whether $u$ is a linear combination of $p_1,p_2,p_3$. If it is, write $u$ as such a linear combination; if it is not, explain why. (You may reuse the row operations from part (a).)
 \end{enumerate}
 \vspace{2mm}\textbf{Working:}\par\vspace{5.5mm}
 \workline\vspace{6.6mm}
@@ -584,7 +585,7 @@ $\square$ C.~$W(x)=5x^{4}$; the set is linearly independent & $\square$ D.~$W(x)
 \vspace{1.5mm}Let $S=\{\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3\}$ be the set of vectors in $\mathbb{R}^3$ given by\[\mathbf{v}_1=(1,-2,1),\qquad \mathbf{v}_2=(3,1,2),\qquad \mathbf{v}_3=(5,-3,4),\]and let $\mathbf{u}=(2,1,3)$.
 \begin{enumerate}[label=\textbf{(\alph*)},leftmargin=9mm,itemsep=1.5mm,topsep=2mm]
 \item \textbf{[2.5 marks]} Determine whether $S$ is linearly independent or linearly dependent. Show all your work.
-\item \textbf{[1.5 marks]} Determine whether $\mathbf{u}$ belongs to $\operatorname{span}(S)$, that is, whether $\mathbf{u}$ is a linear combination of $\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3$. If it is, write $\mathbf{u}$ as such a linear combination; if it is not, explain why.
+\item \textbf{[1.5 marks]} Determine whether $\mathbf{u}$ belongs to $\operatorname{span}(S)$, that is, whether $\mathbf{u}$ is a linear combination of $\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3$. If it is, write $\mathbf{u}$ as such a linear combination; if it is not, explain why. (You may reuse the row operations from part (a).)
 \end{enumerate}
 \vspace{2mm}\textbf{Working:}\par\vspace{5.5mm}
 \workline\vspace{6.6mm}
@@ -644,7 +645,7 @@ $\square$ C.~$W(x)=-2$; the set is linearly independent & $\square$ D.~$W(x)=2$;
 \vspace{1.5mm}Let $S=\{p_1,p_2,p_3\}$ be the set of polynomials in $P_2$ given by\[p_1=1+2x,\qquad p_2=x-x^{2},\qquad p_3=1+x^{2},\]and let $u=1-x+x^{2}$.
 \begin{enumerate}[label=\textbf{(\alph*)},leftmargin=9mm,itemsep=1.5mm,topsep=2mm]
 \item \textbf{[2.5 marks]} Determine whether $S$ is linearly independent or linearly dependent. Show all your work.
-\item \textbf{[1.5 marks]} Determine whether $u$ belongs to $\operatorname{span}(S)$, that is, whether $u$ is a linear combination of $p_1,p_2,p_3$. If it is, write $u$ as such a linear combination; if it is not, explain why.
+\item \textbf{[1.5 marks]} Determine whether $u$ belongs to $\operatorname{span}(S)$, that is, whether $u$ is a linear combination of $p_1,p_2,p_3$. If it is, write $u$ as such a linear combination; if it is not, explain why. (You may reuse the row operations from part (a).)
 \end{enumerate}
 \vspace{2mm}\textbf{Working:}\par\vspace{5.5mm}
 \workline\vspace{6.6mm}

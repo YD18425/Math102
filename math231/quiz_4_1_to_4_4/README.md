@@ -13,9 +13,9 @@ independent set + u in span in versions B, C, F, G, J).
 ## Contents
 | Path | What it is |
 |---|---|
-| `release/MATH231_Quiz_4.1-4.4_Student_A-J.tex` / `.pdf` | STUDENT paper, versions A--J, 20 A4 pages (pages 1--2 = A, ..., 19--20 = J). No answers. **This is the only file to print for students.** |
-| `release/MATH231_Quiz_4.1-4.4_Solved_A-J.tex` / `.pdf` | INSTRUCTOR solved copy, same 20 pages, answers marked and worked solutions in blue. |
-| `release/MATH231_Quiz_4.1-4.4_Rubric_A-J.tex` / `.pdf` | Detailed rubric (32 pages): conventions, master answer grid, checkpoints, per-version keys with option-by-option reasons, model solutions, source provenance. |
+| `release/MATH231_Quiz3_4.1-4.4_Student_A-J.tex` / `.pdf` | STUDENT paper, versions A--J, 20 A4 pages (pages 1--2 = A, ..., 19--20 = J). No answers. **This is the only file to print for students.** |
+| `release/MATH231_Quiz3_4.1-4.4_Solved_A-J.tex` / `.pdf` | INSTRUCTOR solved copy, same 20 pages, answers marked and worked solutions in blue. |
+| `release/MATH231_Quiz3_4.1-4.4_Rubric_A-J.tex` / `.pdf` | Detailed rubric (32 pages): conventions, master answer grid, checkpoints, per-version keys with option-by-option reasons, model solutions, source provenance. |
 | `release/figures/branding/` | The two official logos copied from the course project (used by the TeX files; guarded by `\IfFileExists`). |
 | `analysis/SOURCE_ANALYSIS.md` | Section-by-section analysis of the notes, taught methods, source issues, specification and design decisions. |
 | `analysis/SOURCE_INVENTORY.csv`, `SOURCE_MAP.csv`, `BLUEPRINT.csv`, `VERSION_LEDGER.csv`, `RUBRIC_CHECKPOINTS.csv`, `INDEPENDENT_MATH_QA.csv` | Inventory of every source item (62 rows), item-to-source map (90 rows), blueprint, version ledger, checkpoint table, independent verification log (90 rows, 0 failures). |
@@ -37,4 +37,4 @@ and on Overleaf with the pdfLaTeX compiler). Compiled with TeX Live 2023 pdfTeX 
 4. `python3 build/compile_check.py --student-tex ... --solved-tex ... --rubric-tex ... --output-dir release/build --version-ids A,B,C,D,E,F,G,H,I,J --pages-per-version 2`
 5. `python3 build/qa_checks.py release` and inspect `release/build/contact_sheets/`.
 
-Generated 2026-11-04T17:01:04Z.
+Generated 2026-11-04T17:30:31Z.

@@ -1,6 +1,6 @@
 {
  "course": "Math 231 -- Linear Algebra (Qatar University), instructor Dr. Yousef Dabboorasad",
- "assessment": "Quiz, Sections 4.1-4.4 (Real Vector Spaces, Subspaces, Spanning Sets, Linear Independence); term Fall 2026 (from the project's main.tex); quiz number, date and time limit NOT supplied and NOT invented",
+ "assessment": "Quiz 3, Sections 4.1-4.4 (Real Vector Spaces, Subspaces, Spanning Sets, Linear Independence); term Fall 2026 (from the project's main.tex); date Thursday, 5 November 2026 and time limit 20 minutes confirmed by the instructor on 2026-11-04",
  "scope": "Sections 4.1, 4.2, 4.3, 4.4 of the Math 231 notes",
  "source_filenames": [
   "Math_231__Linear_Algebra___Complete_.zip (uploaded course project)",
@@ -36,7 +36,7 @@
   "tf": "4 x 0.5 = 2",
   "mcq": "4 x 1 = 4",
   "written": "4 = 2.5 (a) + 1.5 (b), eight 0.5-mark checkpoints",
-  "note": "ASSUMED (not supplied by the instructor); every weight is a single number in build/quizdata.py SPEC"
+  "note": "CONFIRMED by the instructor on 2026-11-04; every weight is a single number in build/quizdata.py SPEC"
  },
  "expected_student_pages": 20,
  "actual_student_pages": 20,
@@ -83,16 +83,22 @@
   "missing": [],
   "fragment_order_identical": true
  },
- "student_answer_leak_check": "PASS: student TeX and extracted PDF text contain no answer boxes (blacksquare), keys, 'Answer:', solution phrases, source citations, instructor tags, annotations or hidden layers; PDF metadata: {\"format\": \"PDF 1.5\", \"title\": \"MATH 231 Quiz Sections 4.1-4.4 \\u2013 Student paper \\u2013 Versions A-J\", \"author\": \"Dr. Yousef Dabboorasad\", \"subject\": \"MATH 231 Quiz; Sections 4.1\\u20134.4; versions A\\u2013J\", \"keywords\": \"\", \"creator\": \"LaTeX with hyperref\", \"producer\": \"pdfTeX-1.40.25\", \"creationDate\": \"D:20261104165315Z\", \"modDate\": \"D:20261104165315Z\", \"trapped\": \"\", \"encryption\": null}",
+ "student_answer_leak_check": "PASS: student TeX and extracted PDF text contain no answer boxes (blacksquare), keys, 'Answer:', solution phrases, source citations, instructor tags, annotations or hidden layers; PDF metadata: {\"format\": \"PDF 1.5\", \"title\": \"MATH 231 Quiz 3 Sections 4.1-4.4 \\u2013 Student paper \\u2013 Versions A-J\", \"author\": \"Dr. Yousef Dabboorasad\", \"subject\": \"MATH 231 Quiz 3; Sections 4.1\\u20134.4; versions A\\u2013J\", \"keywords\": \"\", \"creator\": \"LaTeX with hyperref\", \"producer\": \"pdfTeX-1.40.25\", \"creationDate\": \"D:20261104172741Z\", \"modDate\": \"D:20261104172741Z\", \"trapped\": \"\", \"encryption\": null}",
  "visual_review_page_count": 72,
  "visual_review_method": "every page rendered (contact sheets in qa/contact_sheets, 6 pages per sheet) and inspected; high-resolution inspection of student A, C, E, J pages 1-2, solved A, B, E, H, J pages, rubric pages 1-5; no clipping, overlap, missing glyphs or spill detected after the final layout fixes",
  "unresolved_issues": [],
- "instructor_decisions_pending": [
-  "Quiz number/label (macro \\QuizLabel in each TeX file; currently 'Quiz')",
-  "Date and time limit (not printed; Date line left blank)",
-  "Total marks and item weights (assumed 10 = 2 + 4 + 4; change SPEC in build/quizdata.py and regenerate)",
-  "Whether to keep the mixed design of Problem 3 (dependent/u-not-in-span versions A, D, E, H, I versus independent/u-in-span versions B, C, F, G, J)"
+ "instructor_confirmations_2026_11_04": [
+  "Total marks 10 = 2 (T/F) + 4 (MCQ) + 4 (written): confirmed",
+  "Quiz label: Quiz 3; date: Thursday, 5 November 2026 (written 5-11-2026); time allowed: 20 minutes",
+  "Remaining design choices (Problem 3 mixed families, item selection) left to the author's judgement"
  ],
+ "timing_estimate_minutes": {
+  "tf": 3,
+  "mcq": 8.5,
+  "written": 8,
+  "total": 19.5,
+  "note": "estimate for a prepared student; the 20-minute limit is tight but feasible; part (b) of Problem 3 now tells students they may reuse the row operations of part (a)"
+ },
  "source_issues_reported_not_altered": [
   "Notes Example 4.4.3 solution text duplicates Example 4.4.4 (r=5 polynomials / Fact 4.4.1(2)); correct argument r=4>n=3 by Fact 4.4.1(1) as in the Beamer deck",
   "Notes Extra Problems 4.2.7 closing remark 'the set is linearly dependent' is unjustified (three pivots => {M1,M2,M3} independent)",
@@ -116,11 +122,11 @@
   "G8_delivery": "PASS (hashes, ZIPs, README)"
  },
  "all_gates_passed": true,
- "generated_at_utc": "2026-11-04T17:01:04Z",
+ "generated_at_utc": "2026-11-04T17:30:31Z",
  "notes": "Instructor ZIP is NOT for students. PRINT_ONLY.zip contains the student PDF only.",
  "zip_sha256": {
-  "COMPLETE_INSTRUCTOR.zip": "2799eb72f2da0bd1145beec59ef06bf732df47c0ffeabba5d3cf98c2e195ccfc",
-  "PRINT_ONLY.zip": "c9cbcb24e8b966330ad77e667a3da066fe7da5f890b0f6d169b36433c2bb89d6"
+  "COMPLETE_INSTRUCTOR.zip": "2e5a02a1a0f24e794bbe6697001b31f9ddf99deb1d819827403d8173c77c98ac",
+  "PRINT_ONLY.zip": "24eaf33d1c08cd237cd44145d2146909707422c0860beab7620a1756d9013152"
  },
  "zip_member_check": "PASS: every ZIP member re-hashed against the delivered file"
 }

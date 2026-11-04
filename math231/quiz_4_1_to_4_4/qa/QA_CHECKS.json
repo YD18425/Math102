@@ -63,26 +63,26 @@
  "metadata": {
   "Student": {
    "format": "PDF 1.5",
-   "title": "MATH 231 Quiz Sections 4.1-4.4 – Student paper – Versions A-J",
+   "title": "MATH 231 Quiz 3 Sections 4.1-4.4 – Student paper – Versions A-J",
    "author": "Dr. Yousef Dabboorasad",
-   "subject": "MATH 231 Quiz; Sections 4.1–4.4; versions A–J",
+   "subject": "MATH 231 Quiz 3; Sections 4.1–4.4; versions A–J",
    "keywords": "",
    "creator": "LaTeX with hyperref",
    "producer": "pdfTeX-1.40.25",
-   "creationDate": "D:20261104165315Z",
-   "modDate": "D:20261104165315Z",
+   "creationDate": "D:20261104172741Z",
+   "modDate": "D:20261104172741Z",
    "trapped": "",
    "encryption": null
   }
  },
  "problems": [],
  "sha256": {
-  "MATH231_Quiz_4.1-4.4_Student_A-J.pdf": "ac572ce13c6508402aaff69c1ff45618c09508f0f4263601802f6824a615542c",
-  "MATH231_Quiz_4.1-4.4_Solved_A-J.pdf": "621395b068c0f91f4391f72e744662f26850f4c0144f5301556dd6b1936b4b14",
-  "MATH231_Quiz_4.1-4.4_Rubric_A-J.pdf": "02ea217db328f9e6c29abfb41dd2c72447af9edd60aee81fe6fdb37c51ee3fed",
-  "MATH231_Quiz_4.1-4.4_Student_A-J.tex": "c0adec60cf40052ff1741c8792d4fc119e937166e0ddd8023553c6522c30751e",
-  "MATH231_Quiz_4.1-4.4_Solved_A-J.tex": "d41746557d35762f8991c59b7dde942f07156be6ec159ada6cd6460a91bdd531",
-  "MATH231_Quiz_4.1-4.4_Rubric_A-J.tex": "0cf92da320b4e99272c4e0a53609f230b941f3be379a18b2bec59ad0bd5a551a"
+  "MATH231_Quiz3_4.1-4.4_Student_A-J.pdf": "cc463fd54a1f494f32bb3d801b7a004d3c5896062fab96f2746ef9a40c8c99ff",
+  "MATH231_Quiz3_4.1-4.4_Solved_A-J.pdf": "2547209b7cc87f8a6933a639cb360d5431695f29088133aee6e26e82c99ea6e9",
+  "MATH231_Quiz3_4.1-4.4_Rubric_A-J.pdf": "700f7cbc901eb9b2f1491880182a63d8300202b5aee0f03cc49b9c9ac9e75ac6",
+  "MATH231_Quiz3_4.1-4.4_Student_A-J.tex": "9642a724c5a5cb326954a02081476b5d4cff490be9d7d8a87f76d27f93d1320e",
+  "MATH231_Quiz3_4.1-4.4_Solved_A-J.tex": "9ec4c3b426eddd46c83d6f4388c750edb9f2c56750e588d35c0000dda008e147",
+  "MATH231_Quiz3_4.1-4.4_Rubric_A-J.tex": "56274d961d0a880ecdadec3fea6bac5869333aae8a892524433a7259ab722d32"
  },
  "status": "PASS"
 }

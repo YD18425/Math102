@@ -5,7 +5,7 @@ Usage: python3 -I package.py <scratch_release_dir> <scratch_build_dir> <dest_dir
 import csv, hashlib, json, os, shutil, sys, zipfile, datetime, subprocess
 
 REL, BLD, DEST = sys.argv[1], sys.argv[2], sys.argv[3]
-base = "MATH231_Quiz_4.1-4.4"
+base = "MATH231_Quiz3_4.1-4.4"
 def sha(p):
     h = hashlib.sha256()
     with open(p, "rb") as f:
@@ -45,7 +45,7 @@ pdfl = subprocess.run(["pdflatex", "--version"], capture_output=True, text=True)
 
 report = {
   "course": "Math 231 -- Linear Algebra (Qatar University), instructor Dr. Yousef Dabboorasad",
-  "assessment": "Quiz, Sections 4.1-4.4 (Real Vector Spaces, Subspaces, Spanning Sets, Linear Independence); term Fall 2026 (from the project's main.tex); quiz number, date and time limit NOT supplied and NOT invented",
+  "assessment": "Quiz 3, Sections 4.1-4.4 (Real Vector Spaces, Subspaces, Spanning Sets, Linear Independence); term Fall 2026 (from the project's main.tex); date Thursday, 5 November 2026 and time limit 20 minutes confirmed by the instructor on 2026-11-04",
   "scope": "Sections 4.1, 4.2, 4.3, 4.4 of the Math 231 notes",
   "source_filenames": [
     "Math_231__Linear_Algebra___Complete_.zip (uploaded course project)",
@@ -66,7 +66,7 @@ report = {
   },
   "versions": list("ABCDEFGHIJ"),
   "marks_scheme": {"total": 10, "tf": "4 x 0.5 = 2", "mcq": "4 x 1 = 4", "written": "4 = 2.5 (a) + 1.5 (b), eight 0.5-mark checkpoints",
-                   "note": "ASSUMED (not supplied by the instructor); every weight is a single number in build/quizdata.py SPEC"},
+                   "note": "CONFIRMED by the instructor on 2026-11-04; every weight is a single number in build/quizdata.py SPEC"},
   "expected_student_pages": 20, "actual_student_pages": auto["files"]["student"]["pages"],
   "expected_solved_pages": 20, "actual_solved_pages": auto["files"]["solved"]["pages"],
   "rubric_pages": auto["files"]["rubric"]["pages"],
@@ -82,12 +82,12 @@ report = {
   "visual_review_page_count": 20 + 20 + auto["files"]["rubric"]["pages"],
   "visual_review_method": "every page rendered (contact sheets in qa/contact_sheets, 6 pages per sheet) and inspected; high-resolution inspection of student A, C, E, J pages 1-2, solved A, B, E, H, J pages, rubric pages 1-5; no clipping, overlap, missing glyphs or spill detected after the final layout fixes",
   "unresolved_issues": [],
-  "instructor_decisions_pending": [
-    "Quiz number/label (macro \\QuizLabel in each TeX file; currently 'Quiz')",
-    "Date and time limit (not printed; Date line left blank)",
-    "Total marks and item weights (assumed 10 = 2 + 4 + 4; change SPEC in build/quizdata.py and regenerate)",
-    "Whether to keep the mixed design of Problem 3 (dependent/u-not-in-span versions A, D, E, H, I versus independent/u-in-span versions B, C, F, G, J)"
+  "instructor_confirmations_2026_11_04": [
+    "Total marks 10 = 2 (T/F) + 4 (MCQ) + 4 (written): confirmed",
+    "Quiz label: Quiz 3; date: Thursday, 5 November 2026 (written 5-11-2026); time allowed: 20 minutes",
+    "Remaining design choices (Problem 3 mixed families, item selection) left to the author's judgement"
   ],
+  "timing_estimate_minutes": {"tf": 3, "mcq": 8.5, "written": 8, "total": 19.5, "note": "estimate for a prepared student; the 20-minute limit is tight but feasible; part (b) of Problem 3 now tells students they may reuse the row operations of part (a)"},
   "source_issues_reported_not_altered": [
     "Notes Example 4.4.3 solution text duplicates Example 4.4.4 (r=5 polynomials / Fact 4.4.1(2)); correct argument r=4>n=3 by Fact 4.4.1(1) as in the Beamer deck",
     "Notes Extra Problems 4.2.7 closing remark 'the set is linearly dependent' is unjustified (three pivots => {M1,M2,M3} independent)",

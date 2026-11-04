@@ -1,6 +1,6 @@
 # SOURCE ANALYSIS — MATH 231 (Linear Algebra), Sections 4.1–4.4
 
-Prepared for the paper-based quiz **MATH 231 Quiz, Sections 4.1–4.4, versions A–J** (Fall 2026, instructor Dr. Yousef Dabboorasad, Qatar University). This document records what the authorized sources contain, how the instructor solves each kind of task, what was and was not inspected, the source issues found, and how the quiz items map to the sources.
+Prepared for the paper-based quiz **MATH 231 Quiz 3, Sections 4.1–4.4, versions A–J** (Fall 2026, Thursday 5 November 2026, 20 minutes; instructor Dr. Yousef Dabboorasad, Qatar University). This document records what the authorized sources contain, how the instructor solves each kind of task, what was and was not inspected, the source issues found, and how the quiz items map to the sources.
 
 ## 1. Source intake (gate G0)
 
@@ -57,15 +57,15 @@ Everything in §§4.1–4.4 of the notes was read in full from the TeX source (d
 
 ## 4. Quiz specification adopted (gate G2) and assumptions
 
-The request named only the course and coverage ("quiz for 4.1 to 4.4 of Math 231"). The following were therefore fixed from the course's own conventions and the proven two-page layout; each is a single macro or number in `build/quizdata.py` / the TeX preamble and can be changed by the instructor:
+The original request named only the course and coverage ("quiz for 4.1 to 4.4 of Math 231"); the values below were first fixed from the course's own conventions and the proven two-page layout, and the marks, label, date and time were then confirmed by the instructor on 2026-11-04. Each remains a single macro or number in `build/quizdata.py` / the TeX preamble:
 
 | Field | Adopted value | Basis |
 |---|---|---|
 | Course / institution strings | Math 231 — Linear Algebra; Qatar University; Department of Mathematics, Statistics and Physics; Dr. Yousef Dabboorasad; "Based on Anton & Rorres, Elementary Linear Algebra, 12e" | `branding.tex`, Spring 2026 midterm title page |
 | Term | Fall 2026 | `main.tex` of the uploaded project (`\date{Fall 2026}`) |
-| Quiz label | "Quiz" (no number) — macro `\QuizLabel` | not supplied; the project's own quizzes are labelled by chapter |
-| Date / time limit | Date left as a blank line; no time printed | not supplied — nothing invented |
-| Total marks | **10** | assumption (common quiz total); the instructor's exams use integer points |
+| Quiz label | "Quiz 3" (macro `\QuizLabel`) | confirmed by the instructor on 2026-11-04 |
+| Date / time limit | Thursday, 5 November 2026; 20 minutes (printed in the header) | confirmed by the instructor on 2026-11-04 (written "5-11-2026, 20 minutes") |
+| Total marks | **10** | confirmed by the instructor on 2026-11-04 |
 | Problem 1 | 4 True/False × 0.5 = 2 marks, no justification (one statement per section) | midterm/quiz convention "no justification needed" |
 | Problem 2 | 4 MCQ × 1 = 4 marks, exactly one option, >1 tick = 0 (one question per section) | midterm convention "questions with more than one answer will be marked zero" |
 | Problem 3 | written, 4 marks = (a) 2.5 + (b) 1.5, eight 0.5-mark checkpoints | proven checkpoint pattern |
@@ -79,6 +79,7 @@ The request named only the course and coverage ("quiz for 4.1 to 4.4 of Math 231
 * **MCQ (a)** reuses the operations of Examples 4.1.3 and 4.1.4 verbatim in versions A and B (the notes' own examples), with new operations in the other eight versions; every listed non-failing axiom was verified symbolically to hold.
 * **MCQ (d)** uses 2×2 Wronskians only, with exponentials and polynomials as in the notes; distractors encode the notes' own warning (zero at a point vs. identically zero), a sign/derivative error, and "W = 0 ⇒ inconclusive".
 * **T/F keys** are mixed in every version (patterns TFTF, FTFT, TFFT, FTTF, TTFF, FFTT, …); each statement is used once across the ten versions. No MCQ in the same version gives away a T/F answer.
+* **Timing.** Estimated 19–20 minutes for a prepared student (T/F about 3, MCQ about 8.5, written about 8); part (b) of Problem 3 tells students they may reuse the row operations of part (a).
 * **Out of scope on purpose:** basis, dimension, coordinates (§4.5–4.6), row/column/null space (§4.8–4.9). Where the notes mention dim(P₂) = 3 inside the §4.3 remark, the quiz does not rely on it.
 
 ## 6. Verification performed

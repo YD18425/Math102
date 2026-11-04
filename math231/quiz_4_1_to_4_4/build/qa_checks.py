@@ -7,7 +7,7 @@ import fitz  # PyMuPDF
 
 R = sys.argv[1]
 B = os.path.join(R, "build")
-base = "MATH231_Quiz_4.1-4.4"
+base = "MATH231_Quiz3_4.1-4.4"
 paths = {k: os.path.join(B, f"{base}_{k}_A-J.pdf") for k in ("Student", "Solved", "Rubric")}
 texs = {k: os.path.join(R, f"{base}_{k}_A-J.tex") for k in ("Student", "Solved", "Rubric")}
 report = {"page_structure": {}, "parity": {}, "leak_scan": {}, "metadata": {}, "problems": []}
