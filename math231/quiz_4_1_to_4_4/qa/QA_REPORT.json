@@ -1,0 +1,132 @@
+{
+ "course": "Math 231 -- Linear Algebra (Qatar University), instructor Dr. Yousef Dabboorasad",
+ "assessment": "Quiz 3, Sections 4.1-4.4 (Real Vector Spaces, Subspaces, Spanning Sets, Linear Independence); term Fall 2026 (from the project's main.tex); date Thursday, 5 November 2026 and time limit 20 minutes confirmed by the instructor on 2026-11-04",
+ "scope": "Sections 4.1, 4.2, 4.3, 4.4 of the Math 231 notes",
+ "source_filenames": [
+  "Math_231__Linear_Algebra___Complete_.zip (uploaded course project)",
+  "01_lecture_notes/a4_notes/math231_lecture_notes_v02_2026_fully_solved.tex (primary; lines 10672-13885)",
+  "01_lecture_notes/slides/math231_lecture_beamer_chapter_04_vector_spaces.tex (secondary)",
+  "00_admin/latex/branding.tex; figures/branding/math_department_logo.png; figures/branding/qatar_university_logo.png",
+  "Paper_Based_Quiz_New_Course_Handoff.zip (workflow only; verify_handoff.py PASS)"
+ ],
+ "source_hashes": {
+  "Math_231__Linear_Algebra___Complete_.zip": "30c895a1a2dd989d59d999786c6557eb799f6f2465e257df0e62c0b12b73ded3",
+  "Paper_Based_Quiz_New_Course_Handoff.zip": "39331164a0fb9d71aeb5e3d149a954759c0b9cf5d6785aae9c8dd5281707a439",
+  "math231_lecture_notes_v02_2026_fully_solved.tex": "861b3d9d5f1c71b2aae75908a595f31401f6e17f0f6e2f3e3dad4af3aa8cad21",
+  "math231_lecture_notes_v02_2026_partially_solved.tex": "52269d29dbaf5756b1a710f3b329244079251af1f8c1449b587c993b18698af8",
+  "math231_lecture_beamer_chapter_04_vector_spaces.tex": "5aadd1f593759e996b07fe2003d47e3afa573ceb0fb961593819bfadc2bdf018",
+  "branding.tex": "32fa5d2948b566ab81a14ca4253e47a0c10e366b0f0d0350220d6f37600c69f0",
+  "math_department_logo.png": "3baef55183e877b3633c064d868e44a4b198b361585245a12869745b784a30d8",
+  "qatar_university_logo.png": "c1dbb3355aae52d43097ec0090d7a14a80e9c4367c610b6fdc2fbf756de96792"
+ },
+ "versions": [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J"
+ ],
+ "marks_scheme": {
+  "total": 10,
+  "tf": "4 x 0.5 = 2",
+  "mcq": "4 x 1 = 4",
+  "written": "4 = 2.5 (a) + 1.5 (b), eight 0.5-mark checkpoints",
+  "note": "CONFIRMED by the instructor on 2026-11-04; every weight is a single number in build/quizdata.py SPEC"
+ },
+ "expected_student_pages": 20,
+ "actual_student_pages": 20,
+ "expected_solved_pages": 20,
+ "actual_solved_pages": 20,
+ "rubric_pages": 32,
+ "pdfs_a4": true,
+ "version_labels_on_expected_pages": true,
+ "compiler": "pdfTeX 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian); pdflatex -interaction=nonstopmode -halt-on-error, two passes per file; fonts newtxtext/newtxmath + TeX Gyre Termes",
+ "overfull_or_underfull_boxes_in_final_logs": 0,
+ "math_checked_items": 90,
+ "math_total_items": 90,
+ "math_check_method": "build/verify_math.py: SymPy symbolic axiom checks (MCQ a), exhaustive integer-grid closure + explicit witnesses (MCQ b), linsolve on every candidate (MCQ c), symbolic Wronskian against a separately typed expected value (MCQ d), rank/det/linsolve + row-equivalence of the displayed elimination (Problem 3), concrete T/F claims recomputed, conceptual T/F checked against the cited source lines",
+ "page_structure_check": {
+  "Student": {
+   "pages": 20,
+   "all_a4": true,
+   "issues": []
+  },
+  "Solved": {
+   "pages": 20,
+   "all_a4": true,
+   "issues": []
+  },
+  "Rubric": {
+   "pages": 32,
+   "all_a4": true,
+   "version_sections_found": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J"
+   ]
+  }
+ },
+ "student_solved_parity": {
+  "fragments_checked": 270,
+  "missing": [],
+  "fragment_order_identical": true
+ },
+ "student_answer_leak_check": "PASS: student TeX and extracted PDF text contain no answer boxes (blacksquare), keys, 'Answer:', solution phrases, source citations, instructor tags, annotations or hidden layers; PDF metadata: {\"format\": \"PDF 1.5\", \"title\": \"MATH 231 Quiz 3 Sections 4.1-4.4 \\u2013 Student paper \\u2013 Versions A-J\", \"author\": \"Dr. Yousef Dabboorasad\", \"subject\": \"MATH 231 Quiz 3; Sections 4.1\\u20134.4; versions A\\u2013J\", \"keywords\": \"\", \"creator\": \"LaTeX with hyperref\", \"producer\": \"pdfTeX-1.40.25\", \"creationDate\": \"D:20261106151851Z\", \"modDate\": \"D:20261106151851Z\", \"trapped\": \"\", \"encryption\": null}",
+ "visual_review_page_count": 72,
+ "visual_review_method": "every page rendered (contact sheets in qa/contact_sheets, 6 pages per sheet) and inspected; high-resolution inspection of student A, C, E, J pages 1-2, solved A, B, E, H, J pages, rubric pages 1-5; no clipping, overlap, missing glyphs or spill detected after the final layout fixes",
+ "unresolved_issues": [],
+ "instructor_confirmations_2026_11_04": [
+  "Total marks 10 = 2 (T/F) + 4 (MCQ) + 4 (written): confirmed",
+  "Quiz label: Quiz 3; date: Thursday, 5 November 2026 (written 5-11-2026); time allowed: 20 minutes",
+  "Remaining design choices (Problem 3 mixed families, item selection) left to the author's judgement"
+ ],
+ "timing_estimate_minutes": {
+  "tf": 3,
+  "mcq": 8.5,
+  "written": 8,
+  "total": 19.5,
+  "note": "estimate for a prepared student; the 20-minute limit is tight but feasible; part (b) of Problem 3 now tells students they may reuse the row operations of part (a)"
+ },
+ "source_issues_reported_not_altered": [
+  "Notes Example 4.4.3 solution text duplicates Example 4.4.4 (r=5 polynomials / Fact 4.4.1(2)); correct argument r=4>n=3 by Fact 4.4.1(1) as in the Beamer deck",
+  "Notes Extra Problems 4.2.7 closing remark 'the set is linearly dependent' is unjustified (three pivots => {M1,M2,M3} independent)",
+  "Extra Problems 4.3.2 and 4.3.4 are duplicates",
+  "P_n versus blackboard-bold P_n notation differs between sections 4.2-4.3 and 4.4"
+ ],
+ "limitations": [
+  "No compiled PDF of the notes was supplied, so provenance uses file + line numbers and the notes' own labels; no physical page numbers are cited",
+  "Homework files for sections 4.1-4.4 in the project are empty placeholders, so no homework-based items could be sourced",
+  "The three PDFs were compiled with pdfLaTeX (TeX Live 2023) in this environment; the course project itself is configured for XeLaTeX, but the quiz files are standalone and use only pdfLaTeX-compatible packages"
+ ],
+ "gates": {
+  "G0_source_intake": "PASS",
+  "G1_method_inventory": "PASS (analysis/SOURCE_INVENTORY.csv, 62 rows)",
+  "G2_specification": "PASS with stated assumptions",
+  "G3_content_fairness": "PASS (mixed T/F keys; one correct MCQ option; same checkpoint structure in all versions)",
+  "G4_independent_math_audit": "PASS (90/90)",
+  "G5_scoring": "PASS (10 marks in every version; checkpoints sum to 4)",
+  "G6_artifacts": "PASS (three combined TeX + three PDFs)",
+  "G7_production": "PASS (compiled twice; A4; 20/20/32 pages; all pages inspected)",
+  "G8_delivery": "PASS (hashes, ZIPs, README)"
+ },
+ "all_gates_passed": true,
+ "generated_at_utc": "2026-11-06T15:19:28Z",
+ "notes": "Instructor ZIP is NOT for students. PRINT_ONLY.zip contains the student PDF only.",
+ "zip_sha256": {
+  "COMPLETE_INSTRUCTOR.zip": "6b89e0b75df1c955c20fd3225170540f3b41ae501c02b4fcbd0601e2800a7d04",
+  "PRINT_ONLY.zip": "6120e4939b4b1f4d79322d12966407a8a9d284564c7c84cbd4b69038822d4617"
+ },
+ "zip_member_check": "PASS: every ZIP member re-hashed against the delivered file"
+}

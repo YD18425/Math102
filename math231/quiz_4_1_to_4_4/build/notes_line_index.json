@@ -1,0 +1,372 @@
+[
+ [
+  10703,
+  "section",
+  "(4.1) Real Vector Spaces"
+ ],
+ [
+  10711,
+  "infoBox",
+  "Concepts"
+ ],
+ [
+  10737,
+  "defBox",
+  "Definition 4.1.1: Vector Space Axioms"
+ ],
+ [
+  10780,
+  "remarkBox",
+  "Remark 4.1.1"
+ ],
+ [
+  10790,
+  "thmBox",
+  "Theorem 4.1.1"
+ ],
+ [
+  10806,
+  "infoBox",
+  "To Show That a Set with Two Operations Is a Vector Space"
+ ],
+ [
+  10847,
+  "exampleBox",
+  "Example 4.1.1: $\\mathbb{R"
+ ],
+ [
+  10909,
+  "exampleBox",
+  "Example 4.1.2: $F(-\\infty, \\infty)$ Is a Vector Space"
+ ],
+ [
+  10977,
+  "exampleBox",
+  "Example 4.1.3: A Set That Is NOT a Vector Space"
+ ],
+ [
+  11026,
+  "exampleBox",
+  "Example 4.1.4: Another Set That Is NOT a Vector Space"
+ ],
+ [
+  11094,
+  "section",
+  "(4.2) Subspaces"
+ ],
+ [
+  11102,
+  "infoBox",
+  "Concepts"
+ ],
+ [
+  11129,
+  "defBox",
+  "Definition 4.2.1: Subspace"
+ ],
+ [
+  11139,
+  "thmBox",
+  "Theorem 4.2.1: The Subspace Test"
+ ],
+ [
+  11154,
+  "remarkBox",
+  "Remark 4.2.1: Showing a Set Is NOT a Subspace"
+ ],
+ [
+  11169,
+  "exampleBox",
+  "Example 4.2.1: The Zero Subspace"
+ ],
+ [
+  11200,
+  "exampleBox",
+  "Example 4.2.2: The First Quadrant Is NOT a Subspace"
+ ],
+ [
+  11245,
+  "exampleBox",
+  "Example 4.2.3: Symmetric Matrices Form a Subspace"
+ ],
+ [
+  11293,
+  "exampleBox",
+  "Example 4.2.4: Invertible Matrices Do NOT Form a Subspace"
+ ],
+ [
+  11317,
+  "exampleBox",
+  "Example 4.2.5: Singular Matrices Do NOT Form a Subspace"
+ ],
+ [
+  11369,
+  "defBox",
+  "The Vector Space $P_n$"
+ ],
+ [
+  11378,
+  "infoBox",
+  "Hierarchy of Function Spaces"
+ ],
+ [
+  11424,
+  "exampleBox",
+  "Example 4.2.6: Polynomials of Degree Exactly 2 Are NOT a Subspace"
+ ],
+ [
+  11477,
+  "exampleBox",
+  "Example 4.2.7: Solution Spaces of Homogeneous Systems"
+ ],
+ [
+  11525,
+  "exampleBox",
+  "Example 4.2.8: Solution Set of a Non-Homogeneous System"
+ ],
+ [
+  11551,
+  "thmBox",
+  "Theorem 4.2.2: Intersection of Subspaces"
+ ],
+ [
+  11561,
+  "infoBox",
+  "Illustration: Intersection of Subspaces"
+ ],
+ [
+  11677,
+  "remarkBox",
+  "Remark 4.2.2: Union of Subspaces"
+ ],
+ [
+  11687,
+  "exampleBox",
+  "Example 4.2.9: Union of Subspaces Is NOT a Subspace"
+ ],
+ [
+  11760,
+  "defBox",
+  "Definition 4.2.4: Linear Combination"
+ ],
+ [
+  11774,
+  "exampleBox",
+  "Example 4.2.10: Showing a Vector IS a Linear Combination"
+ ],
+ [
+  11843,
+  "exampleBox",
+  "Example 4.2.11: Showing a Vector Is NOT a Linear Combination"
+ ],
+ [
+  11899,
+  "exampleBox",
+  "Example 4.2.12: Linear Combination of Polynomials"
+ ],
+ [
+  11988,
+  "extraProblems",
+  "Extra Problems 4.2.1:"
+ ],
+ [
+  12017,
+  "extraProblems",
+  "Extra Problems 4.2.2:"
+ ],
+ [
+  12077,
+  "extraProblems",
+  "Extra Problems 4.2.3:"
+ ],
+ [
+  12098,
+  "extraProblems",
+  "Extra Problems 4.2.4:"
+ ],
+ [
+  12128,
+  "extraProblems",
+  "Extra Problems 4.2.5:"
+ ],
+ [
+  12157,
+  "extraProblems",
+  "Extra Problems 4.2.6:"
+ ],
+ [
+  12202,
+  "extraProblems",
+  "Extra Problems 4.2.7:"
+ ],
+ [
+  12332,
+  "extraProblems",
+  "Extra Problems 4.2.8"
+ ],
+ [
+  12451,
+  "extraProblems",
+  "Extra Problems 4.2.9"
+ ],
+ [
+  12576,
+  "section",
+  "(4.3) Spanning Sets"
+ ],
+ [
+  12586,
+  "infoBox",
+  "Concepts"
+ ],
+ [
+  12614,
+  "defBox",
+  "Definition 4.3.1: Span"
+ ],
+ [
+  12627,
+  "thmBox",
+  "Theorem 4.3.1: The Span of a Set Is a Subspace"
+ ],
+ [
+  12637,
+  "remarkBox",
+  "Remark 4.3.1: Properties of Span"
+ ],
+ [
+  12651,
+  "infoBox",
+  "Standard Unit Vectors"
+ ],
+ [
+  12664,
+  "remarkBox",
+  "Remark 4.3.2: Important Spanning Sets"
+ ],
+ [
+  12721,
+  "exampleBox",
+  "Example 4.3.1: Testing Whether Vectors Span $\\mathbb{R"
+ ],
+ [
+  12779,
+  "exampleBox",
+  "Example 4.3.2: Testing Whether Polynomials Span $P_2$"
+ ],
+ [
+  12842,
+  "extraProblems",
+  "Extra Problems 4.3.1:"
+ ],
+ [
+  12918,
+  "remarkBox",
+  "(untitled remark)"
+ ],
+ [
+  12992,
+  "extraProblems",
+  "Extra Problems 4.3.2:"
+ ],
+ [
+  13042,
+  "extraProblems",
+  "Extra Problems 4.3.3:"
+ ],
+ [
+  13115,
+  "extraProblems",
+  "Extra Problems 4.3.4:"
+ ],
+ [
+  13201,
+  "section",
+  "(4.4) Linear Independence"
+ ],
+ [
+  13209,
+  "infoBox",
+  "Concepts"
+ ],
+ [
+  13236,
+  "defBox",
+  "Definition 4.4.1: Linear Independence and Dependence"
+ ],
+ [
+  13253,
+  "thmBox",
+  "Theorem 4.4.1"
+ ],
+ [
+  13267,
+  "remarkBox",
+  "(untitled remark)"
+ ],
+ [
+  13280,
+  "exampleBox",
+  "Example 4.4.1: Linear Dependence in $\\mathbb{R"
+ ],
+ [
+  13357,
+  "exampleBox",
+  "Example 4.4.2: Linear Independence in $\\mathbb{P"
+ ],
+ [
+  13452,
+  "thmBox",
+  "Fact 4.4.1: Dimension Argument for Linear Dependence"
+ ],
+ [
+  13467,
+  "exampleBox",
+  "Example 4.4.3: Dimension Argument in $\\mathbb{R"
+ ],
+ [
+  13492,
+  "exampleBox",
+  "Example 4.4.4: Dimension Argument in $\\mathbb{P"
+ ],
+ [
+  13526,
+  "defBox",
+  "Definition 4.4.2: Wronskian"
+ ],
+ [
+  13541,
+  "thmBox",
+  "Fact 4.4.2: Wronskian Test for Linear Independence"
+ ],
+ [
+  13547,
+  "remarkBox",
+  "(untitled remark)"
+ ],
+ [
+  13617,
+  "exampleBox",
+  "Example 4.4.5: Wronskian with Exponentials"
+ ],
+ [
+  13664,
+  "exampleBox",
+  "Example 4.4.6: Wronskian with Polynomial Functions"
+ ],
+ [
+  13707,
+  "exampleBox",
+  "Example 4.4.7: Wronskian with Scalar Multiples"
+ ],
+ [
+  13748,
+  "remarkBox",
+  "(untitled remark)"
+ ],
+ [
+  13787,
+  "extraProblems",
+  "Extra Problems 4.4.1"
+ ]
+]
