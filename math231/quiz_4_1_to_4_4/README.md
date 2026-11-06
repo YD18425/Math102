@@ -37,4 +37,4 @@ and on Overleaf with the pdfLaTeX compiler). Compiled with TeX Live 2023 pdfTeX 
 4. `python3 build/compile_check.py --student-tex ... --solved-tex ... --rubric-tex ... --output-dir release/build --version-ids A,B,C,D,E,F,G,H,I,J --pages-per-version 2`
 5. `python3 build/qa_checks.py release` and inspect `release/build/contact_sheets/`.
 
-Generated 2026-11-04T17:30:31Z.
+Generated 2026-11-06T15:19:28Z.

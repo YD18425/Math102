@@ -83,7 +83,7 @@
   "missing": [],
   "fragment_order_identical": true
  },
- "student_answer_leak_check": "PASS: student TeX and extracted PDF text contain no answer boxes (blacksquare), keys, 'Answer:', solution phrases, source citations, instructor tags, annotations or hidden layers; PDF metadata: {\"format\": \"PDF 1.5\", \"title\": \"MATH 231 Quiz 3 Sections 4.1-4.4 \\u2013 Student paper \\u2013 Versions A-J\", \"author\": \"Dr. Yousef Dabboorasad\", \"subject\": \"MATH 231 Quiz 3; Sections 4.1\\u20134.4; versions A\\u2013J\", \"keywords\": \"\", \"creator\": \"LaTeX with hyperref\", \"producer\": \"pdfTeX-1.40.25\", \"creationDate\": \"D:20261104172741Z\", \"modDate\": \"D:20261104172741Z\", \"trapped\": \"\", \"encryption\": null}",
+ "student_answer_leak_check": "PASS: student TeX and extracted PDF text contain no answer boxes (blacksquare), keys, 'Answer:', solution phrases, source citations, instructor tags, annotations or hidden layers; PDF metadata: {\"format\": \"PDF 1.5\", \"title\": \"MATH 231 Quiz 3 Sections 4.1-4.4 \\u2013 Student paper \\u2013 Versions A-J\", \"author\": \"Dr. Yousef Dabboorasad\", \"subject\": \"MATH 231 Quiz 3; Sections 4.1\\u20134.4; versions A\\u2013J\", \"keywords\": \"\", \"creator\": \"LaTeX with hyperref\", \"producer\": \"pdfTeX-1.40.25\", \"creationDate\": \"D:20261106151851Z\", \"modDate\": \"D:20261106151851Z\", \"trapped\": \"\", \"encryption\": null}",
  "visual_review_page_count": 72,
  "visual_review_method": "every page rendered (contact sheets in qa/contact_sheets, 6 pages per sheet) and inspected; high-resolution inspection of student A, C, E, J pages 1-2, solved A, B, E, H, J pages, rubric pages 1-5; no clipping, overlap, missing glyphs or spill detected after the final layout fixes",
  "unresolved_issues": [],
@@ -122,11 +122,11 @@
   "G8_delivery": "PASS (hashes, ZIPs, README)"
  },
  "all_gates_passed": true,
- "generated_at_utc": "2026-11-04T17:30:31Z",
+ "generated_at_utc": "2026-11-06T15:19:28Z",
  "notes": "Instructor ZIP is NOT for students. PRINT_ONLY.zip contains the student PDF only.",
  "zip_sha256": {
-  "COMPLETE_INSTRUCTOR.zip": "2e5a02a1a0f24e794bbe6697001b31f9ddf99deb1d819827403d8173c77c98ac",
-  "PRINT_ONLY.zip": "24eaf33d1c08cd237cd44145d2146909707422c0860beab7620a1756d9013152"
+  "COMPLETE_INSTRUCTOR.zip": "6b89e0b75df1c955c20fd3225170540f3b41ae501c02b4fcbd0601e2800a7d04",
+  "PRINT_ONLY.zip": "6120e4939b4b1f4d79322d12966407a8a9d284564c7c84cbd4b69038822d4617"
  },
  "zip_member_check": "PASS: every ZIP member re-hashed against the delivered file"
 }

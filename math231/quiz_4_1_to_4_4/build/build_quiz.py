@@ -128,7 +128,10 @@ def written_solution(v, for_rubric=False):
             s = sum(Fraction(row[j]) * ks[j] for j in range(i + 1, 3))
             ks[i] = (Fraction(row[3]) - s) / Fraction(row[i])
             eq = linform(row[:3], KVARS) + "=" + rowred.ftex(row[3])
-            bs_lines.append(r"$%s\Rightarrow k_%d=%s$" % (eq, i + 1, rowred.ftex(ks[i])))
+            if eq == "k_%d=%s" % (i + 1, rowred.ftex(ks[i])):
+                bs_lines.append(r"$%s$" % eq)
+            else:
+                bs_lines.append(r"$%s\Rightarrow k_%d=%s$" % (eq, i + 1, rowred.ftex(ks[i])))
         assert tuple(int(kk) for kk in ks) == tuple(d["coeffs"]), (v, ks, d["coeffs"])
         comb = linform(ks, V)
         out.append(r"Back-substitution: " + "; ".join(bs_lines) + r". Hence $%s=%s$." % (U, comb))
@@ -148,7 +151,7 @@ def mcqa_stem(v):
     else:
         add = r"(x_1,x_2,x_3)+(y_1,y_2,y_3)=(x_1+y_1,\;x_2+y_2,\;x_3+y_3)"; Vn = r"\mathbb{R}^3"
     return (r"Let $V=%s$ with the usual addition $%s$ and the scalar multiplication $%s$. "
-            r"With these operations $V$ is \emph{not} a vector space: exactly one of the following four axioms fails. Which one?"
+            r"With these operations exactly one of the following four axioms fails. Which one?"
             % (Vn, add, d["smul_tex"]))
 
 def mcqa_options(v):
@@ -192,7 +195,7 @@ def mcqb_short(v):
                 parts.append(r"%s: $f=1\in W$ but $(-1)f\notin W$." % LETTERS[i])
             else:
                 k = w[2]; kt = rowred.ftex(Fraction(k)) if not isinstance(k, float) else rowred.ftex(Fraction(k).limit_denominator())
-                parts.append(r"%s: $%s\in W$ but $%s\cdot%s\notin W$." % (LETTERS[i], _elt_short(d["space"], w[1]), kt, _elt_short(d["space"], w[1])))
+                parts.append(r"%s: $%s\in W$ but $%s\left(%s\right)\notin W$." % (LETTERS[i], _elt_short(d["space"], w[1]), kt, _elt_short(d["space"], w[1])))
         elif w[0] == "add":
             parts.append(r"%s: $%s,\,%s\in W$ but their sum $\notin W$." % (LETTERS[i], _elt_short(d["space"], w[1]), _elt_short(d["space"], w[2])))
     return " ".join(parts)
@@ -340,7 +343,8 @@ PREAMBLE_QUIZ = r"""\documentclass[14pt,a4paper]{extarticle}
 \renewcommand{\CurVersion}{#1}\renewcommand{\CurPage}{2}%%
 \noindent{\fontsize{10.5}{12}\selectfont\bfseries Math 231 -- Linear Algebra\quad\textcolor{Brand}{\QuizLabel}\quad %(scope)s}\hfill
 {\fontsize{12}{14}\selectfont\bfseries\textcolor{Brand}{Version #1}}\quad{\fontsize{10}{11.5}\selectfont Page 2 of 2}\par
-\vspace{1mm}\textcolor{Brand}{\rule{\linewidth}{0.8pt}}\par\vspace{2.5mm}
+\vspace{1mm}\textcolor{Brand}{\rule{\linewidth}{0.8pt}}\par\vspace{1.2mm}
+{\fontsize{10}{11.5}\selectfont Name: \rule{58mm}{0.3pt}\quad ID: \rule{30mm}{0.3pt}}\par\vspace{2mm}
 }
 \newcommand{\PTitle}[2]{{\bfseries #1}\hfill{\bfseries [#2]}\par}
 \newcommand{\PNote}[1]{{\fontsize{9.5}{11}\selectfont\color{black!70}#1}\par}
@@ -378,7 +382,7 @@ def box(mark):
 def tf_block(v, solved):
     items = tf_items(v)
     rows = []
-    gap = r"\\[4.2mm]" if not solved else r"\\[1.2mm]"
+    gap = r"\\ \addlinespace[4.2mm]" if not solved else r"\\ \addlinespace[1.2mm]"
     for letter, t in items:
         cell = r"\textbf{(%s)}~%s" % (letter, t["text"])
         if solved:
@@ -400,8 +404,8 @@ def options_grid(opts, key, solved, mode="grid"):
     if mode == "row":
         return (r"\begin{tabular*}{\linewidth}{@{}l@{\extracolsep{\fill}}lll@{}}" + "\n" +
                 " & ".join(cells) + r"\end{tabular*}\par")
-    return (r"\begin{tabularx}{\linewidth}{@{}X@{\hspace{3mm}}X@{}}" + "\n" +
-            cells[0] + " & " + cells[1] + r"\\[0.8mm]" + "\n" + cells[2] + " & " + cells[3] + "\n" + r"\end{tabularx}\par")
+    return (r"{\hyphenpenalty=10000\exhyphenpenalty=10000\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X@{\hspace{3mm}}>{\raggedright\arraybackslash}X@{}}" + "\n" +
+            cells[0] + " & " + cells[1] + r"\\[0.8mm]" + "\n" + cells[2] + " & " + cells[3] + "\n" + r"\end{tabularx}}\par")
 
 def mcq_block(v, solved):
     gap = r"\vspace{2.6mm}" if not solved else r"\vspace{1.2mm}"
@@ -489,7 +493,7 @@ PREAMBLE_RUBRIC = r"""\documentclass[11pt,a4paper]{article}
 \usepackage{amsmath,amssymb}
 \usepackage{newtxtext,newtxmath}
 \usepackage[a4paper,top=16mm,bottom=16mm,left=16mm,right=16mm]{geometry}
-\usepackage{xcolor,graphicx,array,tabularx,booktabs,longtable,enumitem,fancyhdr,colortbl}
+\usepackage{xcolor,graphicx,array,tabularx,booktabs,longtable,enumitem,fancyhdr,colortbl,needspace}
 \usepackage[hidelinks]{hyperref}
 \definecolor{Brand}{RGB}{0,90,170}
 \definecolor{WorkBlue}{HTML}{174CA0}
@@ -556,31 +560,31 @@ def rubric_document():
     for v in Q.VERSIONS:
         doc.append(r"\clearpage\section*{Version %s}" % v)
         doc.append(r"\subsection*{Problem 1 -- True/False (%s mark each)}" % mk(S["tf_each"]))
-        doc.append(r"\begin{tabularx}{\linewidth}{@{}l X l X@{}}\toprule & Statement & Key & Reason / source\\\midrule")
+        doc.append(r"\begin{tabularx}{\linewidth}{@{}l >{\raggedright\arraybackslash}X l >{\raggedright\arraybackslash}X@{}}\toprule & Statement & Key & Reason / source\\\midrule")
         for letter, t in tf_items(v):
             doc.append(r"(%s) & %s & \textbf{%s} & %s \Src{%s}\\\addlinespace" % (letter, t["text"], "TRUE" if t["ans"] else "FALSE", t["reason"], Q.src(*t["srcs"])))
         doc.append(r"\bottomrule\end{tabularx}")
         doc.append(r"\subsection*{Problem 2 -- Multiple choice (%s mark each)}" % mk(S["mcq_each"]))
         # (a)
         opts, key = mcqa_options(v); d = Q.MCQA[v]
-        doc.append(r"\textbf{(a)} " + mcqa_stem(v) + r"\par")
+        doc.append(r"\Needspace{12\baselineskip}\textbf{(a)} " + mcqa_stem(v) + r"\par")
         doc.append(r"\begin{itemize}[leftmargin=8mm,itemsep=0pt]" + "".join(r"\item[%s%s] %s" % (LETTERS[i], r"$^{\ast}$" if i == key else "", o) for i, o in enumerate(opts)) + r"\end{itemize}")
         doc.append(r"\textbf{Key: %s (Axiom %d).} %s\par" % (LETTERS[key], d["fails"], d["test"]))
         doc.append(r"\Src{%s. Adaptation: %s}\par" % (Q.src("ex4.1.3", "ex4.1.4", "def4.1.1"), d["adapt"]))
         # (b)
         opts, key = mcqb_options(v); d = Q.MCQB[v]
-        doc.append(r"\textbf{(b)} " + mcqb_stem(v) + r"\par")
+        doc.append(r"\Needspace{12\baselineskip}\textbf{(b)} " + mcqb_stem(v) + r"\par")
         doc.append(r"\begin{itemize}[leftmargin=8mm,itemsep=0pt]" + "".join(r"\item[%s%s] %s --- %s %s" % (LETTERS[i], r"$^{\ast}$" if i == key else "", o[0], r"\textbf{subspace.}" if o[1] else r"\textbf{not a subspace.}", o[2]) for i, o in enumerate(d["options"])) + r"\end{itemize}")
         doc.append(r"\textbf{Key: %s.} \Src{%s. Adaptation: %s}\par" % (LETTERS[key], Q.src(*d["srcs"]), d["adapt"]))
         # (c)
         opts, key = mcqc_options(v); d = Q.MCQC[v]
-        doc.append(r"\textbf{(c)} " + mcqc_stem(v) + r"\par")
+        doc.append(r"\Needspace{12\baselineskip}\textbf{(c)} " + mcqc_stem(v) + r"\par")
         doc.append(r"\begin{itemize}[leftmargin=8mm,itemsep=0pt]" + "".join(r"\item[%s%s] $%s$" % (LETTERS[i], r"$^{\ast}$" if i == key else "", o) for i, o in enumerate(opts)) + r"\end{itemize}")
         doc.append(r"\textbf{Key: %s.} %s\par" % (LETTERS[key], mcqc_explanation(v)))
         doc.append(r"\Src{%s. Adaptation: new generators and candidates; same method as the notes.}\par" % Q.src("def4.3.1", "ex4.2.10", "ex4.2.11", "ex4.2.12"))
         # (d)
         opts, key = mcqd_options(v); d = Q.MCQD[v]
-        doc.append(r"\textbf{(d)} " + mcqd_stem(v) + r"\par")
+        doc.append(r"\Needspace{12\baselineskip}\textbf{(d)} " + mcqd_stem(v) + r"\par")
         doc.append(r"\begin{itemize}[leftmargin=8mm,itemsep=0pt]" + "".join(r"\item[%s%s] %s" % (LETTERS[i], r"$^{\ast}$" if i == key else "", o) for i, o in enumerate(opts)) + r"\end{itemize}")
         doc.append(r"\textbf{Key: %s.} %s\par" % (LETTERS[key], d["why"]))
         doc.append(r"\Src{%s. Adaptation: new pair of functions ($2\times2$ Wronskian); same test and interpretation as the notes.}\par" % Q.src("def4.4.2", "fact4.4.2", "remW", "ex4.4.5", "ex4.4.7"))
@@ -593,7 +597,7 @@ def rubric_document():
         doc.append(r"\textbf{Version-specific marking guide.}\par")
         fam = Q.WRITTEN[v]["family"]
         ref0 = rowred.matrix_tex(final0, 3); refu = rowred.matrix_tex(finalu, 3)
-        doc.append(r"\begin{tabularx}{\linewidth}{@{}l r X@{}}\toprule Check & Marks & What to look for in this version\\\midrule")
+        doc.append(r"\begin{tabularx}{\linewidth}{@{}l r >{\raggedright\arraybackslash}X@{}}\toprule Check & Marks & What to look for in this version\\\midrule")
         doc.append(r"a1 & 0.5 & Vector equation / coefficient matching set up with unknowns $k_1,k_2,k_3$ and right-hand side $%s$.\\" % ZERO[Q.WRITTEN[v]["space"]])
         doc.append(r"a2 & 0.5 & The system shown in the model solution (or its augmented matrix). Row/column transposition accepted.\\")
         doc.append(r"a3 & 0.5 & Zeros below the first pivot with correct operations (any valid pivot choice).\\")
@@ -605,7 +609,8 @@ def rubric_document():
         doc.append(r"b1 & 0.5 & System or augmented matrix with right-hand side $%s$ (re-using the matrix of (a) is fine).\\" % elt_tex(Q.WRITTEN[v]["space"], Q.WRITTEN[v]["u"]))
         doc.append(r"b2 & 0.5 & Correct REF of $[A\mid\mathbf{u}]$, e.g. $%s$.\\" % refu)
         if fam == "D":
-            doc.append(r"b3 & 0.5 & States that the last row is impossible ($0=%s$), hence %s. A correct argument via the dependence relation (e.g. that $\operatorname{span}(S)=\operatorname{span}\{\mathbf{v}_1,\mathbf{v}_2\}$ and $\mathbf{u}$ is not a combination of two vectors) is also accepted.\\" % (rowred.ftex(finalu[2][3]), key_b))
+            Vn = VNAME[Q.WRITTEN[v]["space"]]; Un = UNAME[Q.WRITTEN[v]["space"]]
+            doc.append(r"b3 & 0.5 & States that the last row is impossible ($0=%s$), hence $%s\notin\operatorname{span}(S)$. Also accepted: using the dependence relation to note that $\operatorname{span}(S)=\operatorname{span}\{%s,%s\}$ and then showing that the system $k_1%s+k_2%s=%s$ is inconsistent.\\" % (rowred.ftex(finalu[2][3]), Un, Vn[0], Vn[1], Vn[0], Vn[1], Un))
         else:
             doc.append(r"b3 & 0.5 & Correct coefficients and the combination written out: %s. Cramer's rule / inverse matrix accepted.\\" % key_b)
         doc.append(r"\midrule Total & %s & \\\bottomrule\end{tabularx}" % mk(S["written_total"]))
@@ -617,15 +622,15 @@ def rubric_document():
 def write_records():
     # BLUEPRINT
     bp = [
-        ("1(a)", "True/False", S["tf_each"], "4.1", "def4.1.1/thm4.1.1/ex4.1.2", "Recognise vector-space axioms and Theorem 4.1.1 consequences", "single tick", 3, 1.0, "statement", "proofs of axioms", "page 1", "verified"),
-        ("1(b)", "True/False", S["tf_each"], "4.2", "thm4.2.1 and Examples 4.2.2-4.2.9, Extra 4.2.1-4.2.6", "Decide subspace status of standard sets; union/intersection", "single tick", 3, 1.0, "statement", "full Subspace Test proof", "page 1", "verified"),
-        ("1(c)", "True/False", S["tf_each"], "4.3", "def4.3.1/thm4.3.1/rem4.3.1-2, Extra 4.3.2", "Properties of span and spanning sets", "single tick", 3, 1.0, "statement", "general spanning test", "page 1", "verified"),
-        ("1(d)", "True/False", S["tf_each"], "4.4", "thm4.4.1/fact4.4.1/fact4.4.2/remW", "Theorems on independence, dimension argument, Wronskian interpretation", "single tick", 3, 1.0, "statement", "computations", "page 1", "verified"),
-        ("2(a)", "MCQ", S["mcq_each"], "4.1", "ex4.1.3/ex4.1.4", "Test scalar-multiplication axioms with a concrete vector; identify the failing axiom", "single tick", 5, 2.5, "operations and the fact that exactly one listed axiom fails", "full ten-axiom verification", "page 1", "verified"),
-        ("2(b)", "MCQ", S["mcq_each"], "4.2", "thm4.2.1, Examples 4.2.2-4.2.8, Extra 4.2.1-4.2.6", "Apply the Subspace Test (zero vector, closure) to four subsets", "single tick", 5, 3.0, "four subsets of one space", "written proof", "page 1", "verified"),
-        ("2(c)", "MCQ", S["mcq_each"], "4.3", "def4.3.1, ex4.2.10-4.2.12", "Decide membership in span{v1,v2} by matching coefficients", "single tick", 4, 2.0, "two generators, four candidates", "general spanning test", "page 1", "verified"),
-        ("2(d)", "MCQ", S["mcq_each"], "4.4", "def4.4.2/fact4.4.2/remW, ex4.4.5-4.4.7", "Compute a 2x2 Wronskian and interpret (not identically zero => independent)", "single tick", 5, 2.5, "two functions", "3x3 Wronskians", "page 1", "verified"),
-        ("3", "Written", S["written_total"], "4.4 + 4.2/4.3", "ex4.4.1/ex4.4.2 (independence), ex4.2.10/4.2.11 (membership)", "Row-reduce a 3x3 homogeneous system; interpret pivots/free variables; test membership in a span", "set-up, system, reduction, conclusion, coefficients", 6, 12.0, "three vectors and one target vector", "bases/dimension (4.5-4.6)", "page 2", "verified"),
+        ("1(a)", "True/False", S["tf_each"], "4.1", "def4.1.1/thm4.1.1/ex4.1.2", "Recognise vector-space axioms and Theorem 4.1.1 consequences", "single tick", 3, 0.75, "statement", "proofs of axioms", "page 1", "verified"),
+        ("1(b)", "True/False", S["tf_each"], "4.2", "thm4.2.1 and Examples 4.2.2-4.2.9, Extra 4.2.1-4.2.6", "Decide subspace status of standard sets; union/intersection", "single tick", 3, 0.75, "statement", "full Subspace Test proof", "page 1", "verified"),
+        ("1(c)", "True/False", S["tf_each"], "4.3", "def4.3.1/thm4.3.1/rem4.3.1-2, Extra 4.3.2", "Properties of span and spanning sets", "single tick", 3, 0.75, "statement", "general spanning test", "page 1", "verified"),
+        ("1(d)", "True/False", S["tf_each"], "4.4", "thm4.4.1/fact4.4.1/fact4.4.2/remW", "Theorems on independence, dimension argument, Wronskian interpretation", "single tick", 3, 0.75, "statement", "computations", "page 1", "verified"),
+        ("2(a)", "MCQ", S["mcq_each"], "4.1", "ex4.1.3/ex4.1.4", "Test scalar-multiplication axioms with a concrete vector; identify the failing axiom", "single tick", 5, 2.0, "operations and the fact that exactly one listed axiom fails", "full ten-axiom verification", "page 1", "verified"),
+        ("2(b)", "MCQ", S["mcq_each"], "4.2", "thm4.2.1, Examples 4.2.2-4.2.8, Extra 4.2.1-4.2.6", "Apply the Subspace Test (zero vector, closure) to four subsets", "single tick", 5, 2.5, "four subsets of one space", "written proof", "page 1", "verified"),
+        ("2(c)", "MCQ", S["mcq_each"], "4.3", "def4.3.1, ex4.2.10-4.2.12", "Decide membership in span{v1,v2} by matching coefficients", "single tick", 4, 1.5, "two generators, four candidates", "general spanning test", "page 1", "verified"),
+        ("2(d)", "MCQ", S["mcq_each"], "4.4", "def4.4.2/fact4.4.2/remW, ex4.4.5-4.4.7", "Compute a 2x2 Wronskian and interpret (not identically zero => independent)", "single tick", 5, 2.0, "two functions", "3x3 Wronskians", "page 1", "verified"),
+        ("3", "Written", S["written_total"], "4.4 + 4.2/4.3", "ex4.4.1/ex4.4.2 (independence), ex4.2.10/4.2.11 (membership)", "Row-reduce a 3x3 homogeneous system; interpret pivots/free variables; test membership in a span", "set-up, system, reduction, conclusion, coefficients", 6, 8.0, "three vectors and one target vector", "bases/dimension (4.5-4.6)", "page 2", "verified"),
     ]
     with open(os.path.join(OUT, "BLUEPRINT.csv"), "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
@@ -637,28 +642,28 @@ def write_records():
         items = {}
         for letter, t in tf_items(v):
             iid = "1(%s)" % letter
-            ledger.append((v, iid, t["text"], ";".join(t["srcs"]), "n/a", "TRUE" if t["ans"] else "FALSE", S["tf_each"], "read statement; recall theorem/example", 1.0, "conceptual; balanced keys per version", "PASS"))
+            ledger.append((v, iid, t["text"], ";".join(t["srcs"]), "n/a", "TRUE" if t["ans"] else "FALSE", S["tf_each"], "read statement; recall theorem/example", 0.75, "conceptual; balanced keys per version", "PASS"))
             smap.append((v, iid, t["sec"], Q.NOTES, "n/a (TeX source; PDF not compiled here)", "n/a", "; ".join(Q.SRC[s][0] for s in t["srcs"]), "lines " + ", ".join(str(Q.SRC[s][1]) for s in t["srcs"]), "statement paraphrases the source result", "new statement on the source result", ""))
             items[iid] = t["text"]
         opts, key = mcqa_options(v)
-        ledger.append((v, "2(a)", mcqa_stem(v) + " | " + " / ".join(opts), "ex4.1.3;ex4.1.4", Q.MCQA[v]["smul_tex"], "%s (Axiom %d)" % (LETTERS[key], Q.MCQA[v]["fails"]), S["mcq_each"], "test 1u=u and (k+m)u; compare", 2.5, "all four listed axioms checked symbolically", "PASS"))
+        ledger.append((v, "2(a)", mcqa_stem(v) + " | " + " / ".join(opts), "ex4.1.3;ex4.1.4", Q.MCQA[v]["smul_tex"], "%s (Axiom %d)" % (LETTERS[key], Q.MCQA[v]["fails"]), S["mcq_each"], "test 1u=u and (k+m)u; compare", 2.0, "all four listed axioms checked symbolically", "PASS"))
         smap.append((v, "2(a)", "4.1", Q.NOTES, "n/a", "n/a", "Example 4.1.3 / Example 4.1.4", "lines 10977, 11026", "pick a test vector, compute both sides, exhibit the failing axiom", Q.MCQA[v]["adapt"], ""))
         items["2(a)"] = mcqa_stem(v) + " || " + " || ".join(opts)
         opts, key = mcqb_options(v)
-        ledger.append((v, "2(b)", mcqb_stem(v) + " | " + " / ".join(opts), ";".join(Q.MCQB[v]["srcs"]), Q.MCQB[v]["V"], LETTERS[key], S["mcq_each"], "zero vector, closure under + and scalar", 3.0, "exactly one option differs in status", "PASS"))
+        ledger.append((v, "2(b)", mcqb_stem(v) + " | " + " / ".join(opts), ";".join(Q.MCQB[v]["srcs"]), Q.MCQB[v]["V"], LETTERS[key], S["mcq_each"], "zero vector, closure under + and scalar", 2.5, "exactly one option differs in status", "PASS"))
         smap.append((v, "2(b)", "4.2", Q.NOTES, "n/a", "n/a", "; ".join(Q.SRC[s][0] for s in Q.MCQB[v]["srcs"]), "lines " + ", ".join(str(Q.SRC[s][1]) for s in Q.MCQB[v]["srcs"]), "Subspace Test (Theorem 4.2.1) / Remark 4.2.1 counterexamples", Q.MCQB[v]["adapt"], ""))
         items["2(b)"] = mcqb_stem(v) + " || " + " || ".join(opts)
         opts, key = mcqc_options(v)
-        ledger.append((v, "2(c)", mcqc_stem(v) + " | " + " / ".join(opts), "def4.3.1;ex4.2.10;ex4.2.11", "v1=%s v2=%s" % (Q.MCQC[v]["v1"], Q.MCQC[v]["v2"]), LETTERS[key], S["mcq_each"], "match two coordinates, check the third", 2.0, "candidates distinct; one member", "PASS"))
+        ledger.append((v, "2(c)", mcqc_stem(v) + " | " + " / ".join(opts), "def4.3.1;ex4.2.10;ex4.2.11", "v1=%s v2=%s" % (Q.MCQC[v]["v1"], Q.MCQC[v]["v2"]), LETTERS[key], S["mcq_each"], "match two coordinates, check the third", 1.5, "candidates distinct; one member", "PASS"))
         smap.append((v, "2(c)", "4.3", Q.NOTES, "n/a", "n/a", "Definition 4.3.1; Examples 4.2.10-4.2.12", "lines 12614, 11774, 11843, 11899", "write candidate as k1 v1 + k2 v2, solve, check consistency", "new generators/candidates; same method", ""))
         items["2(c)"] = mcqc_stem(v) + " || " + " || ".join(opts)
         opts, key = mcqd_options(v)
-        ledger.append((v, "2(d)", mcqd_stem(v) + " | " + " / ".join(opts), "def4.4.2;fact4.4.2;remW", "f1=%s f2=%s" % (Q.MCQD[v]["f1"], Q.MCQD[v]["f2"]), "%s (W=%s)" % (LETTERS[key], Q.MCQD[v]["W_tex"]), S["mcq_each"], "derivatives, 2x2 determinant, interpret", 2.5, "distractors: misconception W(x0)=0, sign error, W=0", "PASS"))
+        ledger.append((v, "2(d)", mcqd_stem(v) + " | " + " / ".join(opts), "def4.4.2;fact4.4.2;remW", "f1=%s f2=%s" % (Q.MCQD[v]["f1"], Q.MCQD[v]["f2"]), "%s (W=%s)" % (LETTERS[key], Q.MCQD[v]["W_tex"]), S["mcq_each"], "derivatives, 2x2 determinant, interpret", 2.0, "distractors: misconception W(x0)=0, sign error, W=0", "PASS"))
         smap.append((v, "2(d)", "4.4", Q.NOTES, "n/a", "n/a", "Definition 4.4.2; Fact 4.4.2; Remark; Examples 4.4.5-4.4.7", "lines 13526, 13541, 13547, 13617, 13707", "Wronskian determinant; not identically zero => independent", "new pair of functions", ""))
         items["2(d)"] = mcqd_stem(v) + " || " + " || ".join(opts)
         intro, parts = written_stem(v)
         _, key_a, key_b, _, _ = written_solution(v)
-        ledger.append((v, "3", intro + " " + parts[0] + " " + parts[1], "ex4.4.1;ex4.4.2;ex4.2.10;ex4.2.11", "vs=%s u=%s" % (Q.WRITTEN[v]["vs"], Q.WRITTEN[v]["u"]), key_a + " | " + key_b, S["written_total"], "set up; system; REF; interpret; membership; coefficients", 12.0, "family %s; integer-only elimination" % Q.WRITTEN[v]["family"], "PASS"))
+        ledger.append((v, "3", intro + " " + parts[0] + " " + parts[1], "ex4.4.1;ex4.4.2;ex4.2.10;ex4.2.11", "vs=%s u=%s" % (Q.WRITTEN[v]["vs"], Q.WRITTEN[v]["u"]), key_a + " | " + key_b, S["written_total"], "set up; system; REF; interpret; membership; coefficients", 8.0, "family %s; integer-only elimination" % Q.WRITTEN[v]["family"], "PASS"))
         smap.append((v, "3", "4.4 (+4.2/4.3)", Q.NOTES, "n/a", "n/a", "Example 4.4.1 / 4.4.2; Examples 4.2.10-4.2.11", "lines 13280, 13357, 11774, 11843", "homogeneous system -> REF -> pivots/free variables; augmented system -> consistency", "new numbers; same structure", ""))
         items["3"] = intro + " || " + parts[0] + " || " + parts[1]
         canon[v] = items
